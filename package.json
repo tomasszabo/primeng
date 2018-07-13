@@ -65,7 +65,8 @@
         "primeicons": "1.0.0-beta.9"
     },
     "typescript": {
-        "definition": "build/primeng.d.ts"
+        "definition": "./primeng.d.ts"
     },
-    "typings": "build/primeng.d.ts"
+    "typings": "./primeng.d.ts",
+    "main": "./primeng.js"
 }
