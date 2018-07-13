@@ -13,7 +13,7 @@ gulp.task('build-css', function() {
 		    'src/app/components/**/*.css'
     ])
         .pipe(concat('primeng.css'))
-        .pipe(gulp.dest('resources'));
+        .pipe(gulp.dest('build/resources'));
 });
 
 gulp.task('build-css-prod', function() {
@@ -25,38 +25,50 @@ gulp.task('build-css-prod', function() {
     .pipe(gulp.dest('resources'))
     .pipe(uglifycss({"uglyComments": true}))
     .pipe(rename('primeng.min.css'))
-    .pipe(gulp.dest('resources'));	
+    .pipe(gulp.dest('build/resources'));	
 });
 
 gulp.task('copy-component-css', function () {
     gulp.src([
         'src/app/components/**/*.css'
     ])
-    .pipe(gulp.dest('resources/components'));
+    .pipe(gulp.dest('build/resources/components'));
 });
 
 gulp.task('images', function() {
     return gulp.src(['src/app/components/**/images/*.png', 'src/app/components/**/images/*.gif'])
         .pipe(flatten())
-        .pipe(gulp.dest('resources/images'));
+        .pipe(gulp.dest('build/resources/images'));
 });
 
 gulp.task('themes', function() {
     return gulp.src(['src/assets/components/themes/**/*'])
-        .pipe(gulp.dest('resources/themes'));
+        .pipe(gulp.dest('build/resources/themes'));
 });
 
 gulp.task('build-exports', function() {
     return gulp.src(['exports/*.js','exports/*.d.ts'])
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('build'));
 });
 
 //Cleaning previous gulp tasks from project
 gulp.task('clean', function() {
-	del(['resources']);
+    del(['build']);
 });
 
 //Building project with run sequence
 gulp.task('build-assets', ['clean','copy-component-css', 'build-css-prod', 'images', 'themes']);
 
+gulp.task('copy-assets', function () {
+    return gulp.src('resources')
+        .pipe(gulp.dest('build'));
+});
+
+gulp.task('copy-components', function () {
+    return gulp.src('src/app/components/**')
+        .pipe(gulp.dest('build/components'));
+});
+
+//Building project with run sequence
+gulp.task('build', ['build-assets', 'copy-assets', 'copy-components', 'build-exports']);
         
