@@ -706,6 +706,31 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
             if(dropNode) {
                 if(dragNode === dropNode) {
                     allow = false;
+                } if (dropNode.dropScope) {
+                    const dropScope = dropNode.dropScope;
+                    const dragScope = dragNode.dragScope;
+
+                    if (typeof dropScope === 'string') {
+                        if (typeof dragScope === 'string')
+                            allow = dropScope === dragScope;
+                        else if (dragScope instanceof Array)
+                            allow = (<Array<any>>dragScope).indexOf(dropScope) != -1;
+                    }
+                    else if (dropScope instanceof Array) {
+                        if (typeof dragScope === 'string') {
+                            allow = (<Array<any>>dropScope).indexOf(dragScope) != -1;
+                        }
+                        else if (dragScope instanceof Array) {
+                            for (let s of dropScope) {
+                                for (let ds of dragScope) {
+                                    if (s === ds) {
+                                        allow = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 else {
                     let parent = dropNode.parent;
