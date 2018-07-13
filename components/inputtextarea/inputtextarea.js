@@ -1,16 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
@@ -61,75 +49,48 @@ var InputTextarea = /** @class */ (function () {
         this.rows = (linesCount >= this.rowsDefault) ? (linesCount + 1) : this.rowsDefault;
         this.onResize.emit(event || {});
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], InputTextarea.prototype, "autoResize", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], InputTextarea.prototype, "rows", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], InputTextarea.prototype, "cols", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], InputTextarea.prototype, "onResize", void 0);
-    __decorate([
-        core_1.HostListener('input', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], InputTextarea.prototype, "onInput", null);
-    __decorate([
-        core_1.HostListener('focus', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], InputTextarea.prototype, "onFocus", null);
-    __decorate([
-        core_1.HostListener('blur', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], InputTextarea.prototype, "onBlur", null);
-    __decorate([
-        core_1.HostListener('keyup', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], InputTextarea.prototype, "onKeyup", null);
-    InputTextarea = __decorate([
-        core_1.Directive({
-            selector: '[pInputTextarea]',
-            host: {
-                '[class.ui-inputtext]': 'true',
-                '[class.ui-corner-all]': 'true',
-                '[class.ui-state-default]': 'true',
-                '[class.ui-widget]': 'true',
-                '[class.ui-state-filled]': 'filled',
-                '[attr.rows]': 'rows',
-                '[attr.cols]': 'cols'
-            }
-        }),
-        __param(1, core_1.Optional()),
-        __metadata("design:paramtypes", [core_1.ElementRef, forms_1.NgModel])
-    ], InputTextarea);
+    InputTextarea.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[pInputTextarea]',
+                    host: {
+                        '[class.ui-inputtext]': 'true',
+                        '[class.ui-corner-all]': 'true',
+                        '[class.ui-state-default]': 'true',
+                        '[class.ui-widget]': 'true',
+                        '[class.ui-state-filled]': 'filled',
+                        '[attr.rows]': 'rows',
+                        '[attr.cols]': 'cols'
+                    }
+                },] },
+    ];
+    /** @nocollapse */
+    InputTextarea.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: forms_1.NgModel, decorators: [{ type: core_1.Optional }] }
+    ]; };
+    InputTextarea.propDecorators = {
+        autoResize: [{ type: core_1.Input }],
+        rows: [{ type: core_1.Input }],
+        cols: [{ type: core_1.Input }],
+        onResize: [{ type: core_1.Output }],
+        onInput: [{ type: core_1.HostListener, args: ['input', ['$event'],] }],
+        onFocus: [{ type: core_1.HostListener, args: ['focus', ['$event'],] }],
+        onBlur: [{ type: core_1.HostListener, args: ['blur', ['$event'],] }],
+        onKeyup: [{ type: core_1.HostListener, args: ['keyup', ['$event'],] }]
+    };
     return InputTextarea;
 }());
 exports.InputTextarea = InputTextarea;
 var InputTextareaModule = /** @class */ (function () {
     function InputTextareaModule() {
     }
-    InputTextareaModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [InputTextarea],
-            declarations: [InputTextarea]
-        })
-    ], InputTextareaModule);
+    InputTextareaModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [InputTextarea],
+                    declarations: [InputTextarea]
+                },] },
+    ];
     return InputTextareaModule;
 }());
 exports.InputTextareaModule = InputTextareaModule;

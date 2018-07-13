@@ -1,16 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -164,86 +152,50 @@ var Growl = /** @class */ (function () {
             this.subscription.unsubscribe();
         }
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], Growl.prototype, "life", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Growl.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Growl.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Growl.prototype, "immutable", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Growl.prototype, "autoZIndex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], Growl.prototype, "baseZIndex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Growl.prototype, "key", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Growl.prototype, "onClick", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Growl.prototype, "onHover", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Growl.prototype, "onClose", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Growl.prototype, "valueChange", void 0);
-    __decorate([
-        core_1.ViewChild('container'),
-        __metadata("design:type", core_1.ElementRef)
-    ], Growl.prototype, "containerViewChild", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], Growl.prototype, "value", null);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean),
-        __metadata("design:paramtypes", [Boolean])
-    ], Growl.prototype, "sticky", null);
-    Growl = __decorate([
-        core_1.Component({
-            selector: 'p-growl',
-            template: "\n        <div #container [ngClass]=\"'ui-growl ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div #msgel *ngFor=\"let msg of value;let i = index\" class=\"ui-growl-item-container ui-state-highlight ui-corner-all ui-shadow\" aria-live=\"polite\"\n                [ngClass]=\"{'ui-growl-message-info':msg.severity == 'info','ui-growl-message-warn':msg.severity == 'warn',\n                    'ui-growl-message-error':msg.severity == 'error','ui-growl-message-success':msg.severity == 'success'}\"\n                    (click)=\"onMessageClick(i)\" (mouseenter)=\"onMessageHover(i)\">\n                <div class=\"ui-growl-item\">\n                     <div class=\"ui-growl-icon-close pi pi-times\" (click)=\"remove(i,msgel)\"></div>\n                     <span class=\"ui-growl-image pi\"\n                        [ngClass]=\"{'pi-info-circle':msg.severity == 'info','pi-exclamation-triangle':msg.severity == 'warn',\n                                'pi-times':msg.severity == 'error','pi-check':msg.severity == 'success'}\"></span>\n                     <div class=\"ui-growl-message\">\n                        <span class=\"ui-growl-title\">{{msg.summary}}</span>\n                        <p [innerHTML]=\"msg.detail||''\"></p>\n                     </div>\n                     <div style=\"clear: both;\"></div>\n                </div>\n            </div>\n        </div>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __param(3, core_1.Optional()),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.IterableDiffers, messageservice_1.MessageService, core_1.NgZone])
-    ], Growl);
+    Growl.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-growl',
+                    template: "\n        <div #container [ngClass]=\"'ui-growl ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div #msgel *ngFor=\"let msg of value;let i = index\" class=\"ui-growl-item-container ui-state-highlight ui-corner-all ui-shadow\" aria-live=\"polite\"\n                [ngClass]=\"{'ui-growl-message-info':msg.severity == 'info','ui-growl-message-warn':msg.severity == 'warn',\n                    'ui-growl-message-error':msg.severity == 'error','ui-growl-message-success':msg.severity == 'success'}\"\n                    (click)=\"onMessageClick(i)\" (mouseenter)=\"onMessageHover(i)\">\n                <div class=\"ui-growl-item\">\n                     <div class=\"ui-growl-icon-close pi pi-times\" (click)=\"remove(i,msgel)\"></div>\n                     <span class=\"ui-growl-image pi\"\n                        [ngClass]=\"{'pi-info-circle':msg.severity == 'info','pi-exclamation-triangle':msg.severity == 'warn',\n                                'pi-times':msg.severity == 'error','pi-check':msg.severity == 'success'}\"></span>\n                     <div class=\"ui-growl-message\">\n                        <span class=\"ui-growl-title\">{{msg.summary}}</span>\n                        <p [innerHTML]=\"msg.detail||''\"></p>\n                     </div>\n                     <div style=\"clear: both;\"></div>\n                </div>\n            </div>\n        </div>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    Growl.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler },
+        { type: core_1.IterableDiffers },
+        { type: messageservice_1.MessageService, decorators: [{ type: core_1.Optional }] },
+        { type: core_1.NgZone }
+    ]; };
+    Growl.propDecorators = {
+        life: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        immutable: [{ type: core_1.Input }],
+        autoZIndex: [{ type: core_1.Input }],
+        baseZIndex: [{ type: core_1.Input }],
+        key: [{ type: core_1.Input }],
+        onClick: [{ type: core_1.Output }],
+        onHover: [{ type: core_1.Output }],
+        onClose: [{ type: core_1.Output }],
+        valueChange: [{ type: core_1.Output }],
+        containerViewChild: [{ type: core_1.ViewChild, args: ['container',] }],
+        value: [{ type: core_1.Input }],
+        sticky: [{ type: core_1.Input }]
+    };
     return Growl;
 }());
 exports.Growl = Growl;
 var GrowlModule = /** @class */ (function () {
     function GrowlModule() {
     }
-    GrowlModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [Growl],
-            declarations: [Growl]
-        })
-    ], GrowlModule);
+    GrowlModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [Growl],
+                    declarations: [Growl]
+                },] },
+    ];
     return GrowlModule;
 }());
 exports.GrowlModule = GrowlModule;

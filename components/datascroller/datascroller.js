@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -130,91 +121,51 @@ var DataScroller = /** @class */ (function () {
     DataScroller.prototype.ngOnDestroy = function () {
         this.unbindScrollListener();
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], DataScroller.prototype, "value", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataScroller.prototype, "rows", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataScroller.prototype, "lazy", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], DataScroller.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], DataScroller.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataScroller.prototype, "buffer", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataScroller.prototype, "inline", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], DataScroller.prototype, "scrollHeight", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], DataScroller.prototype, "loader", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataScroller.prototype, "totalRecords", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Function)
-    ], DataScroller.prototype, "trackBy", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Header),
-        __metadata("design:type", Object)
-    ], DataScroller.prototype, "header", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Footer),
-        __metadata("design:type", Object)
-    ], DataScroller.prototype, "footer", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate),
-        __metadata("design:type", core_1.QueryList)
-    ], DataScroller.prototype, "templates", void 0);
-    __decorate([
-        core_1.ViewChild('content'),
-        __metadata("design:type", core_1.ElementRef)
-    ], DataScroller.prototype, "contentViewChild", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], DataScroller.prototype, "onLazyLoad", void 0);
-    DataScroller = __decorate([
-        core_1.Component({
-            selector: 'p-dataScroller',
-            template: "\n    <div [ngClass]=\"{'ui-datascroller ui-widget': true, 'ui-datascroller-inline': inline}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n        <div class=\"ui-datascroller-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n            <ng-content select=\"p-header\"></ng-content>\n        </div>\n        <div #content class=\"ui-datascroller-content ui-widget-content\" [ngStyle]=\"{'max-height': scrollHeight}\">\n            <ul class=\"ui-datascroller-list\">\n                <li *ngFor=\"let item of value | slice:first:(first + (page * rows)); trackBy: trackBy; let i = index\">\n                    <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item, index: i}\"></ng-container>\n                </li>\n            </ul>\n        </div>\n        <div class=\"ui-datascroller-footer ui-widget-header ui-corner-bottom\" *ngIf=\"footer\">\n            <ng-content select=\"p-footer\"></ng-content>\n        </div>\n    </div>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, core_1.Renderer2, domhandler_1.DomHandler, core_1.NgZone])
-    ], DataScroller);
+    DataScroller.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-dataScroller',
+                    template: "\n    <div [ngClass]=\"{'ui-datascroller ui-widget': true, 'ui-datascroller-inline': inline}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n        <div class=\"ui-datascroller-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n            <ng-content select=\"p-header\"></ng-content>\n        </div>\n        <div #content class=\"ui-datascroller-content ui-widget-content\" [ngStyle]=\"{'max-height': scrollHeight}\">\n            <ul class=\"ui-datascroller-list\">\n                <li *ngFor=\"let item of value | slice:first:(first + (page * rows)); trackBy: trackBy; let i = index\">\n                    <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item, index: i}\"></ng-container>\n                </li>\n            </ul>\n        </div>\n        <div class=\"ui-datascroller-footer ui-widget-header ui-corner-bottom\" *ngIf=\"footer\">\n            <ng-content select=\"p-footer\"></ng-content>\n        </div>\n    </div>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    DataScroller.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: core_1.Renderer2 },
+        { type: domhandler_1.DomHandler },
+        { type: core_1.NgZone }
+    ]; };
+    DataScroller.propDecorators = {
+        value: [{ type: core_1.Input }],
+        rows: [{ type: core_1.Input }],
+        lazy: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        buffer: [{ type: core_1.Input }],
+        inline: [{ type: core_1.Input }],
+        scrollHeight: [{ type: core_1.Input }],
+        loader: [{ type: core_1.Input }],
+        totalRecords: [{ type: core_1.Input }],
+        trackBy: [{ type: core_1.Input }],
+        header: [{ type: core_1.ContentChild, args: [shared_1.Header,] }],
+        footer: [{ type: core_1.ContentChild, args: [shared_1.Footer,] }],
+        templates: [{ type: core_1.ContentChildren, args: [shared_1.PrimeTemplate,] }],
+        contentViewChild: [{ type: core_1.ViewChild, args: ['content',] }],
+        onLazyLoad: [{ type: core_1.Output }]
+    };
     return DataScroller;
 }());
 exports.DataScroller = DataScroller;
 var DataScrollerModule = /** @class */ (function () {
     function DataScrollerModule() {
     }
-    DataScrollerModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [DataScroller, shared_1.SharedModule],
-            declarations: [DataScroller]
-        })
-    ], DataScrollerModule);
+    DataScrollerModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [DataScroller, shared_1.SharedModule],
+                    declarations: [DataScroller]
+                },] },
+    ];
     return DataScrollerModule;
 }());
 exports.DataScrollerModule = DataScrollerModule;

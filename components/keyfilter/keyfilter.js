@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -23,22 +14,21 @@ var KeyFilter = /** @class */ (function () {
         this.el = el;
         this.domHandler = domHandler;
     }
-    KeyFilter_1 = KeyFilter;
     Object.defineProperty(KeyFilter.prototype, "pattern", {
         get: function () {
             return this._pattern;
         },
         set: function (_pattern) {
             this._pattern = _pattern;
-            this.regex = KeyFilter_1.DEFAULT_MASKS[this._pattern] || this._pattern;
+            this.regex = KeyFilter.DEFAULT_MASKS[this._pattern] || this._pattern;
         },
         enumerable: true,
         configurable: true
     });
     KeyFilter.prototype.isNavKeyPress = function (e) {
         var k = e.keyCode;
-        k = this.domHandler.getBrowser().safari ? (KeyFilter_1.SAFARI_KEYS[k] || k) : k;
-        return (k >= 33 && k <= 40) || k == KeyFilter_1.KEYS.RETURN || k == KeyFilter_1.KEYS.TAB || k == KeyFilter_1.KEYS.ESC;
+        k = this.domHandler.getBrowser().safari ? (KeyFilter.SAFARI_KEYS[k] || k) : k;
+        return (k >= 33 && k <= 40) || k == KeyFilter.KEYS.RETURN || k == KeyFilter.KEYS.TAB || k == KeyFilter.KEYS.ESC;
     };
     ;
     KeyFilter.prototype.isSpecialKey = function (e) {
@@ -49,7 +39,7 @@ var KeyFilter = /** @class */ (function () {
     };
     KeyFilter.prototype.getKey = function (e) {
         var k = e.keyCode || e.charCode;
-        return this.domHandler.getBrowser().safari ? (KeyFilter_1.SAFARI_KEYS[k] || k) : k;
+        return this.domHandler.getBrowser().safari ? (KeyFilter.SAFARI_KEYS[k] || k) : k;
     };
     KeyFilter.prototype.getCharCode = function (e) {
         return e.charCode || e.keyCode || e.which;
@@ -64,7 +54,7 @@ var KeyFilter = /** @class */ (function () {
             return;
         }
         var k = this.getKey(e);
-        if (browser.mozilla && (this.isNavKeyPress(e) || k == KeyFilter_1.KEYS.BACKSPACE || (k == KeyFilter_1.KEYS.DELETE && e.charCode == 0))) {
+        if (browser.mozilla && (this.isNavKeyPress(e) || k == KeyFilter.KEYS.BACKSPACE || (k == KeyFilter.KEYS.DELETE && e.charCode == 0))) {
             return;
         }
         var c = this.getCharCode(e);
@@ -117,42 +107,35 @@ var KeyFilter = /** @class */ (function () {
         63273: 36,
         63275: 35 // end
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], KeyFilter.prototype, "pValidateOnly", void 0);
-    __decorate([
-        core_1.Input('pKeyFilter'),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], KeyFilter.prototype, "pattern", null);
-    __decorate([
-        core_1.HostListener('keypress', ['$event']),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [KeyboardEvent]),
-        __metadata("design:returntype", void 0)
-    ], KeyFilter.prototype, "onKeyPress", null);
-    KeyFilter = KeyFilter_1 = __decorate([
-        core_1.Directive({
-            selector: '[pKeyFilter]',
-            providers: [domhandler_1.DomHandler, exports.KEYFILTER_VALIDATOR]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
-    ], KeyFilter);
+    KeyFilter.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[pKeyFilter]',
+                    providers: [domhandler_1.DomHandler, exports.KEYFILTER_VALIDATOR]
+                },] },
+    ];
+    /** @nocollapse */
+    KeyFilter.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler }
+    ]; };
+    KeyFilter.propDecorators = {
+        pValidateOnly: [{ type: core_1.Input }],
+        pattern: [{ type: core_1.Input, args: ['pKeyFilter',] }],
+        onKeyPress: [{ type: core_1.HostListener, args: ['keypress', ['$event'],] }]
+    };
     return KeyFilter;
-    var KeyFilter_1;
 }());
 exports.KeyFilter = KeyFilter;
 var KeyFilterModule = /** @class */ (function () {
     function KeyFilterModule() {
     }
-    KeyFilterModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [KeyFilter],
-            declarations: [KeyFilter]
-        })
-    ], KeyFilterModule);
+    KeyFilterModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [KeyFilter],
+                    declarations: [KeyFilter]
+                },] },
+    ];
     return KeyFilterModule;
 }());
 exports.KeyFilterModule = KeyFilterModule;

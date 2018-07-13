@@ -1,16 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
@@ -46,42 +34,34 @@ var OrganizationChartNode = /** @class */ (function () {
     OrganizationChartNode.prototype.isSelected = function () {
         return this.chart.isSelected(this.node);
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], OrganizationChartNode.prototype, "node", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], OrganizationChartNode.prototype, "root", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], OrganizationChartNode.prototype, "first", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], OrganizationChartNode.prototype, "last", void 0);
-    OrganizationChartNode = __decorate([
-        core_1.Component({
-            selector: '[pOrganizationChartNode]',
-            template: "\n        <tr *ngIf=\"node\">\n            <td [attr.colspan]=\"colspan\">\n                <div class=\"ui-organizationchart-node-content ui-widget-content ui-corner-all {{node.styleClass}}\" \n                    [ngClass]=\"{'ui-organizationchart-selectable-node': chart.selectionMode && node.selectable !== false,'ui-state-highlight':isSelected()}\"\n                    (click)=\"onNodeClick($event,node)\">\n                    <div *ngIf=\"!chart.getTemplateForNode(node)\">{{node.label}}</div>\n                    <div *ngIf=\"chart.getTemplateForNode(node)\">\n                        <ng-container *ngTemplateOutlet=\"chart.getTemplateForNode(node); context: {$implicit: node}\"></ng-container>\n                    </div>\n                    <a *ngIf=\"!leaf\" href=\"#\" class=\"ui-node-toggler\" (click)=\"toggleNode($event, node)\">\n                        <i class=\"ui-node-toggler-icon pi\" [ngClass]=\"{'pi-chevron-down': node.expanded, 'pi-chevron-up': !node.expanded}\"></i>\n                    </a>\n                </div>\n            </td>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-lines\" [@childState]=\"'in'\">\n            <td [attr.colspan]=\"colspan\">\n                <div class=\"ui-organizationchart-line-down\"></div>\n            </td>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-lines\" [@childState]=\"'in'\">\n            <ng-container *ngIf=\"node.children && node.children.length === 1\">\n                <td [attr.colspan]=\"colspan\">\n                    <div class=\"ui-organizationchart-line-down\"></div>\n                </td>\n            </ng-container>\n            <ng-container *ngIf=\"node.children && node.children.length > 1\">\n                <ng-template ngFor let-child [ngForOf]=\"node.children\" let-first=\"first\" let-last=\"last\">\n                    <td class=\"ui-organizationchart-line-left\" [ngClass]=\"{'ui-organizationchart-line-top':!first}\">&nbsp;</td>\n                    <td class=\"ui-organizationchart-line-right\" [ngClass]=\"{'ui-organizationchart-line-top':!last}\">&nbsp;</td>\n                </ng-template>\n            </ng-container>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-nodes\" [@childState]=\"'in'\">\n            <td *ngFor=\"let child of node.children\" colspan=\"2\">\n                <table class=\"ui-organizationchart-table\" pOrganizationChartNode [node]=\"child\"></table>\n            </td>\n        </tr>\n    ",
-            animations: [
-                animations_1.trigger('childState', [
-                    animations_1.state('in', animations_1.style({ opacity: 1 })),
-                    animations_1.transition('void => *', [
-                        animations_1.style({ opacity: 0 }),
-                        animations_1.animate(150)
-                    ]),
-                    animations_1.transition('* => void', [
-                        animations_1.animate(150, animations_1.style({ opacity: 0 }))
-                    ])
-                ])
-            ],
-        }),
-        __param(0, core_1.Inject(core_1.forwardRef(function () { return OrganizationChart; }))),
-        __metadata("design:paramtypes", [OrganizationChart])
-    ], OrganizationChartNode);
+    OrganizationChartNode.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: '[pOrganizationChartNode]',
+                    template: "\n        <tr *ngIf=\"node\">\n            <td [attr.colspan]=\"colspan\">\n                <div class=\"ui-organizationchart-node-content ui-widget-content ui-corner-all {{node.styleClass}}\" \n                    [ngClass]=\"{'ui-organizationchart-selectable-node': chart.selectionMode && node.selectable !== false,'ui-state-highlight':isSelected()}\"\n                    (click)=\"onNodeClick($event,node)\">\n                    <div *ngIf=\"!chart.getTemplateForNode(node)\">{{node.label}}</div>\n                    <div *ngIf=\"chart.getTemplateForNode(node)\">\n                        <ng-container *ngTemplateOutlet=\"chart.getTemplateForNode(node); context: {$implicit: node}\"></ng-container>\n                    </div>\n                    <a *ngIf=\"!leaf\" href=\"#\" class=\"ui-node-toggler\" (click)=\"toggleNode($event, node)\">\n                        <i class=\"ui-node-toggler-icon pi\" [ngClass]=\"{'pi-chevron-down': node.expanded, 'pi-chevron-up': !node.expanded}\"></i>\n                    </a>\n                </div>\n            </td>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-lines\" [@childState]=\"'in'\">\n            <td [attr.colspan]=\"colspan\">\n                <div class=\"ui-organizationchart-line-down\"></div>\n            </td>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-lines\" [@childState]=\"'in'\">\n            <ng-container *ngIf=\"node.children && node.children.length === 1\">\n                <td [attr.colspan]=\"colspan\">\n                    <div class=\"ui-organizationchart-line-down\"></div>\n                </td>\n            </ng-container>\n            <ng-container *ngIf=\"node.children && node.children.length > 1\">\n                <ng-template ngFor let-child [ngForOf]=\"node.children\" let-first=\"first\" let-last=\"last\">\n                    <td class=\"ui-organizationchart-line-left\" [ngClass]=\"{'ui-organizationchart-line-top':!first}\">&nbsp;</td>\n                    <td class=\"ui-organizationchart-line-right\" [ngClass]=\"{'ui-organizationchart-line-top':!last}\">&nbsp;</td>\n                </ng-template>\n            </ng-container>\n        </tr>\n        <tr [style.visibility]=\"!leaf&&node.expanded ? 'inherit' : 'hidden'\" class=\"ui-organizationchart-nodes\" [@childState]=\"'in'\">\n            <td *ngFor=\"let child of node.children\" colspan=\"2\">\n                <table class=\"ui-organizationchart-table\" pOrganizationChartNode [node]=\"child\"></table>\n            </td>\n        </tr>\n    ",
+                    animations: [
+                        animations_1.trigger('childState', [
+                            animations_1.state('in', animations_1.style({ opacity: 1 })),
+                            animations_1.transition('void => *', [
+                                animations_1.style({ opacity: 0 }),
+                                animations_1.animate(150)
+                            ]),
+                            animations_1.transition('* => void', [
+                                animations_1.animate(150, animations_1.style({ opacity: 0 }))
+                            ])
+                        ])
+                    ],
+                },] },
+    ];
+    /** @nocollapse */
+    OrganizationChartNode.ctorParameters = function () { return [
+        { type: OrganizationChart, decorators: [{ type: core_1.Inject, args: [core_1.forwardRef(function () { return OrganizationChart; }),] }] }
+    ]; };
+    OrganizationChartNode.propDecorators = {
+        node: [{ type: core_1.Input }],
+        root: [{ type: core_1.Input }],
+        first: [{ type: core_1.Input }],
+        last: [{ type: core_1.Input }]
+    };
     return OrganizationChartNode;
 }());
 exports.OrganizationChartNode = OrganizationChartNode;
@@ -169,63 +149,42 @@ var OrganizationChart = /** @class */ (function () {
     OrganizationChart.prototype.isSelected = function (node) {
         return this.findIndexInSelection(node) != -1;
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], OrganizationChart.prototype, "value", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], OrganizationChart.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], OrganizationChart.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], OrganizationChart.prototype, "selectionMode", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], OrganizationChart.prototype, "selection", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], OrganizationChart.prototype, "selectionChange", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], OrganizationChart.prototype, "onNodeSelect", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], OrganizationChart.prototype, "onNodeUnselect", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_2.PrimeTemplate),
-        __metadata("design:type", core_1.QueryList)
-    ], OrganizationChart.prototype, "templates", void 0);
-    OrganizationChart = __decorate([
-        core_1.Component({
-            selector: 'p-organizationChart',
-            template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" [ngClass]=\"'ui-organizationchart ui-widget'\">\n            <table class=\"ui-organizationchart-table\" pOrganizationChartNode [node]=\"root\" *ngIf=\"root\"></table>\n        </div>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
-    ], OrganizationChart);
+    OrganizationChart.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-organizationChart',
+                    template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" [ngClass]=\"'ui-organizationchart ui-widget'\">\n            <table class=\"ui-organizationchart-table\" pOrganizationChartNode [node]=\"root\" *ngIf=\"root\"></table>\n        </div>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    OrganizationChart.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler }
+    ]; };
+    OrganizationChart.propDecorators = {
+        value: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        selectionMode: [{ type: core_1.Input }],
+        selection: [{ type: core_1.Input }],
+        selectionChange: [{ type: core_1.Output }],
+        onNodeSelect: [{ type: core_1.Output }],
+        onNodeUnselect: [{ type: core_1.Output }],
+        templates: [{ type: core_1.ContentChildren, args: [shared_2.PrimeTemplate,] }]
+    };
     return OrganizationChart;
 }());
 exports.OrganizationChart = OrganizationChart;
 var OrganizationChartModule = /** @class */ (function () {
     function OrganizationChartModule() {
     }
-    OrganizationChartModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [OrganizationChart, shared_1.SharedModule],
-            declarations: [OrganizationChart, OrganizationChartNode]
-        })
-    ], OrganizationChartModule);
+    OrganizationChartModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [OrganizationChart, shared_1.SharedModule],
+                    declarations: [OrganizationChart, OrganizationChartNode]
+                },] },
+    ];
     return OrganizationChartModule;
 }());
 exports.OrganizationChartModule = OrganizationChartModule;

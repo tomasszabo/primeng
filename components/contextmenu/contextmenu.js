@@ -1,16 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -82,23 +70,22 @@ var ContextMenuSub = /** @class */ (function () {
         document.body.removeChild(scrollDiv);
         return scrollbarWidth;
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], ContextMenuSub.prototype, "item", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], ContextMenuSub.prototype, "root", void 0);
-    ContextMenuSub = __decorate([
-        core_1.Component({
-            selector: 'p-contextMenuSub',
-            template: "\n        <ul [ngClass]=\"{'ui-widget-content ui-corner-all ui-submenu-list ui-shadow':!root}\" class=\"ui-menu-list\" (click)=\"listClick($event)\">\n            <ng-template ngFor let-child [ngForOf]=\"(root ? item : item.items)\">\n                <li *ngIf=\"child.separator\" class=\"ui-menu-separator ui-widget-content\" [ngClass]=\"{'ui-helper-hidden': child.visible === false}\">\n                <li *ngIf=\"!child.separator\" #item [ngClass]=\"{'ui-menuitem ui-corner-all':true,'ui-menuitem-active':item==activeItem,'ui-helper-hidden': child.visible === false}\"\n                    (mouseenter)=\"onItemMouseEnter($event,item,child)\" (mouseleave)=\"onItemMouseLeave($event,item)\">\n                    <a *ngIf=\"!child.routerLink\" [href]=\"child.url||'#'\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\" (click)=\"itemClick($event, child)\"\n                        [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <a *ngIf=\"child.routerLink\" [routerLink]=\"child.routerLink\" [queryParams]=\"child.queryParams\" [routerLinkActive]=\"'ui-state-active'\" \n                        [routerLinkActiveOptions]=\"child.routerLinkActiveOptions||{exact:false}\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\"\n                        (click)=\"itemClick($event, child)\" [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" \n                        [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <p-contextMenuSub class=\"ui-submenu\" [item]=\"child\" *ngIf=\"child.items\"></p-contextMenuSub>\n                </li>\n            </ng-template>\n        </ul>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __param(1, core_1.Inject(core_1.forwardRef(function () { return ContextMenu; }))),
-        __metadata("design:paramtypes", [domhandler_1.DomHandler, ContextMenu])
-    ], ContextMenuSub);
+    ContextMenuSub.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-contextMenuSub',
+                    template: "\n        <ul [ngClass]=\"{'ui-widget-content ui-corner-all ui-submenu-list ui-shadow':!root}\" class=\"ui-menu-list\" (click)=\"listClick($event)\">\n            <ng-template ngFor let-child [ngForOf]=\"(root ? item : item.items)\">\n                <li *ngIf=\"child.separator\" class=\"ui-menu-separator ui-widget-content\" [ngClass]=\"{'ui-helper-hidden': child.visible === false}\">\n                <li *ngIf=\"!child.separator\" #item [ngClass]=\"{'ui-menuitem ui-corner-all':true,'ui-menuitem-active':item==activeItem,'ui-helper-hidden': child.visible === false}\"\n                    (mouseenter)=\"onItemMouseEnter($event,item,child)\" (mouseleave)=\"onItemMouseLeave($event,item)\">\n                    <a *ngIf=\"!child.routerLink\" [href]=\"child.url||'#'\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\" (click)=\"itemClick($event, child)\"\n                        [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <a *ngIf=\"child.routerLink\" [routerLink]=\"child.routerLink\" [queryParams]=\"child.queryParams\" [routerLinkActive]=\"'ui-state-active'\" \n                        [routerLinkActiveOptions]=\"child.routerLinkActiveOptions||{exact:false}\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\"\n                        (click)=\"itemClick($event, child)\" [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" \n                        [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <p-contextMenuSub class=\"ui-submenu\" [item]=\"child\" *ngIf=\"child.items\"></p-contextMenuSub>\n                </li>\n            </ng-template>\n        </ul>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    ContextMenuSub.ctorParameters = function () { return [
+        { type: domhandler_1.DomHandler },
+        { type: ContextMenu, decorators: [{ type: core_1.Inject, args: [core_1.forwardRef(function () { return ContextMenu; }),] }] }
+    ]; };
+    ContextMenuSub.propDecorators = {
+        item: [{ type: core_1.Input }],
+        root: [{ type: core_1.Input }]
+    };
     return ContextMenuSub;
 }());
 exports.ContextMenuSub = ContextMenuSub;
@@ -225,63 +212,44 @@ var ContextMenu = /** @class */ (function () {
             this.el.nativeElement.appendChild(this.containerViewChild.nativeElement);
         }
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], ContextMenu.prototype, "model", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], ContextMenu.prototype, "global", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], ContextMenu.prototype, "target", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], ContextMenu.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], ContextMenu.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], ContextMenu.prototype, "appendTo", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], ContextMenu.prototype, "autoZIndex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], ContextMenu.prototype, "baseZIndex", void 0);
-    __decorate([
-        core_1.ViewChild('container'),
-        __metadata("design:type", core_1.ElementRef)
-    ], ContextMenu.prototype, "containerViewChild", void 0);
-    ContextMenu = __decorate([
-        core_1.Component({
-            selector: 'p-contextMenu',
-            template: "\n        <div #container [ngClass]=\"'ui-contextmenu ui-widget ui-widget-content ui-corner-all ui-shadow'\" \n            [class]=\"styleClass\" [ngStyle]=\"style\">\n            <p-contextMenuSub [item]=\"model\" root=\"root\"></p-contextMenuSub>\n        </div>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.NgZone])
-    ], ContextMenu);
+    ContextMenu.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-contextMenu',
+                    template: "\n        <div #container [ngClass]=\"'ui-contextmenu ui-widget ui-widget-content ui-corner-all ui-shadow'\" \n            [class]=\"styleClass\" [ngStyle]=\"style\">\n            <p-contextMenuSub [item]=\"model\" root=\"root\"></p-contextMenuSub>\n        </div>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    ContextMenu.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler },
+        { type: core_1.Renderer2 },
+        { type: core_1.NgZone }
+    ]; };
+    ContextMenu.propDecorators = {
+        model: [{ type: core_1.Input }],
+        global: [{ type: core_1.Input }],
+        target: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        appendTo: [{ type: core_1.Input }],
+        autoZIndex: [{ type: core_1.Input }],
+        baseZIndex: [{ type: core_1.Input }],
+        containerViewChild: [{ type: core_1.ViewChild, args: ['container',] }]
+    };
     return ContextMenu;
 }());
 exports.ContextMenu = ContextMenu;
 var ContextMenuModule = /** @class */ (function () {
     function ContextMenuModule() {
     }
-    ContextMenuModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, router_1.RouterModule],
-            exports: [ContextMenu, router_1.RouterModule],
-            declarations: [ContextMenu, ContextMenuSub]
-        })
-    ], ContextMenuModule);
+    ContextMenuModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule, router_1.RouterModule],
+                    exports: [ContextMenu, router_1.RouterModule],
+                    declarations: [ContextMenu, ContextMenuSub]
+                },] },
+    ];
     return ContextMenuModule;
 }());
 exports.ContextMenuModule = ContextMenuModule;

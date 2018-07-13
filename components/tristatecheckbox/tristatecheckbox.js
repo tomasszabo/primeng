@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -75,59 +66,40 @@ var TriStateCheckbox = /** @class */ (function () {
     TriStateCheckbox.prototype.setDisabledState = function (disabled) {
         this.disabled = disabled;
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], TriStateCheckbox.prototype, "disabled", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], TriStateCheckbox.prototype, "name", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], TriStateCheckbox.prototype, "tabindex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], TriStateCheckbox.prototype, "inputId", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], TriStateCheckbox.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], TriStateCheckbox.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], TriStateCheckbox.prototype, "label", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], TriStateCheckbox.prototype, "onChange", void 0);
-    TriStateCheckbox = __decorate([
-        core_1.Component({
-            selector: 'p-triStateCheckbox',
-            template: "\n        <div [ngStyle]=\"style\" [ngClass]=\"'ui-chkbox ui-tristatechkbox ui-widget'\" [class]=\"styleClass\">\n            <div class=\"ui-helper-hidden-accessible\">\n                <input #input type=\"text\" [attr.id]=\"inputId\" [name]=\"name\" [attr.tabindex]=\"tabindex\" readonly [disabled]=\"disabled\" (keyup)=\"onKeyup($event)\" (keydown)=\"onKeydown($event)\" (focus)=\"onFocus()\" (blur)=\"onBlur()\">\n            </div>\n            <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" (click)=\"onClick($event,input)\"\n                [ngClass]=\"{'ui-state-active':value!=null,'ui-state-disabled':disabled,'ui-state-focus':focus}\">\n                <span class=\"ui-chkbox-icon pi ui-clickable\" [ngClass]=\"{'pi-check':value==true,'pi-times':value==false}\"></span>\n            </div>\n        </div>\n        <label class=\"ui-chkbox-label\" (click)=\"onClick($event,input)\"\n               [ngClass]=\"{'ui-label-active':value!=null, 'ui-label-disabled':disabled, 'ui-label-focus':focus}\"\n               *ngIf=\"label\" [attr.for]=\"inputId\">{{label}}</label>\n    ",
-            providers: [exports.TRISTATECHECKBOX_VALUE_ACCESSOR]
-        }),
-        __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
-    ], TriStateCheckbox);
+    TriStateCheckbox.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-triStateCheckbox',
+                    template: "\n        <div [ngStyle]=\"style\" [ngClass]=\"'ui-chkbox ui-tristatechkbox ui-widget'\" [class]=\"styleClass\">\n            <div class=\"ui-helper-hidden-accessible\">\n                <input #input type=\"text\" [attr.id]=\"inputId\" [name]=\"name\" [attr.tabindex]=\"tabindex\" readonly [disabled]=\"disabled\" (keyup)=\"onKeyup($event)\" (keydown)=\"onKeydown($event)\" (focus)=\"onFocus()\" (blur)=\"onBlur()\">\n            </div>\n            <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" (click)=\"onClick($event,input)\"\n                [ngClass]=\"{'ui-state-active':value!=null,'ui-state-disabled':disabled,'ui-state-focus':focus}\">\n                <span class=\"ui-chkbox-icon pi ui-clickable\" [ngClass]=\"{'pi-check':value==true,'pi-times':value==false}\"></span>\n            </div>\n        </div>\n        <label class=\"ui-chkbox-label\" (click)=\"onClick($event,input)\"\n               [ngClass]=\"{'ui-label-active':value!=null, 'ui-label-disabled':disabled, 'ui-label-focus':focus}\"\n               *ngIf=\"label\" [attr.for]=\"inputId\">{{label}}</label>\n    ",
+                    providers: [exports.TRISTATECHECKBOX_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    TriStateCheckbox.ctorParameters = function () { return [
+        { type: core_1.ChangeDetectorRef }
+    ]; };
+    TriStateCheckbox.propDecorators = {
+        disabled: [{ type: core_1.Input }],
+        name: [{ type: core_1.Input }],
+        tabindex: [{ type: core_1.Input }],
+        inputId: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        label: [{ type: core_1.Input }],
+        onChange: [{ type: core_1.Output }]
+    };
     return TriStateCheckbox;
 }());
 exports.TriStateCheckbox = TriStateCheckbox;
 var TriStateCheckboxModule = /** @class */ (function () {
     function TriStateCheckboxModule() {
     }
-    TriStateCheckboxModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [TriStateCheckbox],
-            declarations: [TriStateCheckbox]
-        })
-    ], TriStateCheckboxModule);
+    TriStateCheckboxModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [TriStateCheckbox],
+                    declarations: [TriStateCheckbox]
+                },] },
+    ];
     return TriStateCheckboxModule;
 }());
 exports.TriStateCheckboxModule = TriStateCheckboxModule;

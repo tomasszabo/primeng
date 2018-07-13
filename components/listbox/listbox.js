@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -287,104 +278,54 @@ var Listbox = /** @class */ (function () {
     Listbox.prototype.onInputBlur = function (event) {
         this.focus = false;
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "multiple", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Listbox.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Listbox.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Listbox.prototype, "listStyle", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "readonly", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "disabled", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "checkbox", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "filter", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Listbox.prototype, "filterMode", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "metaKeySelection", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Listbox.prototype, "dataKey", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Listbox.prototype, "showToggleAll", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Listbox.prototype, "optionLabel", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Listbox.prototype, "onChange", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Listbox.prototype, "onDblClick", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Header),
-        __metadata("design:type", Object)
-    ], Listbox.prototype, "headerFacet", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Footer),
-        __metadata("design:type", Object)
-    ], Listbox.prototype, "footerFacet", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate),
-        __metadata("design:type", core_1.QueryList)
-    ], Listbox.prototype, "templates", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], Listbox.prototype, "options", null);
-    Listbox = __decorate([
-        core_1.Component({
-            selector: 'p-listbox',
-            template: "\n    <div [ngClass]=\"{'ui-listbox ui-inputtext ui-widget ui-widget-content ui-corner-all':true,'ui-state-disabled':disabled,'ui-state-focus':focus}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n      <div class=\"ui-helper-hidden-accessible\">\n        <input type=\"text\" readonly=\"readonly\" (focus)=\"onInputFocus($event)\" (blur)=\"onInputBlur($event)\">\n      </div>\n      <div class=\"ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix\" *ngIf=\"headerFacet\">\n        <ng-content select=\"p-header\"></ng-content>\n      </div>\n      <div class=\"ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix\" *ngIf=\"(checkbox && multiple) || filter\" [ngClass]=\"{'ui-listbox-header-w-checkbox': checkbox}\">\n        <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple && showToggleAll\">\n          <div class=\"ui-helper-hidden-accessible\">\n            <input #cb type=\"checkbox\" readonly=\"readonly\" [checked]=\"allChecked\">\n          </div>\n          <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':allChecked}\" (click)=\"toggleAll($event,cb)\">\n            <span class=\"ui-chkbox-icon ui-clickable\" [ngClass]=\"{'pi pi-check':allChecked}\"></span>\n          </div>\n        </div>\n        <div class=\"ui-listbox-filter-container\" *ngIf=\"filter\">\n          <input type=\"text\" role=\"textbox\" (input)=\"onFilter($event)\" class=\"ui-inputtext ui-widget ui-state-default ui-corner-all\" [disabled]=\"disabled\">\n          <span class=\"ui-listbox-filter-icon pi pi-search\"></span>\n        </div>\n      </div>\n      <div class=\"ui-listbox-list-wrapper\" [ngStyle]=\"listStyle\">\n        <ul class=\"ui-listbox-list\">\n          <li *ngFor=\"let option of options; let i = index;\" [style.display]=\"isItemVisible(option) ? 'block' : 'none'\"\n              [ngClass]=\"{'ui-listbox-item ui-corner-all':true,'ui-state-highlight':isSelected(option)}\"\n              (click)=\"onOptionClick($event,option)\" (dblclick)=\"onDoubleClick($event,option)\" (touchend)=\"onOptionTouchEnd($event,option)\">\n            <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple\">\n              <div class=\"ui-helper-hidden-accessible\">\n                <input type=\"checkbox\" [checked]=\"isSelected(option)\" [disabled]=\"disabled\">\n              </div>\n              <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isSelected(option)}\">\n                <span class=\"ui-chkbox-icon ui-clickable\" [ngClass]=\"{'pi pi-check':isSelected(option)}\"></span>\n              </div>\n            </div>\n            <span *ngIf=\"!itemTemplate\">{{option.label}}</span>\n            <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: option, index: i}\"></ng-container>\n          </li>\n        </ul>\n      </div>\n      <div class=\"ui-listbox-footer ui-widget-header ui-corner-all\" *ngIf=\"footerFacet\">\n        <ng-content select=\"p-footer\"></ng-content>\n      </div>\n    </div>\n  ",
-            providers: [domhandler_1.DomHandler, objectutils_1.ObjectUtils, exports.LISTBOX_VALUE_ACCESSOR]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, objectutils_1.ObjectUtils, core_1.ChangeDetectorRef])
-    ], Listbox);
+    Listbox.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-listbox',
+                    template: "\n    <div [ngClass]=\"{'ui-listbox ui-inputtext ui-widget ui-widget-content ui-corner-all':true,'ui-state-disabled':disabled,'ui-state-focus':focus}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n      <div class=\"ui-helper-hidden-accessible\">\n        <input type=\"text\" readonly=\"readonly\" (focus)=\"onInputFocus($event)\" (blur)=\"onInputBlur($event)\">\n      </div>\n      <div class=\"ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix\" *ngIf=\"headerFacet\">\n        <ng-content select=\"p-header\"></ng-content>\n      </div>\n      <div class=\"ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix\" *ngIf=\"(checkbox && multiple) || filter\" [ngClass]=\"{'ui-listbox-header-w-checkbox': checkbox}\">\n        <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple && showToggleAll\">\n          <div class=\"ui-helper-hidden-accessible\">\n            <input #cb type=\"checkbox\" readonly=\"readonly\" [checked]=\"allChecked\">\n          </div>\n          <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':allChecked}\" (click)=\"toggleAll($event,cb)\">\n            <span class=\"ui-chkbox-icon ui-clickable\" [ngClass]=\"{'pi pi-check':allChecked}\"></span>\n          </div>\n        </div>\n        <div class=\"ui-listbox-filter-container\" *ngIf=\"filter\">\n          <input type=\"text\" role=\"textbox\" (input)=\"onFilter($event)\" class=\"ui-inputtext ui-widget ui-state-default ui-corner-all\" [disabled]=\"disabled\">\n          <span class=\"ui-listbox-filter-icon pi pi-search\"></span>\n        </div>\n      </div>\n      <div class=\"ui-listbox-list-wrapper\" [ngStyle]=\"listStyle\">\n        <ul class=\"ui-listbox-list\">\n          <li *ngFor=\"let option of options; let i = index;\" [style.display]=\"isItemVisible(option) ? 'block' : 'none'\"\n              [ngClass]=\"{'ui-listbox-item ui-corner-all':true,'ui-state-highlight':isSelected(option)}\"\n              (click)=\"onOptionClick($event,option)\" (dblclick)=\"onDoubleClick($event,option)\" (touchend)=\"onOptionTouchEnd($event,option)\">\n            <div class=\"ui-chkbox ui-widget\" *ngIf=\"checkbox && multiple\">\n              <div class=\"ui-helper-hidden-accessible\">\n                <input type=\"checkbox\" [checked]=\"isSelected(option)\" [disabled]=\"disabled\">\n              </div>\n              <div class=\"ui-chkbox-box ui-widget ui-corner-all ui-state-default\" [ngClass]=\"{'ui-state-active':isSelected(option)}\">\n                <span class=\"ui-chkbox-icon ui-clickable\" [ngClass]=\"{'pi pi-check':isSelected(option)}\"></span>\n              </div>\n            </div>\n            <span *ngIf=\"!itemTemplate\">{{option.label}}</span>\n            <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: option, index: i}\"></ng-container>\n          </li>\n        </ul>\n      </div>\n      <div class=\"ui-listbox-footer ui-widget-header ui-corner-all\" *ngIf=\"footerFacet\">\n        <ng-content select=\"p-footer\"></ng-content>\n      </div>\n    </div>\n  ",
+                    providers: [domhandler_1.DomHandler, objectutils_1.ObjectUtils, exports.LISTBOX_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    Listbox.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler },
+        { type: objectutils_1.ObjectUtils },
+        { type: core_1.ChangeDetectorRef }
+    ]; };
+    Listbox.propDecorators = {
+        multiple: [{ type: core_1.Input }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        listStyle: [{ type: core_1.Input }],
+        readonly: [{ type: core_1.Input }],
+        disabled: [{ type: core_1.Input }],
+        checkbox: [{ type: core_1.Input }],
+        filter: [{ type: core_1.Input }],
+        filterMode: [{ type: core_1.Input }],
+        metaKeySelection: [{ type: core_1.Input }],
+        dataKey: [{ type: core_1.Input }],
+        showToggleAll: [{ type: core_1.Input }],
+        optionLabel: [{ type: core_1.Input }],
+        onChange: [{ type: core_1.Output }],
+        onDblClick: [{ type: core_1.Output }],
+        headerFacet: [{ type: core_1.ContentChild, args: [shared_1.Header,] }],
+        footerFacet: [{ type: core_1.ContentChild, args: [shared_1.Footer,] }],
+        templates: [{ type: core_1.ContentChildren, args: [shared_1.PrimeTemplate,] }],
+        options: [{ type: core_1.Input }]
+    };
     return Listbox;
 }());
 exports.Listbox = Listbox;
 var ListboxModule = /** @class */ (function () {
     function ListboxModule() {
     }
-    ListboxModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, shared_1.SharedModule],
-            exports: [Listbox, shared_1.SharedModule],
-            declarations: [Listbox]
-        })
-    ], ListboxModule);
+    ListboxModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule, shared_1.SharedModule],
+                    exports: [Listbox, shared_1.SharedModule],
+                    declarations: [Listbox]
+                },] },
+    ];
     return ListboxModule;
 }());
 exports.ListboxModule = ListboxModule;

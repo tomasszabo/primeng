@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
@@ -109,107 +100,65 @@ var SplitButton = /** @class */ (function () {
             this.el.nativeElement.appendChild(this.overlayViewChild.nativeElement);
         }
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], SplitButton.prototype, "model", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "icon", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "iconPos", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "label", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], SplitButton.prototype, "onClick", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], SplitButton.prototype, "onDropdownClick", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], SplitButton.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], SplitButton.prototype, "menuStyle", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "menuStyleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], SplitButton.prototype, "disabled", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], SplitButton.prototype, "tabindex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], SplitButton.prototype, "appendTo", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], SplitButton.prototype, "dir", void 0);
-    __decorate([
-        core_1.ViewChild('container'),
-        __metadata("design:type", core_1.ElementRef)
-    ], SplitButton.prototype, "containerViewChild", void 0);
-    __decorate([
-        core_1.ViewChild('defaultbtn'),
-        __metadata("design:type", core_1.ElementRef)
-    ], SplitButton.prototype, "buttonViewChild", void 0);
-    __decorate([
-        core_1.ViewChild('overlay'),
-        __metadata("design:type", core_1.ElementRef)
-    ], SplitButton.prototype, "overlayViewChild", void 0);
-    SplitButton = __decorate([
-        core_1.Component({
-            selector: 'p-splitButton',
-            template: "\n        <div #container [ngClass]=\"{'ui-splitbutton ui-buttonset ui-widget':true,'ui-state-disabled':disabled}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <button #defaultbtn type=\"button\" pButton [icon]=\"icon\" [iconPos]=\"iconPos\" [label]=\"label\" [cornerStyleClass]=\"dir === 'rtl' ? 'ui-corner-right': 'ui-corner-left'\" (click)=\"onDefaultButtonClick($event)\" [disabled]=\"disabled\" [attr.tabindex]=\"tabindex\">\n            </button><button type=\"button\" pButton class=\"ui-splitbutton-menubutton\" icon=\"pi pi-caret-down\" [cornerStyleClass]=\"dir === 'rtl' ? 'ui-corner-left': 'ui-corner-right'\" (click)=\"onDropdownButtonClick($event)\" [disabled]=\"disabled\"></button>\n            <div #overlay [ngClass]=\"'ui-menu ui-menu-dynamic ui-widget ui-widget-content ui-corner-all ui-helper-clearfix ui-shadow'\" [style.display]=\"menuVisible ? 'block' : 'none'\"\n                    [ngStyle]=\"menuStyle\" [class]=\"menuStyleClass\" [@overlayState]=\"menuVisible ? 'visible' : 'hidden'\">\n                <ul class=\"ui-menu-list ui-helper-reset\">\n                    <ng-template ngFor let-item [ngForOf]=\"model\">\n                        <li class=\"ui-menuitem ui-widget ui-corner-all\" role=\"menuitem\" *ngIf=\"item.visible !== false\">\n                            <a *ngIf=\"!item.routerLink\" [href]=\"item.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\"\n                                [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                                <span [ngClass]=\"'ui-menuitem-icon'\" [class]=\"item.icon\" *ngIf=\"item.icon\"></span>\n                                <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                            </a>\n                            <a *ngIf=\"item.routerLink\" [routerLink]=\"item.routerLink\" [queryParams]=\"item.queryParams\"\n                                class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\" [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                                <span [ngClass]=\"'ui-menuitem-icon'\" [class]=\"item.icon\" *ngIf=\"item.icon\"></span>\n                                <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                            </a>\n                        </li>\n                    </ng-template>\n                </ul>\n            </div>\n        </div>\n    ",
-            animations: [
-                animations_1.trigger('overlayState', [
-                    animations_1.state('hidden', animations_1.style({
-                        opacity: 0
-                    })),
-                    animations_1.state('visible', animations_1.style({
-                        opacity: 1
-                    })),
-                    animations_1.transition('visible => hidden', animations_1.animate('400ms ease-in')),
-                    animations_1.transition('hidden => visible', animations_1.animate('400ms ease-out'))
-                ])
-            ],
-            providers: [domhandler_1.DomHandler]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, router_1.Router, core_1.ChangeDetectorRef])
-    ], SplitButton);
+    SplitButton.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-splitButton',
+                    template: "\n        <div #container [ngClass]=\"{'ui-splitbutton ui-buttonset ui-widget':true,'ui-state-disabled':disabled}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <button #defaultbtn type=\"button\" pButton [icon]=\"icon\" [iconPos]=\"iconPos\" [label]=\"label\" [cornerStyleClass]=\"dir === 'rtl' ? 'ui-corner-right': 'ui-corner-left'\" (click)=\"onDefaultButtonClick($event)\" [disabled]=\"disabled\" [attr.tabindex]=\"tabindex\">\n            </button><button type=\"button\" pButton class=\"ui-splitbutton-menubutton\" icon=\"pi pi-caret-down\" [cornerStyleClass]=\"dir === 'rtl' ? 'ui-corner-left': 'ui-corner-right'\" (click)=\"onDropdownButtonClick($event)\" [disabled]=\"disabled\"></button>\n            <div #overlay [ngClass]=\"'ui-menu ui-menu-dynamic ui-widget ui-widget-content ui-corner-all ui-helper-clearfix ui-shadow'\" [style.display]=\"menuVisible ? 'block' : 'none'\"\n                    [ngStyle]=\"menuStyle\" [class]=\"menuStyleClass\" [@overlayState]=\"menuVisible ? 'visible' : 'hidden'\">\n                <ul class=\"ui-menu-list ui-helper-reset\">\n                    <ng-template ngFor let-item [ngForOf]=\"model\">\n                        <li class=\"ui-menuitem ui-widget ui-corner-all\" role=\"menuitem\" *ngIf=\"item.visible !== false\">\n                            <a *ngIf=\"!item.routerLink\" [href]=\"item.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\"\n                                [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                                <span [ngClass]=\"'ui-menuitem-icon'\" [class]=\"item.icon\" *ngIf=\"item.icon\"></span>\n                                <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                            </a>\n                            <a *ngIf=\"item.routerLink\" [routerLink]=\"item.routerLink\" [queryParams]=\"item.queryParams\"\n                                class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"item.target\" [ngClass]=\"{'ui-state-disabled':item.disabled}\" (click)=\"itemClick($event, item)\">\n                                <span [ngClass]=\"'ui-menuitem-icon'\" [class]=\"item.icon\" *ngIf=\"item.icon\"></span>\n                                <span class=\"ui-menuitem-text\">{{item.label}}</span>\n                            </a>\n                        </li>\n                    </ng-template>\n                </ul>\n            </div>\n        </div>\n    ",
+                    animations: [
+                        animations_1.trigger('overlayState', [
+                            animations_1.state('hidden', animations_1.style({
+                                opacity: 0
+                            })),
+                            animations_1.state('visible', animations_1.style({
+                                opacity: 1
+                            })),
+                            animations_1.transition('visible => hidden', animations_1.animate('400ms ease-in')),
+                            animations_1.transition('hidden => visible', animations_1.animate('400ms ease-out'))
+                        ])
+                    ],
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    SplitButton.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler },
+        { type: core_1.Renderer2 },
+        { type: router_1.Router },
+        { type: core_1.ChangeDetectorRef }
+    ]; };
+    SplitButton.propDecorators = {
+        model: [{ type: core_1.Input }],
+        icon: [{ type: core_1.Input }],
+        iconPos: [{ type: core_1.Input }],
+        label: [{ type: core_1.Input }],
+        onClick: [{ type: core_1.Output }],
+        onDropdownClick: [{ type: core_1.Output }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        menuStyle: [{ type: core_1.Input }],
+        menuStyleClass: [{ type: core_1.Input }],
+        disabled: [{ type: core_1.Input }],
+        tabindex: [{ type: core_1.Input }],
+        appendTo: [{ type: core_1.Input }],
+        dir: [{ type: core_1.Input }],
+        containerViewChild: [{ type: core_1.ViewChild, args: ['container',] }],
+        buttonViewChild: [{ type: core_1.ViewChild, args: ['defaultbtn',] }],
+        overlayViewChild: [{ type: core_1.ViewChild, args: ['overlay',] }]
+    };
     return SplitButton;
 }());
 exports.SplitButton = SplitButton;
 var SplitButtonModule = /** @class */ (function () {
     function SplitButtonModule() {
     }
-    SplitButtonModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, button_1.ButtonModule, router_2.RouterModule],
-            exports: [SplitButton, button_1.ButtonModule, router_2.RouterModule],
-            declarations: [SplitButton]
-        })
-    ], SplitButtonModule);
+    SplitButtonModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule, button_1.ButtonModule, router_2.RouterModule],
+                    exports: [SplitButton, button_1.ButtonModule, router_2.RouterModule],
+                    declarations: [SplitButton]
+                },] },
+    ];
     return SplitButtonModule;
 }());
 exports.SplitButtonModule = SplitButtonModule;

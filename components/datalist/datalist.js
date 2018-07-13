@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -127,115 +118,54 @@ var DataList = /** @class */ (function () {
     DataList.prototype.getBlockableElement = function () {
         return this.el.nativeElement.children[0];
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataList.prototype, "paginator", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataList.prototype, "rows", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataList.prototype, "totalRecords", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], DataList.prototype, "pageLinks", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], DataList.prototype, "rowsPerPageOptions", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataList.prototype, "lazy", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], DataList.prototype, "onLazyLoad", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], DataList.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], DataList.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], DataList.prototype, "paginatorPosition", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], DataList.prototype, "emptyMessage", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataList.prototype, "alwaysShowPaginator", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Function)
-    ], DataList.prototype, "trackBy", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataList.prototype, "immutable", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], DataList.prototype, "scrollable", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], DataList.prototype, "scrollHeight", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], DataList.prototype, "paginatorDropdownAppendTo", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], DataList.prototype, "onPage", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Header),
-        __metadata("design:type", Object)
-    ], DataList.prototype, "header", void 0);
-    __decorate([
-        core_1.ContentChild(shared_1.Footer),
-        __metadata("design:type", Object)
-    ], DataList.prototype, "footer", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate),
-        __metadata("design:type", core_1.QueryList)
-    ], DataList.prototype, "templates", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array),
-        __metadata("design:paramtypes", [Array])
-    ], DataList.prototype, "value", null);
-    DataList = __decorate([
-        core_1.Component({
-            selector: 'p-dataList',
-            template: "\n        <div [ngClass]=\"{'ui-datalist ui-widget': true, 'ui-datalist-scrollable': scrollable}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-datalist-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n                <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n            (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-top\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'top' || paginatorPosition =='both')\"\n            [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datalist-content ui-widget-content\" [ngStyle]=\"{'max-height': scrollHeight}\">\n                <div *ngIf=\"isEmpty()\" class=\"ui-datalist-emptymessage\">{{emptyMessage}}</div>\n                <ul class=\"ui-datalist-data\">\n                    <li *ngFor=\"let item of dataToRender;let i = index;trackBy: trackBy\">\n                        <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item, index: (i + first)}\"></ng-container>\n                    </li>\n                </ul>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n            (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-bottom\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'bottom' || paginatorPosition =='both')\"\n            [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datalist-footer ui-widget-header ui-corner-bottom\" *ngIf=\"footer\">\n                <ng-content select=\"p-footer\"></ng-content>\n            </div>\n        </div>\n    "
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, core_1.IterableDiffers])
-    ], DataList);
+    DataList.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-dataList',
+                    template: "\n        <div [ngClass]=\"{'ui-datalist ui-widget': true, 'ui-datalist-scrollable': scrollable}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-datalist-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n                <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n            (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-top\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'top' || paginatorPosition =='both')\"\n            [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datalist-content ui-widget-content\" [ngStyle]=\"{'max-height': scrollHeight}\">\n                <div *ngIf=\"isEmpty()\" class=\"ui-datalist-emptymessage\">{{emptyMessage}}</div>\n                <ul class=\"ui-datalist-data\">\n                    <li *ngFor=\"let item of dataToRender;let i = index;trackBy: trackBy\">\n                        <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item, index: (i + first)}\"></ng-container>\n                    </li>\n                </ul>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n            (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-bottom\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'bottom' || paginatorPosition =='both')\"\n            [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datalist-footer ui-widget-header ui-corner-bottom\" *ngIf=\"footer\">\n                <ng-content select=\"p-footer\"></ng-content>\n            </div>\n        </div>\n    "
+                },] },
+    ];
+    /** @nocollapse */
+    DataList.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: core_1.IterableDiffers }
+    ]; };
+    DataList.propDecorators = {
+        paginator: [{ type: core_1.Input }],
+        rows: [{ type: core_1.Input }],
+        totalRecords: [{ type: core_1.Input }],
+        pageLinks: [{ type: core_1.Input }],
+        rowsPerPageOptions: [{ type: core_1.Input }],
+        lazy: [{ type: core_1.Input }],
+        onLazyLoad: [{ type: core_1.Output }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        paginatorPosition: [{ type: core_1.Input }],
+        emptyMessage: [{ type: core_1.Input }],
+        alwaysShowPaginator: [{ type: core_1.Input }],
+        trackBy: [{ type: core_1.Input }],
+        immutable: [{ type: core_1.Input }],
+        scrollable: [{ type: core_1.Input }],
+        scrollHeight: [{ type: core_1.Input }],
+        paginatorDropdownAppendTo: [{ type: core_1.Input }],
+        onPage: [{ type: core_1.Output }],
+        header: [{ type: core_1.ContentChild, args: [shared_1.Header,] }],
+        footer: [{ type: core_1.ContentChild, args: [shared_1.Footer,] }],
+        templates: [{ type: core_1.ContentChildren, args: [shared_1.PrimeTemplate,] }],
+        value: [{ type: core_1.Input }]
+    };
     return DataList;
 }());
 exports.DataList = DataList;
 var DataListModule = /** @class */ (function () {
     function DataListModule() {
     }
-    DataListModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, paginator_1.PaginatorModule],
-            exports: [DataList, shared_1.SharedModule],
-            declarations: [DataList]
-        })
-    ], DataListModule);
+    DataListModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule, paginator_1.PaginatorModule],
+                    exports: [DataList, shared_1.SharedModule],
+                    declarations: [DataList]
+                },] },
+    ];
     return DataListModule;
 }());
 exports.DataListModule = DataListModule;

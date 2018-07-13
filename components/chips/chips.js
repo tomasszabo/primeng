@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -161,103 +152,52 @@ var Chips = /** @class */ (function () {
                 this.inputViewChild.nativeElement.disabled = false;
         }
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Chips.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Chips.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Chips.prototype, "disabled", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Chips.prototype, "onAdd", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Chips.prototype, "onRemove", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Chips.prototype, "field", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Chips.prototype, "placeholder", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], Chips.prototype, "max", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Number)
-    ], Chips.prototype, "tabindex", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Chips.prototype, "inputId", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Chips.prototype, "allowDuplicate", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Chips.prototype, "inputStyle", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Chips.prototype, "inputStyleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Chips.prototype, "addOnTab", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Chips.prototype, "addOnBlur", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Chips.prototype, "onFocus", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Chips.prototype, "onBlur", void 0);
-    __decorate([
-        core_1.ViewChild('inputtext'),
-        __metadata("design:type", core_1.ElementRef)
-    ], Chips.prototype, "inputViewChild", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate),
-        __metadata("design:type", core_1.QueryList)
-    ], Chips.prototype, "templates", void 0);
-    Chips = __decorate([
-        core_1.Component({
-            selector: 'p-chips',
-            template: "\n        <div [ngClass]=\"'ui-chips ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\" (click)=\"onClick($event)\">\n            <ul [ngClass]=\"{'ui-inputtext ui-state-default ui-corner-all':true,'ui-state-focus':focus,'ui-state-disabled':disabled}\">\n                <li #token *ngFor=\"let item of value; let i = index;\" class=\"ui-chips-token ui-state-highlight ui-corner-all\">\n                    <span *ngIf=\"!disabled\" class=\"ui-chips-token-icon pi pi-fw pi-times\" (click)=\"removeItem($event,i)\"></span>\n                    <span *ngIf=\"!itemTemplate\" class=\"ui-chips-token-label\">{{field ? resolveFieldData(item,field) : item}}</span>\n                    <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item}\"></ng-container>\n                </li>\n                <li class=\"ui-chips-input-token\">\n                    <input #inputtext type=\"text\" [attr.id]=\"inputId\" [attr.placeholder]=\"(value && value.length ? null : placeholder)\" [attr.tabindex]=\"tabindex\" (keydown)=\"onKeydown($event)\" \n                        (focus)=\"onInputFocus($event)\" (blur)=\"onInputBlur($event)\" [disabled]=\"disabled\" [ngStyle]=\"inputStyle\" [class]=\"inputStyleClass\">\n                </li>\n            </ul>\n        </div>\n    ",
-            providers: [domhandler_1.DomHandler, exports.CHIPS_VALUE_ACCESSOR]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
-    ], Chips);
+    Chips.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-chips',
+                    template: "\n        <div [ngClass]=\"'ui-chips ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\" (click)=\"onClick($event)\">\n            <ul [ngClass]=\"{'ui-inputtext ui-state-default ui-corner-all':true,'ui-state-focus':focus,'ui-state-disabled':disabled}\">\n                <li #token *ngFor=\"let item of value; let i = index;\" class=\"ui-chips-token ui-state-highlight ui-corner-all\">\n                    <span *ngIf=\"!disabled\" class=\"ui-chips-token-icon pi pi-fw pi-times\" (click)=\"removeItem($event,i)\"></span>\n                    <span *ngIf=\"!itemTemplate\" class=\"ui-chips-token-label\">{{field ? resolveFieldData(item,field) : item}}</span>\n                    <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item}\"></ng-container>\n                </li>\n                <li class=\"ui-chips-input-token\">\n                    <input #inputtext type=\"text\" [attr.id]=\"inputId\" [attr.placeholder]=\"(value && value.length ? null : placeholder)\" [attr.tabindex]=\"tabindex\" (keydown)=\"onKeydown($event)\" \n                        (focus)=\"onInputFocus($event)\" (blur)=\"onInputBlur($event)\" [disabled]=\"disabled\" [ngStyle]=\"inputStyle\" [class]=\"inputStyleClass\">\n                </li>\n            </ul>\n        </div>\n    ",
+                    providers: [domhandler_1.DomHandler, exports.CHIPS_VALUE_ACCESSOR]
+                },] },
+    ];
+    /** @nocollapse */
+    Chips.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: domhandler_1.DomHandler }
+    ]; };
+    Chips.propDecorators = {
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        disabled: [{ type: core_1.Input }],
+        onAdd: [{ type: core_1.Output }],
+        onRemove: [{ type: core_1.Output }],
+        field: [{ type: core_1.Input }],
+        placeholder: [{ type: core_1.Input }],
+        max: [{ type: core_1.Input }],
+        tabindex: [{ type: core_1.Input }],
+        inputId: [{ type: core_1.Input }],
+        allowDuplicate: [{ type: core_1.Input }],
+        inputStyle: [{ type: core_1.Input }],
+        inputStyleClass: [{ type: core_1.Input }],
+        addOnTab: [{ type: core_1.Input }],
+        addOnBlur: [{ type: core_1.Input }],
+        onFocus: [{ type: core_1.Output }],
+        onBlur: [{ type: core_1.Output }],
+        inputViewChild: [{ type: core_1.ViewChild, args: ['inputtext',] }],
+        templates: [{ type: core_1.ContentChildren, args: [shared_1.PrimeTemplate,] }]
+    };
     return Chips;
 }());
 exports.Chips = Chips;
 var ChipsModule = /** @class */ (function () {
     function ChipsModule() {
     }
-    ChipsModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, inputtext_1.InputTextModule, shared_1.SharedModule],
-            exports: [Chips, inputtext_1.InputTextModule, shared_1.SharedModule],
-            declarations: [Chips]
-        })
-    ], ChipsModule);
+    ChipsModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule, inputtext_1.InputTextModule, shared_1.SharedModule],
+                    exports: [Chips, inputtext_1.InputTextModule, shared_1.SharedModule],
+                    declarations: [Chips]
+                },] },
+    ];
     return ChipsModule;
 }());
 exports.ChipsModule = ChipsModule;

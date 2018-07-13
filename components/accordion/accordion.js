@@ -1,16 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
@@ -76,45 +64,34 @@ var AccordionTab = /** @class */ (function () {
     AccordionTab.prototype.ngOnDestroy = function () {
         this.accordion.tabs.splice(this.findTabIndex(), 1);
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], AccordionTab.prototype, "header", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], AccordionTab.prototype, "selected", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], AccordionTab.prototype, "disabled", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], AccordionTab.prototype, "selectedChange", void 0);
-    __decorate([
-        core_1.ContentChildren(shared_1.Header),
-        __metadata("design:type", core_1.QueryList)
-    ], AccordionTab.prototype, "headerFacet", void 0);
-    AccordionTab = __decorate([
-        core_1.Component({
-            selector: 'p-accordionTab',
-            template: "\n        <div class=\"ui-accordion-header ui-state-default ui-corner-all\" [ngClass]=\"{'ui-state-active': selected,'ui-state-disabled':disabled}\">\n            <a href=\"#\" [attr.id]=\"id\" [attr.aria-controls]=\"id + '-content'\" role=\"tab\" [attr.aria-expanded]=\"selected\" (click)=\"toggle($event)\" (keydown.space)=\"toggle($event)\">\n                <span class=\"ui-accordion-toggle-icon\" [ngClass]=\"selected ? accordion.collapseIcon : accordion.expandIcon\"></span>\n                <span class=\"ui-accordion-header-text\" *ngIf=\"!hasHeaderFacet\">\n                    {{header}}\n                </span>\n                <ng-content select=\"p-header\" *ngIf=\"hasHeaderFacet\"></ng-content>\n            </a>\n        </div>\n        <div [attr.id]=\"id + '-content'\" class=\"ui-accordion-content-wrapper\" [@tabContent]=\"selected ? 'visible' : 'hidden'\" (@tabContent.done)=\"onToggleDone($event)\"\n            [ngClass]=\"{'ui-accordion-content-wrapper-overflown': !selected||animating}\" \n            role=\"tabpanel\" [attr.aria-hidden]=\"!selected\" [attr.aria-labelledby]=\"id\">\n            <div class=\"ui-accordion-content ui-widget-content\" *ngIf=\"lazy ? selected : true\">\n                <ng-content></ng-content>\n            </div>\n        </div>\n    ",
-            animations: [
-                animations_1.trigger('tabContent', [
-                    animations_1.state('hidden', animations_1.style({
-                        height: '0'
-                    })),
-                    animations_1.state('visible', animations_1.style({
-                        height: '*'
-                    })),
-                    animations_1.transition('visible <=> hidden', animations_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
-                ])
-            ]
-        }),
-        __param(0, core_1.Inject(core_1.forwardRef(function () { return Accordion; }))),
-        __metadata("design:paramtypes", [Accordion])
-    ], AccordionTab);
+    AccordionTab.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-accordionTab',
+                    template: "\n        <div class=\"ui-accordion-header ui-state-default ui-corner-all\" [ngClass]=\"{'ui-state-active': selected,'ui-state-disabled':disabled}\">\n            <a href=\"#\" [attr.id]=\"id\" [attr.aria-controls]=\"id + '-content'\" role=\"tab\" [attr.aria-expanded]=\"selected\" (click)=\"toggle($event)\" (keydown.space)=\"toggle($event)\">\n                <span class=\"ui-accordion-toggle-icon\" [ngClass]=\"selected ? accordion.collapseIcon : accordion.expandIcon\"></span>\n                <span class=\"ui-accordion-header-text\" *ngIf=\"!hasHeaderFacet\">\n                    {{header}}\n                </span>\n                <ng-content select=\"p-header\" *ngIf=\"hasHeaderFacet\"></ng-content>\n            </a>\n        </div>\n        <div [attr.id]=\"id + '-content'\" class=\"ui-accordion-content-wrapper\" [@tabContent]=\"selected ? 'visible' : 'hidden'\" (@tabContent.done)=\"onToggleDone($event)\"\n            [ngClass]=\"{'ui-accordion-content-wrapper-overflown': !selected||animating}\" \n            role=\"tabpanel\" [attr.aria-hidden]=\"!selected\" [attr.aria-labelledby]=\"id\">\n            <div class=\"ui-accordion-content ui-widget-content\" *ngIf=\"lazy ? selected : true\">\n                <ng-content></ng-content>\n            </div>\n        </div>\n    ",
+                    animations: [
+                        animations_1.trigger('tabContent', [
+                            animations_1.state('hidden', animations_1.style({
+                                height: '0'
+                            })),
+                            animations_1.state('visible', animations_1.style({
+                                height: '*'
+                            })),
+                            animations_1.transition('visible <=> hidden', animations_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+                        ])
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    AccordionTab.ctorParameters = function () { return [
+        { type: Accordion, decorators: [{ type: core_1.Inject, args: [core_1.forwardRef(function () { return Accordion; }),] }] }
+    ]; };
+    AccordionTab.propDecorators = {
+        header: [{ type: core_1.Input }],
+        selected: [{ type: core_1.Input }],
+        disabled: [{ type: core_1.Input }],
+        selectedChange: [{ type: core_1.Output }],
+        headerFacet: [{ type: core_1.ContentChildren, args: [shared_1.Header,] }]
+    };
     return AccordionTab;
 }());
 exports.AccordionTab = AccordionTab;
@@ -172,67 +149,42 @@ var Accordion = /** @class */ (function () {
             this.tabListSubscription.unsubscribe();
         }
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Accordion.prototype, "multiple", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Accordion.prototype, "onClose", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", core_1.EventEmitter)
-    ], Accordion.prototype, "onOpen", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], Accordion.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Accordion.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Accordion.prototype, "expandIcon", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], Accordion.prototype, "collapseIcon", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Boolean)
-    ], Accordion.prototype, "lazy", void 0);
-    __decorate([
-        core_1.ContentChildren(AccordionTab),
-        __metadata("design:type", core_1.QueryList)
-    ], Accordion.prototype, "tabList", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object),
-        __metadata("design:paramtypes", [Object])
-    ], Accordion.prototype, "activeIndex", null);
-    Accordion = __decorate([
-        core_1.Component({
-            selector: 'p-accordion',
-            template: "\n        <div [ngClass]=\"'ui-accordion ui-widget ui-helper-reset'\" [ngStyle]=\"style\" [class]=\"styleClass\" role=\"tablist\">\n            <ng-content></ng-content>\n        </div>\n    "
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, core_1.ChangeDetectorRef])
-    ], Accordion);
+    Accordion.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-accordion',
+                    template: "\n        <div [ngClass]=\"'ui-accordion ui-widget ui-helper-reset'\" [ngStyle]=\"style\" [class]=\"styleClass\" role=\"tablist\">\n            <ng-content></ng-content>\n        </div>\n    "
+                },] },
+    ];
+    /** @nocollapse */
+    Accordion.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: core_1.ChangeDetectorRef }
+    ]; };
+    Accordion.propDecorators = {
+        multiple: [{ type: core_1.Input }],
+        onClose: [{ type: core_1.Output }],
+        onOpen: [{ type: core_1.Output }],
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        expandIcon: [{ type: core_1.Input }],
+        collapseIcon: [{ type: core_1.Input }],
+        lazy: [{ type: core_1.Input }],
+        tabList: [{ type: core_1.ContentChildren, args: [AccordionTab,] }],
+        activeIndex: [{ type: core_1.Input }]
+    };
     return Accordion;
 }());
 exports.Accordion = Accordion;
 var AccordionModule = /** @class */ (function () {
     function AccordionModule() {
     }
-    AccordionModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [Accordion, AccordionTab, shared_1.SharedModule],
-            declarations: [Accordion, AccordionTab]
-        })
-    ], AccordionModule);
+    AccordionModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [Accordion, AccordionTab, shared_1.SharedModule],
+                    declarations: [Accordion, AccordionTab]
+                },] },
+    ];
     return AccordionModule;
 }());
 exports.AccordionModule = AccordionModule;

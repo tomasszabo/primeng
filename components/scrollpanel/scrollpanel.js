@@ -1,13 +1,4 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
@@ -155,51 +146,40 @@ var ScrollPanel = /** @class */ (function () {
     ScrollPanel.prototype.refresh = function () {
         this.moveBar();
     };
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Object)
-    ], ScrollPanel.prototype, "style", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", String)
-    ], ScrollPanel.prototype, "styleClass", void 0);
-    __decorate([
-        core_1.ViewChild('container'),
-        __metadata("design:type", core_1.ElementRef)
-    ], ScrollPanel.prototype, "containerViewChild", void 0);
-    __decorate([
-        core_1.ViewChild('content'),
-        __metadata("design:type", core_1.ElementRef)
-    ], ScrollPanel.prototype, "contentViewChild", void 0);
-    __decorate([
-        core_1.ViewChild('xBar'),
-        __metadata("design:type", core_1.ElementRef)
-    ], ScrollPanel.prototype, "xBarViewChild", void 0);
-    __decorate([
-        core_1.ViewChild('yBar'),
-        __metadata("design:type", core_1.ElementRef)
-    ], ScrollPanel.prototype, "yBarViewChild", void 0);
-    ScrollPanel = __decorate([
-        core_1.Component({
-            selector: 'p-scrollPanel',
-            template: "\n        <div #container [ngClass]=\"'ui-scrollpanel ui-widget ui-widget-content ui-corner-all'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-scrollpanel-wrapper\">\n                <div #content class=\"ui-scrollpanel-content\">\n                    <ng-content></ng-content>\n                </div>\n            </div>\n            <div #xBar class=\"ui-scrollpanel-bar ui-scrollpanel-bar-x\"></div>\n            <div #yBar class=\"ui-scrollpanel-bar ui-scrollpanel-bar-y\"></div>   \n        </div>\n    ",
-            providers: [domhandler_1.DomHandler]
-        }),
-        __metadata("design:paramtypes", [core_1.ElementRef, core_1.NgZone, domhandler_1.DomHandler])
-    ], ScrollPanel);
+    ScrollPanel.decorators = [
+        { type: core_1.Component, args: [{
+                    selector: 'p-scrollPanel',
+                    template: "\n        <div #container [ngClass]=\"'ui-scrollpanel ui-widget ui-widget-content ui-corner-all'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-scrollpanel-wrapper\">\n                <div #content class=\"ui-scrollpanel-content\">\n                    <ng-content></ng-content>\n                </div>\n            </div>\n            <div #xBar class=\"ui-scrollpanel-bar ui-scrollpanel-bar-x\"></div>\n            <div #yBar class=\"ui-scrollpanel-bar ui-scrollpanel-bar-y\"></div>   \n        </div>\n    ",
+                    providers: [domhandler_1.DomHandler]
+                },] },
+    ];
+    /** @nocollapse */
+    ScrollPanel.ctorParameters = function () { return [
+        { type: core_1.ElementRef },
+        { type: core_1.NgZone },
+        { type: domhandler_1.DomHandler }
+    ]; };
+    ScrollPanel.propDecorators = {
+        style: [{ type: core_1.Input }],
+        styleClass: [{ type: core_1.Input }],
+        containerViewChild: [{ type: core_1.ViewChild, args: ['container',] }],
+        contentViewChild: [{ type: core_1.ViewChild, args: ['content',] }],
+        xBarViewChild: [{ type: core_1.ViewChild, args: ['xBar',] }],
+        yBarViewChild: [{ type: core_1.ViewChild, args: ['yBar',] }]
+    };
     return ScrollPanel;
 }());
 exports.ScrollPanel = ScrollPanel;
 var ScrollPanelModule = /** @class */ (function () {
     function ScrollPanelModule() {
     }
-    ScrollPanelModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [ScrollPanel],
-            declarations: [ScrollPanel]
-        })
-    ], ScrollPanelModule);
+    ScrollPanelModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    imports: [common_1.CommonModule],
+                    exports: [ScrollPanel],
+                    declarations: [ScrollPanel]
+                },] },
+    ];
     return ScrollPanelModule;
 }());
 exports.ScrollPanelModule = ScrollPanelModule;
