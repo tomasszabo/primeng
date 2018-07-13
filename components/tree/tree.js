@@ -479,33 +479,6 @@ var Tree = /** @class */ (function () {
                 if (dragNode === dropNode) {
                     allow = false;
                 }
-                if (dropNode.dropScope) {
-                    var dropScope = dropNode.dropScope;
-                    var dragScope = dragNode.dragScope;
-                    if (typeof dropScope === 'string') {
-                        if (typeof dragScope === 'string')
-                            allow = dropScope === dragScope;
-                        else if (dragScope instanceof Array)
-                            allow = dragScope.indexOf(dropScope) != -1;
-                    }
-                    else if (dropScope instanceof Array) {
-                        if (typeof dragScope === 'string') {
-                            allow = dropScope.indexOf(dragScope) != -1;
-                        }
-                        else if (dragScope instanceof Array) {
-                            for (var _i = 0, dropScope_1 = dropScope; _i < dropScope_1.length; _i++) {
-                                var s = dropScope_1[_i];
-                                for (var _a = 0, dragScope_1 = dragScope; _a < dragScope_1.length; _a++) {
-                                    var ds = dragScope_1[_a];
-                                    if (s === ds) {
-                                        allow = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
                 else {
                     var parent_1 = dropNode.parent;
                     while (parent_1 != null) {
@@ -514,6 +487,33 @@ var Tree = /** @class */ (function () {
                             break;
                         }
                         parent_1 = parent_1.parent;
+                    }
+                    if (allow && dropNode.dropScope) {
+                        var dropScope = dropNode.dropScope;
+                        var dragScope = dragNode.dragScope;
+                        if (typeof dropScope === 'string') {
+                            if (typeof dragScope === 'string')
+                                allow = dropScope === dragScope;
+                            else if (dragScope instanceof Array)
+                                allow = dragScope.indexOf(dropScope) != -1;
+                        }
+                        else if (dropScope instanceof Array) {
+                            if (typeof dragScope === 'string') {
+                                allow = dropScope.indexOf(dragScope) != -1;
+                            }
+                            else if (dragScope instanceof Array) {
+                                for (var _i = 0, dropScope_1 = dropScope; _i < dropScope_1.length; _i++) {
+                                    var s = dropScope_1[_i];
+                                    for (var _a = 0, dragScope_1 = dragScope; _a < dragScope_1.length; _a++) {
+                                        var ds = dragScope_1[_a];
+                                        if (s === ds) {
+                                            allow = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
