@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var router_1 = require("@angular/router");
@@ -33,17 +36,21 @@ var Breadcrumb = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Breadcrumb.prototype, "model");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], Breadcrumb.prototype, "model", void 0);
     __decorate([
-        core_1.Input()
-    ], Breadcrumb.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Breadcrumb.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Breadcrumb.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Breadcrumb.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Breadcrumb.prototype, "home");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Breadcrumb.prototype, "home", void 0);
     Breadcrumb = __decorate([
         core_1.Component({
             selector: 'p-breadcrumb',
@@ -66,3 +73,4 @@ var BreadcrumbModule = /** @class */ (function () {
     return BreadcrumbModule;
 }());
 exports.BreadcrumbModule = BreadcrumbModule;
+//# sourceMappingURL=breadcrumb.js.map

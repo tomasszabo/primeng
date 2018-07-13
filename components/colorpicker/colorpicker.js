@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -396,50 +399,65 @@ var ColorPicker = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ColorPicker.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ColorPicker.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "inline");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ColorPicker.prototype, "inline", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "format");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ColorPicker.prototype, "format", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ColorPicker.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ColorPicker.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ColorPicker.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], ColorPicker.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ColorPicker.prototype, "inputId", void 0);
     __decorate([
-        core_1.Output()
-    ], ColorPicker.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], ColorPicker.prototype, "onChange", void 0);
     __decorate([
-        core_1.ViewChild('panel')
-    ], ColorPicker.prototype, "panelViewChild");
+        core_1.ViewChild('panel'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "panelViewChild", void 0);
     __decorate([
-        core_1.ViewChild('colorSelector')
-    ], ColorPicker.prototype, "colorSelectorViewChild");
+        core_1.ViewChild('colorSelector'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "colorSelectorViewChild", void 0);
     __decorate([
-        core_1.ViewChild('colorHandle')
-    ], ColorPicker.prototype, "colorHandleViewChild");
+        core_1.ViewChild('colorHandle'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "colorHandleViewChild", void 0);
     __decorate([
-        core_1.ViewChild('hue')
-    ], ColorPicker.prototype, "hueViewChild");
+        core_1.ViewChild('hue'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "hueViewChild", void 0);
     __decorate([
-        core_1.ViewChild('hueHandle')
-    ], ColorPicker.prototype, "hueHandleViewChild");
+        core_1.ViewChild('hueHandle'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "hueHandleViewChild", void 0);
     __decorate([
-        core_1.ViewChild('input')
-    ], ColorPicker.prototype, "inputViewChild");
+        core_1.ViewChild('input'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ColorPicker.prototype, "inputViewChild", void 0);
     ColorPicker = __decorate([
         core_1.Component({
             selector: 'p-colorPicker',
@@ -457,7 +475,8 @@ var ColorPicker = /** @class */ (function () {
                 ])
             ],
             providers: [domhandler_1.DomHandler, exports.COLORPICKER_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.ChangeDetectorRef])
     ], ColorPicker);
     return ColorPicker;
 }());
@@ -475,3 +494,4 @@ var ColorPickerModule = /** @class */ (function () {
     return ColorPickerModule;
 }());
 exports.ColorPickerModule = ColorPickerModule;
+//# sourceMappingURL=colorpicker.js.map

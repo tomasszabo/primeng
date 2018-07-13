@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
     Port of jQuery MaskedInput by DigitalBush as a Native Angular2 Component in Typescript without jQuery
     https://github.com/digitalBush/jquery.maskedinput/
@@ -484,71 +487,94 @@ var InputMask = /** @class */ (function () {
     InputMask.prototype.ngOnDestroy = function () {
     };
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "type");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "type", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "slotChar");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "slotChar", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "autoClear");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "autoClear", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "size");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], InputMask.prototype, "size", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "maxlength");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], InputMask.prototype, "maxlength", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "readonly", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "unmask");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "unmask", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "required");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "required", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "characterPattern");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], InputMask.prototype, "characterPattern", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "autoFocus");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], InputMask.prototype, "autoFocus", void 0);
     __decorate([
-        core_1.ViewChild('input')
-    ], InputMask.prototype, "inputViewChild");
+        core_1.ViewChild('input'),
+        __metadata("design:type", core_1.ElementRef)
+    ], InputMask.prototype, "inputViewChild", void 0);
     __decorate([
-        core_1.Output()
-    ], InputMask.prototype, "onComplete");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], InputMask.prototype, "onComplete", void 0);
     __decorate([
-        core_1.Output()
-    ], InputMask.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], InputMask.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], InputMask.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], InputMask.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Input()
-    ], InputMask.prototype, "mask");
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], InputMask.prototype, "mask", null);
     InputMask = __decorate([
         core_1.Component({
             selector: 'p-inputMask',
@@ -558,7 +584,8 @@ var InputMask = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focus'
             },
             providers: [exports.INPUTMASK_VALUE_ACCESSOR, domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], InputMask);
     return InputMask;
 }());
@@ -576,3 +603,4 @@ var InputMaskModule = /** @class */ (function () {
     return InputMaskModule;
 }());
 exports.InputMaskModule = InputMaskModule;
+//# sourceMappingURL=inputmask.js.map

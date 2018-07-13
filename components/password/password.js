@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -115,32 +118,49 @@ var Password = /** @class */ (function () {
         this.info = null;
     };
     __decorate([
-        core_1.Input()
-    ], Password.prototype, "promptLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Password.prototype, "promptLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], Password.prototype, "weakLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Password.prototype, "weakLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], Password.prototype, "mediumLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Password.prototype, "mediumLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], Password.prototype, "strongLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Password.prototype, "strongLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], Password.prototype, "feedback");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Password.prototype, "feedback", void 0);
     __decorate([
-        core_1.HostListener('input', ['$event'])
-    ], Password.prototype, "onInput");
+        core_1.HostListener('input', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], Password.prototype, "onInput", null);
     __decorate([
-        core_1.HostListener('focus', ['$event'])
-    ], Password.prototype, "onFocus");
+        core_1.HostListener('focus', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], Password.prototype, "onFocus", null);
     __decorate([
-        core_1.HostListener('blur', ['$event'])
-    ], Password.prototype, "onBlur");
+        core_1.HostListener('blur', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], Password.prototype, "onBlur", null);
     __decorate([
-        core_1.HostListener('keyup', ['$event'])
-    ], Password.prototype, "onKeyup");
+        core_1.HostListener('keyup', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], Password.prototype, "onKeyup", null);
     Password = __decorate([
         core_1.Directive({
             selector: '[pPassword]',
@@ -152,7 +172,8 @@ var Password = /** @class */ (function () {
                 '[class.ui-state-filled]': 'filled'
             },
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], Password);
     return Password;
 }());
@@ -170,3 +191,4 @@ var PasswordModule = /** @class */ (function () {
     return PasswordModule;
 }());
 exports.PasswordModule = PasswordModule;
+//# sourceMappingURL=password.js.map

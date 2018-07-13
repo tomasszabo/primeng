@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -58,26 +61,33 @@ var BlockUI = /** @class */ (function () {
         this.unblock();
     };
     __decorate([
-        core_1.Input()
-    ], BlockUI.prototype, "target");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], BlockUI.prototype, "target", void 0);
     __decorate([
-        core_1.Input()
-    ], BlockUI.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], BlockUI.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], BlockUI.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], BlockUI.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.ViewChild('mask')
-    ], BlockUI.prototype, "mask");
+        core_1.ViewChild('mask'),
+        __metadata("design:type", core_1.ElementRef)
+    ], BlockUI.prototype, "mask", void 0);
     __decorate([
-        core_1.Input()
-    ], BlockUI.prototype, "blocked");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], BlockUI.prototype, "blocked", null);
     BlockUI = __decorate([
         core_1.Component({
             selector: 'p-blockUI',
             template: "\n        <div #mask class=\"ui-blockui ui-widget-overlay\" [ngClass]=\"{'ui-blockui-document':!target}\" [ngStyle]=\"{display: blocked ? 'block' : 'none'}\">\n            <ng-content></ng-content>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], BlockUI);
     return BlockUI;
 }());
@@ -95,3 +105,4 @@ var BlockUIModule = /** @class */ (function () {
     return BlockUIModule;
 }());
 exports.BlockUIModule = BlockUIModule;
+//# sourceMappingURL=blockui.js.map

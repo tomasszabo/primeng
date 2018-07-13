@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -431,119 +434,158 @@ var Dialog = /** @class */ (function () {
         this.unbindMaskClickListener();
     };
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "header");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dialog.prototype, "header", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "draggable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "draggable", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "resizable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "resizable", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "minWidth");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "minWidth", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "minHeight");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "minHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "width");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dialog.prototype, "width", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "height");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dialog.prototype, "height", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "positionLeft");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "positionLeft", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "positionTop");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "positionTop", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "contentStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dialog.prototype, "contentStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "modal");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "modal", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "closeOnEscape");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "closeOnEscape", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "dismissableMask");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "dismissableMask", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "rtl");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "rtl", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "closable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "closable", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "responsive");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "responsive", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dialog.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dialog.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dialog.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "showHeader");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "showHeader", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "breakpoint");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "breakpoint", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "blockScroll");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "blockScroll", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "minX");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "minX", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "minY");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dialog.prototype, "minY", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "focusOnShow");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "focusOnShow", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "maximizable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dialog.prototype, "maximizable", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.Header, { descendants: false })
-    ], Dialog.prototype, "headerFacet");
+        core_1.ContentChildren(shared_1.Header, { descendants: false }),
+        __metadata("design:type", core_1.QueryList)
+    ], Dialog.prototype, "headerFacet", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.Footer, { descendants: false })
-    ], Dialog.prototype, "footerFacet");
+        core_1.ContentChildren(shared_1.Footer, { descendants: false }),
+        __metadata("design:type", core_1.QueryList)
+    ], Dialog.prototype, "footerFacet", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], Dialog.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dialog.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('titlebar')
-    ], Dialog.prototype, "headerViewChild");
+        core_1.ViewChild('titlebar'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dialog.prototype, "headerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('content')
-    ], Dialog.prototype, "contentViewChild");
+        core_1.ViewChild('content'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dialog.prototype, "contentViewChild", void 0);
     __decorate([
-        core_1.ViewChild('footer')
-    ], Dialog.prototype, "footerViewChild");
+        core_1.ViewChild('footer'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dialog.prototype, "footerViewChild", void 0);
     __decorate([
-        core_1.Output()
-    ], Dialog.prototype, "onShow");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dialog.prototype, "onShow", void 0);
     __decorate([
-        core_1.Output()
-    ], Dialog.prototype, "onHide");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dialog.prototype, "onHide", void 0);
     __decorate([
-        core_1.Output()
-    ], Dialog.prototype, "visibleChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dialog.prototype, "visibleChange", void 0);
     __decorate([
-        core_1.Input()
-    ], Dialog.prototype, "visible");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Dialog.prototype, "visible", null);
     Dialog = __decorate([
         core_1.Component({
             selector: 'p-dialog',
@@ -568,7 +610,8 @@ var Dialog = /** @class */ (function () {
                 ])
             ],
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.NgZone])
     ], Dialog);
     return Dialog;
 }());
@@ -586,3 +629,4 @@ var DialogModule = /** @class */ (function () {
     return DialogModule;
 }());
 exports.DialogModule = DialogModule;
+//# sourceMappingURL=dialog.js.map

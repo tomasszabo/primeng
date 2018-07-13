@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -1384,194 +1387,264 @@ var Calendar = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "defaultDate");
+        core_1.Input(),
+        __metadata("design:type", Date)
+    ], Calendar.prototype, "defaultDate", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "inputStyle");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "inputStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "inputStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "inputStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Calendar.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "dateFormat");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "dateFormat", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "inline");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "inline", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showOtherMonths");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "showOtherMonths", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "selectOtherMonths");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "selectOtherMonths", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showIcon");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "showIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "icon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "icon", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Calendar.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "readonlyInput");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "readonlyInput", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "shortYearCutoff");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Calendar.prototype, "shortYearCutoff", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "monthNavigator");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "monthNavigator", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "yearNavigator");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "yearNavigator", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "yearRange");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "yearRange", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "hourFormat");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "hourFormat", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "timeOnly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "timeOnly", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "stepHour");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "stepHour", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "stepMinute");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "stepMinute", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "stepSecond");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "stepSecond", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showSeconds");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "showSeconds", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "required");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "required", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showOnFocus");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "showOnFocus", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "dataType");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "dataType", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "selectionMode");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "selectionMode", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "maxDateCount");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "maxDateCount", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showButtonBar");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "showButtonBar", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "todayButtonStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "todayButtonStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "clearButtonStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "clearButtonStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "panelStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "panelStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "keepInvalid");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "keepInvalid", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "hideOnDateTimeSelect");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "hideOnDateTimeSelect", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "numberOfMonths");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "numberOfMonths", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "view");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Calendar.prototype, "view", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "touchUI");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Calendar.prototype, "touchUI", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onClose");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onClose", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onSelect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onSelect", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onInput");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onInput", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onTodayClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onTodayClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onClearClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onClearClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onMonthChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onMonthChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onYearChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Calendar.prototype, "onYearChange", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], Calendar.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], Calendar.prototype, "templates", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Calendar.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "utc");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Calendar.prototype, "utc", null);
     __decorate([
-        core_1.ViewChild('datepicker')
-    ], Calendar.prototype, "overlayViewChild");
+        core_1.ViewChild('datepicker'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Calendar.prototype, "overlayViewChild", void 0);
     __decorate([
-        core_1.ViewChild('inputfield')
-    ], Calendar.prototype, "inputfieldViewChild");
+        core_1.ViewChild('inputfield'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Calendar.prototype, "inputfieldViewChild", void 0);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "minDate");
+        core_1.Input(),
+        __metadata("design:type", Date),
+        __metadata("design:paramtypes", [Date])
+    ], Calendar.prototype, "minDate", null);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "maxDate");
+        core_1.Input(),
+        __metadata("design:type", Date),
+        __metadata("design:paramtypes", [Date])
+    ], Calendar.prototype, "maxDate", null);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "disabledDates");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Calendar.prototype, "disabledDates", null);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "disabledDays");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Calendar.prototype, "disabledDays", null);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "showTime");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Calendar.prototype, "showTime", null);
     __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "locale");
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], Calendar.prototype, "locale", null);
     Calendar = __decorate([
         core_1.Component({
             selector: 'p-calendar',
@@ -1593,7 +1666,8 @@ var Calendar = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focus'
             },
             providers: [domhandler_1.DomHandler, exports.CALENDAR_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.ChangeDetectorRef])
     ], Calendar);
     return Calendar;
 }());
@@ -1611,3 +1685,4 @@ var CalendarModule = /** @class */ (function () {
     return CalendarModule;
 }());
 exports.CalendarModule = CalendarModule;
+//# sourceMappingURL=calendar.js.map

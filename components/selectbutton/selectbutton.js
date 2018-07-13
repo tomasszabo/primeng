@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var objectutils_1 = require("../utils/objectutils");
@@ -100,44 +103,57 @@ var SelectButton = /** @class */ (function () {
         return index;
     };
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SelectButton.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "multiple");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SelectButton.prototype, "multiple", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SelectButton.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SelectButton.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SelectButton.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "dataKey");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SelectButton.prototype, "dataKey", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "optionLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SelectButton.prototype, "optionLabel", void 0);
     __decorate([
-        core_1.Output()
-    ], SelectButton.prototype, "onOptionClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], SelectButton.prototype, "onOptionClick", void 0);
     __decorate([
-        core_1.Output()
-    ], SelectButton.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], SelectButton.prototype, "onChange", void 0);
     __decorate([
-        core_1.ContentChild(core_1.TemplateRef)
-    ], SelectButton.prototype, "itemTemplate");
+        core_1.ContentChild(core_1.TemplateRef),
+        __metadata("design:type", Object)
+    ], SelectButton.prototype, "itemTemplate", void 0);
     __decorate([
-        core_1.Input()
-    ], SelectButton.prototype, "options");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], SelectButton.prototype, "options", null);
     SelectButton = __decorate([
         core_1.Component({
             selector: 'p-selectButton',
             template: "\n        <div [ngClass]=\"'ui-selectbutton ui-buttonset ui-widget ui-corner-all ui-buttonset-' + (options ? options.length : 0)\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div *ngFor=\"let option of options; let i = index\" class=\"ui-button ui-widget ui-state-default ui-button-text-only {{option.styleClass}}\"\n                [ngClass]=\"{'ui-state-active':isSelected(option), 'ui-state-disabled':disabled, 'ui-state-focus': cbox == focusedItem, \n                'ui-button-text-icon-left': (option.icon != null), 'ui-button-icon-only': (option.icon && !option.label)}\" (click)=\"onItemClick($event,option,cbox,i)\" [attr.title]=\"option.title\">\n                <ng-container *ngIf=\"!itemTemplate else customcontent\">\n                    <span [ngClass]=\"['ui-clickable', 'ui-button-icon-left']\" [class]=\"option.icon\" *ngIf=\"option.icon\"></span>\n                    <span class=\"ui-button-text ui-clickable\">{{option.label||'ui-btn'}}</span>\n                </ng-container>\n                <ng-template #customcontent>\n                    <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: option.value, index: i}\"></ng-container>\n                </ng-template>\n                <div class=\"ui-helper-hidden-accessible\">\n                    <input #cbox type=\"checkbox\" [checked]=\"isSelected(option)\" (focus)=\"onFocus($event)\" (blur)=\"onBlur($event)\" [attr.tabindex]=\"tabindex\" [attr.disabled]=\"disabled\">\n                </div>\n            </div>\n        </div>\n    ",
             providers: [objectutils_1.ObjectUtils, exports.SELECTBUTTON_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [objectutils_1.ObjectUtils, core_1.ChangeDetectorRef])
     ], SelectButton);
     return SelectButton;
 }());
@@ -155,3 +171,4 @@ var SelectButtonModule = /** @class */ (function () {
     return SelectButtonModule;
 }());
 exports.SelectButtonModule = SelectButtonModule;
+//# sourceMappingURL=selectbutton.js.map

@@ -15,7 +15,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -48,11 +51,13 @@ var PanelMenuSub = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
-        core_1.Input()
-    ], PanelMenuSub.prototype, "item");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], PanelMenuSub.prototype, "item", void 0);
     __decorate([
-        core_1.Input()
-    ], PanelMenuSub.prototype, "expanded");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], PanelMenuSub.prototype, "expanded", void 0);
     PanelMenuSub = __decorate([
         core_1.Component({
             selector: 'p-panelMenuSub',
@@ -105,17 +110,21 @@ var PanelMenu = /** @class */ (function (_super) {
         this.animating = false;
     };
     __decorate([
-        core_1.Input()
-    ], PanelMenu.prototype, "model");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], PanelMenu.prototype, "model", void 0);
     __decorate([
-        core_1.Input()
-    ], PanelMenu.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], PanelMenu.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], PanelMenu.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], PanelMenu.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], PanelMenu.prototype, "multiple");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], PanelMenu.prototype, "multiple", void 0);
     PanelMenu = __decorate([
         core_1.Component({
             selector: 'p-panelMenu',
@@ -150,3 +159,4 @@ var PanelMenuModule = /** @class */ (function () {
     return PanelMenuModule;
 }());
 exports.PanelMenuModule = PanelMenuModule;
+//# sourceMappingURL=panelmenu.js.map

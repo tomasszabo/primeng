@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -274,44 +277,56 @@ var Slider = /** @class */ (function () {
         this.unbindDragListeners();
     };
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "animate");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Slider.prototype, "animate", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Slider.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "min");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Slider.prototype, "min", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "max");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Slider.prototype, "max", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "orientation");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Slider.prototype, "orientation", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "step");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Slider.prototype, "step", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "range");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Slider.prototype, "range", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Slider.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Slider.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Slider.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Output()
-    ], Slider.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Slider.prototype, "onChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Slider.prototype, "onSlideEnd");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Slider.prototype, "onSlideEnd", void 0);
     Slider = __decorate([
         core_1.Component({
             selector: 'p-slider',
             template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" [ngClass]=\"{'ui-slider ui-widget ui-widget-content ui-corner-all':true,'ui-state-disabled':disabled,\n            'ui-slider-horizontal':orientation == 'horizontal','ui-slider-vertical':orientation == 'vertical','ui-slider-animate':animate}\"\n            (click)=\"onBarClick($event)\">\n            <span *ngIf=\"range && orientation == 'horizontal'\" class=\"ui-slider-range ui-widget-header ui-corner-all\" [ngStyle]=\"{'left':handleValues[0] + '%',width: (handleValues[1] - handleValues[0] + '%')}\"></span>\n            <span *ngIf=\"range && orientation == 'vertical'\" class=\"ui-slider-range ui-widget-header ui-corner-all\" [ngStyle]=\"{'bottom':handleValues[0] + '%',height: (handleValues[1] - handleValues[0] + '%')}\"></span>\n            <span *ngIf=\"!range && orientation=='vertical'\" class=\"ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all\" [ngStyle]=\"{'height': handleValue + '%'}\"></span>\n            <span *ngIf=\"!range && orientation=='horizontal'\" class=\"ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all\" [ngStyle]=\"{'width': handleValue + '%'}\"></span>\n            <span *ngIf=\"!range\" class=\"ui-slider-handle ui-state-default ui-corner-all ui-clickable\" (mousedown)=\"onMouseDown($event)\" (touchstart)=\"onTouchStart($event)\" (touchmove)=\"onTouchMove($event)\" (touchend)=\"dragging=false\"\n                [style.transition]=\"dragging ? 'none': null\" [ngStyle]=\"{'left': orientation == 'horizontal' ? handleValue + '%' : null,'bottom': orientation == 'vertical' ? handleValue + '%' : null}\"></span>\n            <span *ngIf=\"range\" (mousedown)=\"onMouseDown($event,0)\" (touchstart)=\"onTouchStart($event,0)\" (touchmove)=\"onTouchMove($event,0)\" (touchend)=\"dragging=false\" [style.transition]=\"dragging ? 'none': null\" class=\"ui-slider-handle ui-state-default ui-corner-all ui-clickable\" \n                [ngStyle]=\"{'left': rangeStartLeft, 'bottom': rangeStartBottom}\" [ngClass]=\"{'ui-slider-handle-active':handleIndex==0}\"></span>\n            <span *ngIf=\"range\" (mousedown)=\"onMouseDown($event,1)\" (touchstart)=\"onTouchStart($event,1)\" (touchmove)=\"onTouchMove($event,1)\" (touchend)=\"dragging=false\" [style.transition]=\"dragging ? 'none': null\" class=\"ui-slider-handle ui-state-default ui-corner-all ui-clickable\" \n                [ngStyle]=\"{'left': rangeEndLeft, 'bottom': rangeEndBottom}\" [ngClass]=\"{'ui-slider-handle-active':handleIndex==1}\"></span>\n        </div>\n    ",
             providers: [exports.SLIDER_VALUE_ACCESSOR, domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.NgZone])
     ], Slider);
     return Slider;
 }());
@@ -329,3 +344,4 @@ var SliderModule = /** @class */ (function () {
     return SliderModule;
 }());
 exports.SliderModule = SliderModule;
+//# sourceMappingURL=slider.js.map

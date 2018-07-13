@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
@@ -152,41 +155,57 @@ var Paginator = /** @class */ (function () {
         };
     };
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "pageLinkSize");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Paginator.prototype, "pageLinkSize", void 0);
     __decorate([
-        core_1.Output()
-    ], Paginator.prototype, "onPageChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Paginator.prototype, "onPageChange", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Paginator.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Paginator.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "alwaysShow");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Paginator.prototype, "alwaysShow", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "templateLeft");
+        core_1.Input(),
+        __metadata("design:type", core_1.TemplateRef)
+    ], Paginator.prototype, "templateLeft", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "templateRight");
+        core_1.Input(),
+        __metadata("design:type", core_1.TemplateRef)
+    ], Paginator.prototype, "templateRight", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "dropdownAppendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Paginator.prototype, "dropdownAppendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "totalRecords");
+        core_1.Input(),
+        __metadata("design:type", Number),
+        __metadata("design:paramtypes", [Number])
+    ], Paginator.prototype, "totalRecords", null);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "first");
+        core_1.Input(),
+        __metadata("design:type", Number),
+        __metadata("design:paramtypes", [Number])
+    ], Paginator.prototype, "first", null);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "rows");
+        core_1.Input(),
+        __metadata("design:type", Number),
+        __metadata("design:paramtypes", [Number])
+    ], Paginator.prototype, "rows", null);
     __decorate([
-        core_1.Input()
-    ], Paginator.prototype, "rowsPerPageOptions");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Paginator.prototype, "rowsPerPageOptions", null);
     Paginator = __decorate([
         core_1.Component({
             selector: 'p-paginator',
@@ -209,3 +228,4 @@ var PaginatorModule = /** @class */ (function () {
     return PaginatorModule;
 }());
 exports.PaginatorModule = PaginatorModule;
+//# sourceMappingURL=paginator.js.map

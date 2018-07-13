@@ -5,13 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
 var shared_1 = require("../common/shared");
 var button_1 = require("../button/button");
+var confirmationservice_1 = require("../common/confirmationservice");
 var ConfirmDialog = /** @class */ (function () {
     function ConfirmDialog(el, domHandler, renderer, confirmationService, zone) {
         var _this = this;
@@ -193,68 +197,90 @@ var ConfirmDialog = /** @class */ (function () {
         this.confirmation = null;
     };
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "header");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "header", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "icon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "icon", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "message");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "message", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "acceptIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "acceptIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "acceptLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "acceptLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "acceptVisible");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "acceptVisible", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "rejectIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "rejectIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "rejectLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "rejectLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "rejectVisible");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "rejectVisible", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "acceptButtonStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "acceptButtonStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "rejectButtonStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "rejectButtonStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "width");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ConfirmDialog.prototype, "width", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "height");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ConfirmDialog.prototype, "height", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "closeOnEscape");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "closeOnEscape", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "rtl");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "rtl", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "closable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "closable", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "responsive");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ConfirmDialog.prototype, "responsive", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ConfirmDialog.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "key");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ConfirmDialog.prototype, "key", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Footer)
-    ], ConfirmDialog.prototype, "footer");
+        core_1.ContentChild(shared_1.Footer),
+        __metadata("design:type", Object)
+    ], ConfirmDialog.prototype, "footer", void 0);
     __decorate([
-        core_1.Input()
-    ], ConfirmDialog.prototype, "visible");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], ConfirmDialog.prototype, "visible", null);
     ConfirmDialog = __decorate([
         core_1.Component({
             selector: 'p-confirmDialog',
@@ -279,7 +305,9 @@ var ConfirmDialog = /** @class */ (function () {
                 ])
             ],
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler,
+            core_1.Renderer2, confirmationservice_1.ConfirmationService, core_1.NgZone])
     ], ConfirmDialog);
     return ConfirmDialog;
 }());
@@ -297,3 +325,4 @@ var ConfirmDialogModule = /** @class */ (function () {
     return ConfirmDialogModule;
 }());
 exports.ConfirmDialogModule = ConfirmDialogModule;
+//# sourceMappingURL=confirmdialog.js.map

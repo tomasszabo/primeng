@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -154,32 +157,40 @@ var Lightbox = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "images");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], Lightbox.prototype, "images", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "type");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Lightbox.prototype, "type", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Lightbox.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Lightbox.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Lightbox.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "easing");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Lightbox.prototype, "easing", void 0);
     __decorate([
-        core_1.Input()
-    ], Lightbox.prototype, "effectDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Lightbox.prototype, "effectDuration", void 0);
     Lightbox = __decorate([
         core_1.Component({
             selector: 'p-lightbox',
             template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" *ngIf=\"(type == 'image')\">\n            <a *ngFor=\"let image of images; let i = index;\" [href]=\"image.source\" (click)=\"onImageClick($event,image,i,content)\">\n                <img [src]=\"image.thumbnail\" [title]=\"image.title\" [alt]=\"image.alt\">\n            </a>\n        </div>\n        <span [ngStyle]=\"style\" [class]=\"styleClass\" *ngIf=\"(type == 'content')\" (click)=\"onLinkClick($event,content)\">\n            <ng-content select=\"a\"></ng-content>\n        </span>\n        <div class=\"ui-lightbox ui-widget ui-corner-all ui-shadow\" [style.display]=\"visible ? 'block' : 'none'\" [style.zIndex]=\"zindex\"\n            [ngClass]=\"{'ui-lightbox-loading': loading}\"\n            [style.transitionProperty]=\"'all'\" [style.transitionDuration]=\"effectDuration\" [style.transitionTimingFunction]=\"easing\" (click)=\"preventDocumentClickListener=true\">\n           <div class=\"ui-lightbox-content-wrapper\">\n              <a class=\"ui-state-default ui-lightbox-nav-left ui-corner-right\" [style.zIndex]=\"zindex + 1\" (click)=\"prev(img)\"\n                [ngClass]=\"{'ui-helper-hidden':!leftVisible}\"><span class=\"ui-lightbox-nav-icon pi pi-chevron-left\"></span></a>\n              <div #content class=\"ui-lightbox-content ui-corner-all\" \n                [style.transitionProperty]=\"'width,height'\" [style.transitionDuration]=\"effectDuration\" [style.transitionTimingFunction]=\"easing\">\n                <img #img [src]=\"currentImage ? currentImage.source||'' : ''\" (load)=\"onImageLoad($event,content)\" style=\"display:none\">\n                <ng-content></ng-content>\n              </div>\n              <a class=\"ui-state-default ui-lightbox-nav-right ui-corner-left ui-helper-hidden\" [style.zIndex]=\"zindex + 1\" (click)=\"next(img)\"\n                [ngClass]=\"{'ui-helper-hidden':!rightVisible}\"><span class=\"ui-lightbox-nav-icon pi pi-chevron-right\"></span></a>\n           </div>\n           <div class=\"ui-lightbox-caption ui-widget-header\" [style.display]=\"captionText ? 'block' : 'none'\">\n              <span class=\"ui-lightbox-caption-text\">{{captionText}}</span><a class=\"ui-lightbox-close ui-corner-all\" href=\"#\" (click)=\"hide($event)\"><span class=\"pi pi-times\"></span></a>\n              <div style=\"clear:both\"></div>\n           </div>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2])
     ], Lightbox);
     return Lightbox;
 }());
@@ -197,3 +208,4 @@ var LightboxModule = /** @class */ (function () {
     return LightboxModule;
 }());
 exports.LightboxModule = LightboxModule;
+//# sourceMappingURL=lightbox.js.map

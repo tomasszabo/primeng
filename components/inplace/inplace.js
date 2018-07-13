@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var button_1 = require("../button/button");
@@ -52,26 +55,33 @@ var Inplace = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Inplace.prototype, "active");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Inplace.prototype, "active", void 0);
     __decorate([
-        core_1.Input()
-    ], Inplace.prototype, "closable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Inplace.prototype, "closable", void 0);
     __decorate([
-        core_1.Input()
-    ], Inplace.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Inplace.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Inplace.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Inplace.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Inplace.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Inplace.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Output()
-    ], Inplace.prototype, "onActivate");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Inplace.prototype, "onActivate", void 0);
     __decorate([
-        core_1.Output()
-    ], Inplace.prototype, "onDeactivate");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Inplace.prototype, "onDeactivate", void 0);
     Inplace = __decorate([
         core_1.Component({
             selector: 'p-inplace',
@@ -94,3 +104,4 @@ var InplaceModule = /** @class */ (function () {
     return InplaceModule;
 }());
 exports.InplaceModule = InplaceModule;
+//# sourceMappingURL=inplace.js.map

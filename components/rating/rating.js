@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
@@ -68,47 +71,60 @@ var Rating = /** @class */ (function () {
         this.disabled = val;
     };
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Rating.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Rating.prototype, "readonly", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "stars");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Rating.prototype, "stars", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "cancel");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Rating.prototype, "cancel", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconOnClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Rating.prototype, "iconOnClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconOnStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Rating.prototype, "iconOnStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconOffClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Rating.prototype, "iconOffClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconOffStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Rating.prototype, "iconOffStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconCancelClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Rating.prototype, "iconCancelClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Rating.prototype, "iconCancelStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Rating.prototype, "iconCancelStyle", void 0);
     __decorate([
-        core_1.Output()
-    ], Rating.prototype, "onRate");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Rating.prototype, "onRate", void 0);
     __decorate([
-        core_1.Output()
-    ], Rating.prototype, "onCancel");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Rating.prototype, "onCancel", void 0);
     Rating = __decorate([
         core_1.Component({
             selector: 'p-rating',
             template: "\n        <div class=\"ui-rating\" [ngClass]=\"{'ui-state-disabled': disabled}\">\n            <a href=\"#\" *ngIf=\"cancel\" (click)=\"clear($event)\" class=\"ui-rating-cancel\">\n                <span class=\"ui-rating-icon\" [ngClass]=\"iconCancelClass\" [ngStyle]=\"iconCancelStyle\"></span>\n            </a>\n            <a href=\"#\" *ngFor=\"let star of starsArray;let i=index\" (click)=\"rate($event,i)\">\n                <span class=\"ui-rating-icon\" \n                    [ngClass]=\"(!value || i >= value) ? iconOffClass : iconOnClass\"\n                    [ngStyle]=\"(!value || i >= value) ? iconOffStyle : iconOnStyle\"\n                ></span>\n            </a>\n        </div>\n    ",
             providers: [exports.RATING_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
     ], Rating);
     return Rating;
 }());
@@ -126,3 +142,4 @@ var RatingModule = /** @class */ (function () {
     return RatingModule;
 }());
 exports.RatingModule = RatingModule;
+//# sourceMappingURL=rating.js.map

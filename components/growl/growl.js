@@ -5,13 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
+var messageservice_1 = require("../common/messageservice");
 var Growl = /** @class */ (function () {
     function Growl(el, domHandler, differs, messageService, zone) {
         var _this = this;
@@ -161,54 +165,71 @@ var Growl = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "life");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Growl.prototype, "life", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Growl.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Growl.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "immutable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Growl.prototype, "immutable", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Growl.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Growl.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "key");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Growl.prototype, "key", void 0);
     __decorate([
-        core_1.Output()
-    ], Growl.prototype, "onClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Growl.prototype, "onClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Growl.prototype, "onHover");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Growl.prototype, "onHover", void 0);
     __decorate([
-        core_1.Output()
-    ], Growl.prototype, "onClose");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Growl.prototype, "onClose", void 0);
     __decorate([
-        core_1.Output()
-    ], Growl.prototype, "valueChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Growl.prototype, "valueChange", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], Growl.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Growl.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "value");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Growl.prototype, "value", null);
     __decorate([
-        core_1.Input()
-    ], Growl.prototype, "sticky");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Growl.prototype, "sticky", null);
     Growl = __decorate([
         core_1.Component({
             selector: 'p-growl',
             template: "\n        <div #container [ngClass]=\"'ui-growl ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div #msgel *ngFor=\"let msg of value;let i = index\" class=\"ui-growl-item-container ui-state-highlight ui-corner-all ui-shadow\" aria-live=\"polite\"\n                [ngClass]=\"{'ui-growl-message-info':msg.severity == 'info','ui-growl-message-warn':msg.severity == 'warn',\n                    'ui-growl-message-error':msg.severity == 'error','ui-growl-message-success':msg.severity == 'success'}\"\n                    (click)=\"onMessageClick(i)\" (mouseenter)=\"onMessageHover(i)\">\n                <div class=\"ui-growl-item\">\n                     <div class=\"ui-growl-icon-close pi pi-times\" (click)=\"remove(i,msgel)\"></div>\n                     <span class=\"ui-growl-image pi\"\n                        [ngClass]=\"{'pi-info-circle':msg.severity == 'info','pi-exclamation-triangle':msg.severity == 'warn',\n                                'pi-times':msg.severity == 'error','pi-check':msg.severity == 'success'}\"></span>\n                     <div class=\"ui-growl-message\">\n                        <span class=\"ui-growl-title\">{{msg.summary}}</span>\n                        <p [innerHTML]=\"msg.detail||''\"></p>\n                     </div>\n                     <div style=\"clear: both;\"></div>\n                </div>\n            </div>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
         }),
-        __param(3, core_1.Optional())
+        __param(3, core_1.Optional()),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.IterableDiffers, messageservice_1.MessageService, core_1.NgZone])
     ], Growl);
     return Growl;
 }());
@@ -226,3 +247,4 @@ var GrowlModule = /** @class */ (function () {
     return GrowlModule;
 }());
 exports.GrowlModule = GrowlModule;
+//# sourceMappingURL=growl.js.map

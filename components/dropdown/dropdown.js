@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -504,125 +507,166 @@ var Dropdown = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "scrollHeight");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "scrollHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "filter");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "filter", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dropdown.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "panelStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dropdown.prototype, "panelStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "panelStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "panelStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "readonly", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "autoWidth");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "autoWidth", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "required");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "required", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "editable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "editable", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Dropdown.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Dropdown.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "filterPlaceholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "filterPlaceholder", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "dataKey");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "dataKey", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "filterBy");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "filterBy", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "lazy");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "lazy", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "autofocus");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "autofocus", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "resetFilterOnHide");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "resetFilterOnHide", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "dropdownIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "dropdownIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "optionLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "optionLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "autoDisplayFirst");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "autoDisplayFirst", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "group");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "group", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "showClear");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Dropdown.prototype, "showClear", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "emptyFilterMessage");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Dropdown.prototype, "emptyFilterMessage", void 0);
     __decorate([
-        core_1.Output()
-    ], Dropdown.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dropdown.prototype, "onChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Dropdown.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dropdown.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], Dropdown.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dropdown.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Output()
-    ], Dropdown.prototype, "onClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Dropdown.prototype, "onClick", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], Dropdown.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('panel')
-    ], Dropdown.prototype, "panelViewChild");
+        core_1.ViewChild('panel'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "panelViewChild", void 0);
     __decorate([
-        core_1.ViewChild('itemswrapper')
-    ], Dropdown.prototype, "itemsWrapperViewChild");
+        core_1.ViewChild('itemswrapper'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "itemsWrapperViewChild", void 0);
     __decorate([
-        core_1.ViewChild('filter')
-    ], Dropdown.prototype, "filterViewChild");
+        core_1.ViewChild('filter'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "filterViewChild", void 0);
     __decorate([
-        core_1.ViewChild('in')
-    ], Dropdown.prototype, "focusViewChild");
+        core_1.ViewChild('in'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "focusViewChild", void 0);
     __decorate([
-        core_1.ViewChild('editableInput')
-    ], Dropdown.prototype, "editableInputViewChild");
+        core_1.ViewChild('editableInput'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Dropdown.prototype, "editableInputViewChild", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], Dropdown.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], Dropdown.prototype, "templates", void 0);
     __decorate([
-        core_1.Input()
-    ], Dropdown.prototype, "options");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Dropdown.prototype, "options", null);
     Dropdown = __decorate([
         core_1.Component({
             selector: 'p-dropdown',
@@ -644,7 +688,9 @@ var Dropdown = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focused'
             },
             providers: [domhandler_1.DomHandler, objectutils_1.ObjectUtils, exports.DROPDOWN_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.ChangeDetectorRef,
+            objectutils_1.ObjectUtils, core_1.NgZone])
     ], Dropdown);
     return Dropdown;
 }());
@@ -662,3 +708,4 @@ var DropdownModule = /** @class */ (function () {
     return DropdownModule;
 }());
 exports.DropdownModule = DropdownModule;
+//# sourceMappingURL=dropdown.js.map

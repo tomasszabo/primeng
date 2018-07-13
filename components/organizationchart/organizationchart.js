@@ -5,10 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -44,17 +47,21 @@ var OrganizationChartNode = /** @class */ (function () {
         return this.chart.isSelected(this.node);
     };
     __decorate([
-        core_1.Input()
-    ], OrganizationChartNode.prototype, "node");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], OrganizationChartNode.prototype, "node", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChartNode.prototype, "root");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], OrganizationChartNode.prototype, "root", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChartNode.prototype, "first");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], OrganizationChartNode.prototype, "first", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChartNode.prototype, "last");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], OrganizationChartNode.prototype, "last", void 0);
     OrganizationChartNode = __decorate([
         core_1.Component({
             selector: '[pOrganizationChartNode]',
@@ -70,9 +77,10 @@ var OrganizationChartNode = /** @class */ (function () {
                         animations_1.animate(150, animations_1.style({ opacity: 0 }))
                     ])
                 ])
-            ]
+            ],
         }),
-        __param(0, core_1.Inject(core_1.forwardRef(function () { return OrganizationChart; })))
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return OrganizationChart; }))),
+        __metadata("design:paramtypes", [OrganizationChart])
     ], OrganizationChartNode);
     return OrganizationChartNode;
 }());
@@ -162,38 +170,48 @@ var OrganizationChart = /** @class */ (function () {
         return this.findIndexInSelection(node) != -1;
     };
     __decorate([
-        core_1.Input()
-    ], OrganizationChart.prototype, "value");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], OrganizationChart.prototype, "value", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChart.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], OrganizationChart.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChart.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], OrganizationChart.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChart.prototype, "selectionMode");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], OrganizationChart.prototype, "selectionMode", void 0);
     __decorate([
-        core_1.Input()
-    ], OrganizationChart.prototype, "selection");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], OrganizationChart.prototype, "selection", void 0);
     __decorate([
-        core_1.Output()
-    ], OrganizationChart.prototype, "selectionChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], OrganizationChart.prototype, "selectionChange", void 0);
     __decorate([
-        core_1.Output()
-    ], OrganizationChart.prototype, "onNodeSelect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], OrganizationChart.prototype, "onNodeSelect", void 0);
     __decorate([
-        core_1.Output()
-    ], OrganizationChart.prototype, "onNodeUnselect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], OrganizationChart.prototype, "onNodeUnselect", void 0);
     __decorate([
-        core_1.ContentChildren(shared_2.PrimeTemplate)
-    ], OrganizationChart.prototype, "templates");
+        core_1.ContentChildren(shared_2.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], OrganizationChart.prototype, "templates", void 0);
     OrganizationChart = __decorate([
         core_1.Component({
             selector: 'p-organizationChart',
             template: "\n        <div [ngStyle]=\"style\" [class]=\"styleClass\" [ngClass]=\"'ui-organizationchart ui-widget'\">\n            <table class=\"ui-organizationchart-table\" pOrganizationChartNode [node]=\"root\" *ngIf=\"root\"></table>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], OrganizationChart);
     return OrganizationChart;
 }());
@@ -211,3 +229,4 @@ var OrganizationChartModule = /** @class */ (function () {
     return OrganizationChartModule;
 }());
 exports.OrganizationChartModule = OrganizationChartModule;
+//# sourceMappingURL=organizationchart.js.map

@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -129,53 +132,70 @@ var Sidebar = /** @class */ (function () {
         this.unbindMaskClickListener();
     };
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "position");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Sidebar.prototype, "position", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "fullScreen");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "fullScreen", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Sidebar.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "blockScroll");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "blockScroll", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Sidebar.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Sidebar.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Sidebar.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "modal");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "modal", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "dismissible");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "dismissible", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "showCloseIcon");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Sidebar.prototype, "showCloseIcon", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], Sidebar.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Sidebar.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.Output()
-    ], Sidebar.prototype, "onShow");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Sidebar.prototype, "onShow", void 0);
     __decorate([
-        core_1.Output()
-    ], Sidebar.prototype, "onHide");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Sidebar.prototype, "onHide", void 0);
     __decorate([
-        core_1.Output()
-    ], Sidebar.prototype, "visibleChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Sidebar.prototype, "visibleChange", void 0);
     __decorate([
-        core_1.Input()
-    ], Sidebar.prototype, "visible");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Sidebar.prototype, "visible", null);
     Sidebar = __decorate([
         core_1.Component({
             selector: 'p-sidebar',
@@ -193,7 +213,8 @@ var Sidebar = /** @class */ (function () {
                 ])
             ],
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2])
     ], Sidebar);
     return Sidebar;
 }());
@@ -211,3 +232,4 @@ var SidebarModule = /** @class */ (function () {
     return SidebarModule;
 }());
 exports.SidebarModule = SidebarModule;
+//# sourceMappingURL=sidebar.js.map

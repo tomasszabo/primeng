@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -48,17 +51,20 @@ var DeferredLoader = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Output()
-    ], DeferredLoader.prototype, "onLoad");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DeferredLoader.prototype, "onLoad", void 0);
     __decorate([
-        core_1.ContentChild(core_1.TemplateRef)
-    ], DeferredLoader.prototype, "template");
+        core_1.ContentChild(core_1.TemplateRef),
+        __metadata("design:type", core_1.TemplateRef)
+    ], DeferredLoader.prototype, "template", void 0);
     DeferredLoader = __decorate([
         core_1.Directive({
             selector: '[pDefer]',
             host: {},
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.ViewContainerRef])
     ], DeferredLoader);
     return DeferredLoader;
 }());
@@ -76,3 +82,4 @@ var DeferModule = /** @class */ (function () {
     return DeferModule;
 }());
 exports.DeferModule = DeferModule;
+//# sourceMappingURL=defer.js.map

@@ -5,10 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -80,18 +83,21 @@ var ContextMenuSub = /** @class */ (function () {
         return scrollbarWidth;
     };
     __decorate([
-        core_1.Input()
-    ], ContextMenuSub.prototype, "item");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ContextMenuSub.prototype, "item", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenuSub.prototype, "root");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ContextMenuSub.prototype, "root", void 0);
     ContextMenuSub = __decorate([
         core_1.Component({
             selector: 'p-contextMenuSub',
             template: "\n        <ul [ngClass]=\"{'ui-widget-content ui-corner-all ui-submenu-list ui-shadow':!root}\" class=\"ui-menu-list\" (click)=\"listClick($event)\">\n            <ng-template ngFor let-child [ngForOf]=\"(root ? item : item.items)\">\n                <li *ngIf=\"child.separator\" class=\"ui-menu-separator ui-widget-content\" [ngClass]=\"{'ui-helper-hidden': child.visible === false}\">\n                <li *ngIf=\"!child.separator\" #item [ngClass]=\"{'ui-menuitem ui-corner-all':true,'ui-menuitem-active':item==activeItem,'ui-helper-hidden': child.visible === false}\"\n                    (mouseenter)=\"onItemMouseEnter($event,item,child)\" (mouseleave)=\"onItemMouseLeave($event,item)\">\n                    <a *ngIf=\"!child.routerLink\" [href]=\"child.url||'#'\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\" (click)=\"itemClick($event, child)\"\n                        [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <a *ngIf=\"child.routerLink\" [routerLink]=\"child.routerLink\" [queryParams]=\"child.queryParams\" [routerLinkActive]=\"'ui-state-active'\" \n                        [routerLinkActiveOptions]=\"child.routerLinkActiveOptions||{exact:false}\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\"\n                        (click)=\"itemClick($event, child)\" [ngClass]=\"{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':child.disabled}\" \n                        [ngStyle]=\"child.style\" [class]=\"child.styleClass\">\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                    </a>\n                    <p-contextMenuSub class=\"ui-submenu\" [item]=\"child\" *ngIf=\"child.items\"></p-contextMenuSub>\n                </li>\n            </ng-template>\n        </ul>\n    ",
             providers: [domhandler_1.DomHandler]
         }),
-        __param(1, core_1.Inject(core_1.forwardRef(function () { return ContextMenu; })))
+        __param(1, core_1.Inject(core_1.forwardRef(function () { return ContextMenu; }))),
+        __metadata("design:paramtypes", [domhandler_1.DomHandler, ContextMenu])
     ], ContextMenuSub);
     return ContextMenuSub;
 }());
@@ -220,38 +226,48 @@ var ContextMenu = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "model");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], ContextMenu.prototype, "model", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "global");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ContextMenu.prototype, "global", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "target");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ContextMenu.prototype, "target", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ContextMenu.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ContextMenu.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], ContextMenu.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ContextMenu.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], ContextMenu.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], ContextMenu.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], ContextMenu.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], ContextMenu.prototype, "containerViewChild", void 0);
     ContextMenu = __decorate([
         core_1.Component({
             selector: 'p-contextMenu',
             template: "\n        <div #container [ngClass]=\"'ui-contextmenu ui-widget ui-widget-content ui-corner-all ui-shadow'\" \n            [class]=\"styleClass\" [ngStyle]=\"style\">\n            <p-contextMenuSub [item]=\"model\" root=\"root\"></p-contextMenuSub>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.NgZone])
     ], ContextMenu);
     return ContextMenu;
 }());
@@ -269,3 +285,4 @@ var ContextMenuModule = /** @class */ (function () {
     return ContextMenuModule;
 }());
 exports.ContextMenuModule = ContextMenuModule;
+//# sourceMappingURL=contextmenu.js.map

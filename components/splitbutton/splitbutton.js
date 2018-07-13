@@ -5,13 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
 var button_1 = require("../button/button");
 var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
 var SplitButton = /** @class */ (function () {
     function SplitButton(el, domHandler, renderer, router, cd) {
         this.el = el;
@@ -106,56 +110,73 @@ var SplitButton = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "model");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], SplitButton.prototype, "model", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "icon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "icon", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "iconPos");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "iconPos", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "label");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "label", void 0);
     __decorate([
-        core_1.Output()
-    ], SplitButton.prototype, "onClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], SplitButton.prototype, "onClick", void 0);
     __decorate([
-        core_1.Output()
-    ], SplitButton.prototype, "onDropdownClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], SplitButton.prototype, "onDropdownClick", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SplitButton.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "menuStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SplitButton.prototype, "menuStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "menuStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "menuStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SplitButton.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SplitButton.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SplitButton.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], SplitButton.prototype, "dir");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SplitButton.prototype, "dir", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], SplitButton.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SplitButton.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('defaultbtn')
-    ], SplitButton.prototype, "buttonViewChild");
+        core_1.ViewChild('defaultbtn'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SplitButton.prototype, "buttonViewChild", void 0);
     __decorate([
-        core_1.ViewChild('overlay')
-    ], SplitButton.prototype, "overlayViewChild");
+        core_1.ViewChild('overlay'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SplitButton.prototype, "overlayViewChild", void 0);
     SplitButton = __decorate([
         core_1.Component({
             selector: 'p-splitButton',
@@ -173,7 +194,8 @@ var SplitButton = /** @class */ (function () {
                 ])
             ],
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, router_1.Router, core_1.ChangeDetectorRef])
     ], SplitButton);
     return SplitButton;
 }());
@@ -183,11 +205,12 @@ var SplitButtonModule = /** @class */ (function () {
     }
     SplitButtonModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, button_1.ButtonModule, router_1.RouterModule],
-            exports: [SplitButton, button_1.ButtonModule, router_1.RouterModule],
+            imports: [common_1.CommonModule, button_1.ButtonModule, router_2.RouterModule],
+            exports: [SplitButton, button_1.ButtonModule, router_2.RouterModule],
             declarations: [SplitButton]
         })
     ], SplitButtonModule);
     return SplitButtonModule;
 }());
 exports.SplitButtonModule = SplitButtonModule;
+//# sourceMappingURL=splitbutton.js.map

@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
@@ -105,38 +108,49 @@ var Editor = /** @class */ (function () {
         configurable: true
     });
     __decorate([
-        core_1.Output()
-    ], Editor.prototype, "onTextChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Editor.prototype, "onTextChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Editor.prototype, "onSelectionChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Editor.prototype, "onSelectionChange", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Header)
-    ], Editor.prototype, "toolbar");
+        core_1.ContentChild(shared_1.Header),
+        __metadata("design:type", Object)
+    ], Editor.prototype, "toolbar", void 0);
     __decorate([
-        core_1.Input()
-    ], Editor.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Editor.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Editor.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Editor.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Editor.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Editor.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], Editor.prototype, "formats");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], Editor.prototype, "formats", void 0);
     __decorate([
-        core_1.Output()
-    ], Editor.prototype, "onInit");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Editor.prototype, "onInit", void 0);
     __decorate([
-        core_1.Input()
-    ], Editor.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], Editor.prototype, "readonly", null);
     Editor = __decorate([
         core_1.Component({
             selector: 'p-editor',
             template: "\n        <div [ngClass]=\"'ui-widget ui-editor-container ui-corner-all'\" [class]=\"styleClass\">\n            <div class=\"ui-editor-toolbar ui-widget-header ui-corner-top\" *ngIf=\"toolbar\">\n                <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <div class=\"ui-editor-toolbar ui-widget-header ui-corner-top\" *ngIf=\"!toolbar\">\n                <span class=\"ql-formats\">\n                    <select class=\"ql-header\">\n                      <option value=\"1\">Heading</option>\n                      <option value=\"2\">Subheading</option>\n                      <option selected>Normal</option>\n                    </select>\n                    <select class=\"ql-font\">\n                      <option selected>Sans Serif</option>\n                      <option value=\"serif\">Serif</option>\n                      <option value=\"monospace\">Monospace</option>\n                    </select>\n                </span>\n                <span class=\"ql-formats\">\n                    <button class=\"ql-bold\" aria-label=\"Bold\"></button>\n                    <button class=\"ql-italic\" aria-label=\"Italic\"></button>\n                    <button class=\"ql-underline\" aria-label=\"Underline\"></button>\n                </span>\n                <span class=\"ql-formats\">\n                    <select class=\"ql-color\"></select>\n                    <select class=\"ql-background\"></select>\n                </span>\n                <span class=\"ql-formats\">\n                    <button class=\"ql-list\" value=\"ordered\" aria-label=\"Ordered List\"></button>\n                    <button class=\"ql-list\" value=\"bullet\" aria-label=\"Unordered List\"></button>\n                    <select class=\"ql-align\">\n                        <option selected></option>\n                        <option value=\"center\"></option>\n                        <option value=\"right\"></option>\n                        <option value=\"justify\"></option>\n                    </select>\n                </span>\n                <span class=\"ql-formats\">\n                    <button class=\"ql-link\" aria-label=\"Insert Link\"></button>\n                    <button class=\"ql-image\" aria-label=\"Insert Image\"></button>\n                    <button class=\"ql-code-block\" aria-label=\"Insert Code Block\"></button>\n                </span>\n                <span class=\"ql-formats\">\n                    <button class=\"ql-clean\" aria-label=\"Remove Styles\"></button>\n                </span>\n            </div>\n            <div class=\"ui-editor-content\" [ngStyle]=\"style\"></div>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler, exports.EDITOR_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], Editor);
     return Editor;
 }());
@@ -154,3 +168,4 @@ var EditorModule = /** @class */ (function () {
     return EditorModule;
 }());
 exports.EditorModule = EditorModule;
+//# sourceMappingURL=editor.js.map

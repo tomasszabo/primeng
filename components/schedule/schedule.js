@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var Schedule = /** @class */ (function () {
@@ -288,181 +291,239 @@ var Schedule = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "events");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], Schedule.prototype, "events", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "header");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "header", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Schedule.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "rtl");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "rtl", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "weekends");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "weekends", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "hiddenDays");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], Schedule.prototype, "hiddenDays", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "fixedWeekCount");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "fixedWeekCount", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "weekNumbers");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "weekNumbers", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "businessHours");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "businessHours", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "height");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "height", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "contentHeight");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "contentHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "aspectRatio");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Schedule.prototype, "aspectRatio", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventLimit");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "eventLimit", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "defaultDate");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "defaultDate", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "editable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "editable", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "droppable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "droppable", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventStartEditable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "eventStartEditable", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventDurationEditable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "eventDurationEditable", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "defaultView");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Schedule.prototype, "defaultView", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "allDaySlot");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "allDaySlot", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "allDayText");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Schedule.prototype, "allDayText", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "slotDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "slotDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "slotLabelInterval");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "slotLabelInterval", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "snapDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "snapDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "scrollTime");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "scrollTime", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "minTime");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "minTime", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "maxTime");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "maxTime", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "slotEventOverlap");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "slotEventOverlap", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "nowIndicator");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "nowIndicator", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "dragRevertDuration");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Schedule.prototype, "dragRevertDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "dragOpacity");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Schedule.prototype, "dragOpacity", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "dragScroll");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "dragScroll", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventOverlap");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "eventOverlap", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventConstraint");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "eventConstraint", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "locale");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Schedule.prototype, "locale", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "timezone");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "timezone", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "timeFormat");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Schedule.prototype, "timeFormat", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "eventRender");
+        core_1.Input(),
+        __metadata("design:type", Function)
+    ], Schedule.prototype, "eventRender", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "dayRender");
+        core_1.Input(),
+        __metadata("design:type", Function)
+    ], Schedule.prototype, "dayRender", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "navLinks");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Schedule.prototype, "navLinks", void 0);
     __decorate([
-        core_1.Input()
-    ], Schedule.prototype, "options");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Schedule.prototype, "options", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onDayClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onDayClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onDrop");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onDrop", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventMouseover");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventMouseover", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventMouseout");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventMouseout", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventDragStart");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventDragStart", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventDragStop");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventDragStop", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventDrop");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventDrop", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventResizeStart");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventResizeStart", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventResizeStop");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventResizeStop", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onEventResize");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onEventResize", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onViewRender");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onViewRender", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onViewDestroy");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onViewDestroy", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onNavLinkDayClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onNavLinkDayClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Schedule.prototype, "onNavLinkWeekClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Schedule.prototype, "onNavLinkWeekClick", void 0);
     Schedule = __decorate([
         core_1.Component({
             selector: 'p-schedule',
             template: '<div [ngStyle]="style" [class]="styleClass"></div>'
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, core_1.IterableDiffers])
     ], Schedule);
     return Schedule;
 }());
@@ -480,3 +541,4 @@ var ScheduleModule = /** @class */ (function () {
     return ScheduleModule;
 }());
 exports.ScheduleModule = ScheduleModule;
+//# sourceMappingURL=schedule.js.map

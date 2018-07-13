@@ -5,10 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -45,32 +48,40 @@ var SlideMenuSub = /** @class */ (function () {
         this.activeItem = null;
     };
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "item");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SlideMenuSub.prototype, "item", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "root");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SlideMenuSub.prototype, "root", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "backLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SlideMenuSub.prototype, "backLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "menuWidth");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SlideMenuSub.prototype, "menuWidth", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "effectDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SlideMenuSub.prototype, "effectDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "easing");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SlideMenuSub.prototype, "easing", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenuSub.prototype, "index");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SlideMenuSub.prototype, "index", void 0);
     SlideMenuSub = __decorate([
         core_1.Component({
             selector: 'p-slideMenuSub',
             template: "\n        <ul [ngClass]=\"{'ui-slidemenu-rootlist':root, 'ui-submenu-list':!root, 'ui-active-submenu': (-slideMenu.left == (index * menuWidth))}\"\n            [style.width.px]=\"menuWidth\" [style.left.px]=\"root ? slideMenu.left : slideMenu.menuWidth\"\n            [style.transitionProperty]=\"root ? 'left' : 'none'\" [style.transitionDuration]=\"effectDuration + 'ms'\" [style.transitionTimingFunction]=\"easing\">\n            <ng-template ngFor let-child [ngForOf]=\"(root ? item : item.items)\">\n                <li *ngIf=\"child.separator\" class=\"ui-menu-separator ui-widget-content\">\n                <li *ngIf=\"!child.separator\" #listitem [ngClass]=\"{'ui-menuitem ui-widget ui-corner-all':true,'ui-menuitem-active':listitem==activeItem}\"\n                    [class]=\"child.styleClass\" [ngStyle]=\"child.style\">\n                    <a *ngIf=\"!child.routerLink\" [href]=\"child.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\"\n                        [ngClass]=\"{'ui-state-disabled':child.disabled}\" \n                        (click)=\"itemClick($event, child, listitem)\">\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                    </a>\n                    <a *ngIf=\"child.routerLink\" [routerLink]=\"child.routerLink\" [queryParams]=\"child.queryParams\" [routerLinkActive]=\"'ui-state-active'\" \n                        [routerLinkActiveOptions]=\"child.routerLinkActiveOptions||{exact:false}\" [href]=\"child.url||'#'\" class=\"ui-menuitem-link ui-corner-all\" \n                        [attr.target]=\"child.target\" [attr.title]=\"child.title\" [attr.id]=\"child.id\"\n                        [ngClass]=\"{'ui-state-disabled':child.disabled}\" \n                        (click)=\"itemClick($event, child, listitem)\">\n                        <span class=\"ui-menuitem-icon\" *ngIf=\"child.icon\" [ngClass]=\"child.icon\"></span>\n                        <span class=\"ui-menuitem-text\">{{child.label}}</span>\n                        <span class=\"ui-submenu-icon pi pi-fw pi-caret-right\" *ngIf=\"child.items\"></span>\n                    </a>\n                    <p-slideMenuSub class=\"ui-submenu\" [item]=\"child\" [index]=\"index + 1\" [menuWidth]=\"menuWidth\" *ngIf=\"child.items\"></p-slideMenuSub>\n                </li>\n            </ng-template>\n        </ul>\n    "
         }),
-        __param(0, core_1.Inject(core_1.forwardRef(function () { return SlideMenu; })))
+        __param(0, core_1.Inject(core_1.forwardRef(function () { return SlideMenu; }))),
+        __metadata("design:paramtypes", [SlideMenu])
     ], SlideMenuSub);
     return SlideMenuSub;
 }());
@@ -149,56 +160,72 @@ var SlideMenu = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "model");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], SlideMenu.prototype, "model", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "popup");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SlideMenu.prototype, "popup", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SlideMenu.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SlideMenu.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "menuWidth");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SlideMenu.prototype, "menuWidth", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "viewportHeight");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SlideMenu.prototype, "viewportHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "effectDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SlideMenu.prototype, "effectDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "easing");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SlideMenu.prototype, "easing", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "backLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], SlideMenu.prototype, "backLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SlideMenu.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "autoZIndex");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], SlideMenu.prototype, "autoZIndex", void 0);
     __decorate([
-        core_1.Input()
-    ], SlideMenu.prototype, "baseZIndex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], SlideMenu.prototype, "baseZIndex", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], SlideMenu.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SlideMenu.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('backward')
-    ], SlideMenu.prototype, "backwardViewChild");
+        core_1.ViewChild('backward'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SlideMenu.prototype, "backwardViewChild", void 0);
     __decorate([
-        core_1.ViewChild('slideMenuContent')
-    ], SlideMenu.prototype, "slideMenuContentViewChild");
+        core_1.ViewChild('slideMenuContent'),
+        __metadata("design:type", core_1.ElementRef)
+    ], SlideMenu.prototype, "slideMenuContentViewChild", void 0);
     SlideMenu = __decorate([
         core_1.Component({
             selector: 'p-slideMenu',
             template: "\n        <div #container [ngClass]=\"{'ui-slidemenu ui-widget ui-widget-content ui-corner-all':true, 'ui-slidemenu-dynamic ui-shadow':popup}\" \n            [class]=\"styleClass\" [ngStyle]=\"style\" (click)=\"onClick($event)\">\n            <div class=\"ui-slidemenu-wrapper\" [style.height.px]=\"viewportHeight\">\n                <div #slideMenuContent class=\"ui-slidemenu-content\">\n                    <p-slideMenuSub [item]=\"model\" root=\"root\" [index]=\"0\" [menuWidth]=\"menuWidth\" [effectDuration]=\"effectDuration\" [easing]=\"easing\"></p-slideMenuSub>\n                </div>\n                <div #backward class=\"ui-slidemenu-backward ui-widget-header ui-corner-all\" [style.display]=\"left ? 'block' : 'none'\" (click)=\"goBack()\">\n                    <span class=\"ui-slidemenu-backward-icon pi pi-fw pi-caret-left\"></span><span>{{backLabel}}</span>\n                </div>\n            </div>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2])
     ], SlideMenu);
     return SlideMenu;
 }());
@@ -216,3 +243,4 @@ var SlideMenuModule = /** @class */ (function () {
     return SlideMenuModule;
 }());
 exports.SlideMenuModule = SlideMenuModule;
+//# sourceMappingURL=slidemenu.js.map

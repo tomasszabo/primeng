@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -336,110 +339,146 @@ var MultiSelect = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "scrollHeight");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "scrollHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "defaultLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "defaultLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], MultiSelect.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "panelStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], MultiSelect.prototype, "panelStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "panelStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "panelStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "filter");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "filter", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "filterPlaceHolder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "filterPlaceHolder", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "overlayVisible");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "overlayVisible", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], MultiSelect.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], MultiSelect.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "dataKey");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "dataKey", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "displaySelectedLabel");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "displaySelectedLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "maxSelectedLabels");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], MultiSelect.prototype, "maxSelectedLabels", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "selectionLimit");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], MultiSelect.prototype, "selectionLimit", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "selectedItemsLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "selectedItemsLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "showToggleAll");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "showToggleAll", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "resetFilterOnHide");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "resetFilterOnHide", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "dropdownIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "dropdownIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "optionLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MultiSelect.prototype, "optionLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "showHeader");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], MultiSelect.prototype, "showHeader", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], MultiSelect.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], MultiSelect.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('panel')
-    ], MultiSelect.prototype, "panelViewChild");
+        core_1.ViewChild('panel'),
+        __metadata("design:type", core_1.ElementRef)
+    ], MultiSelect.prototype, "panelViewChild", void 0);
     __decorate([
-        core_1.ViewChild('filterInput')
-    ], MultiSelect.prototype, "filterInputChild");
+        core_1.ViewChild('filterInput'),
+        __metadata("design:type", core_1.ElementRef)
+    ], MultiSelect.prototype, "filterInputChild", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Footer)
-    ], MultiSelect.prototype, "footerFacet");
+        core_1.ContentChild(shared_1.Footer),
+        __metadata("design:type", Object)
+    ], MultiSelect.prototype, "footerFacet", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], MultiSelect.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], MultiSelect.prototype, "templates", void 0);
     __decorate([
-        core_1.Output()
-    ], MultiSelect.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MultiSelect.prototype, "onChange", void 0);
     __decorate([
-        core_1.Output()
-    ], MultiSelect.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MultiSelect.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], MultiSelect.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MultiSelect.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Output()
-    ], MultiSelect.prototype, "onPanelShow");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MultiSelect.prototype, "onPanelShow", void 0);
     __decorate([
-        core_1.Output()
-    ], MultiSelect.prototype, "onPanelHide");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MultiSelect.prototype, "onPanelHide", void 0);
     __decorate([
-        core_1.Input()
-    ], MultiSelect.prototype, "options");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], MultiSelect.prototype, "options", null);
     MultiSelect = __decorate([
         core_1.Component({
             selector: 'p-multiSelect',
@@ -449,7 +488,8 @@ var MultiSelect = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focus'
             },
             providers: [domhandler_1.DomHandler, objectutils_1.ObjectUtils, exports.MULTISELECT_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, objectutils_1.ObjectUtils, core_1.ChangeDetectorRef])
     ], MultiSelect);
     return MultiSelect;
 }());
@@ -467,3 +507,4 @@ var MultiSelectModule = /** @class */ (function () {
     return MultiSelectModule;
 }());
 exports.MultiSelectModule = MultiSelectModule;
+//# sourceMappingURL=multiselect.js.map

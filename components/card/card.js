@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
@@ -17,28 +20,35 @@ var Card = /** @class */ (function () {
         return this.el.nativeElement.children[0];
     };
     __decorate([
-        core_1.Input()
-    ], Card.prototype, "title");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Card.prototype, "title", void 0);
     __decorate([
-        core_1.Input()
-    ], Card.prototype, "subtitle");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Card.prototype, "subtitle", void 0);
     __decorate([
-        core_1.Input()
-    ], Card.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Card.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Card.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Card.prototype, "styleClass", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Header)
-    ], Card.prototype, "headerFacet");
+        core_1.ContentChild(shared_1.Header),
+        __metadata("design:type", Object)
+    ], Card.prototype, "headerFacet", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Footer)
-    ], Card.prototype, "footerFacet");
+        core_1.ContentChild(shared_1.Footer),
+        __metadata("design:type", Object)
+    ], Card.prototype, "footerFacet", void 0);
     Card = __decorate([
         core_1.Component({
             selector: 'p-card',
             template: "\n        <div [ngClass]=\"'ui-card ui-widget ui-widget-content ui-corner-all'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-card-header\" *ngIf=\"headerFacet\">\n               <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <div class=\"ui-card-body\">\n                <div class=\"ui-card-title\" *ngIf=\"title\">{{title}}</div>\n                <div class=\"ui-card-subtitle\" *ngIf=\"subtitle\">{{subtitle}}</div>\n                <div class=\"ui-card-content\">\n                    <ng-content></ng-content>\n                </div>\n                <div class=\"ui-card-footer\" *ngIf=\"footerFacet\">\n                    <ng-content select=\"p-footer\"></ng-content>\n                </div>\n            </div>\n        </div>\n    "
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
     ], Card);
     return Card;
 }());
@@ -56,3 +66,4 @@ var CardModule = /** @class */ (function () {
     return CardModule;
 }());
 exports.CardModule = CardModule;
+//# sourceMappingURL=card.js.map

@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var domhandler_1 = require("../dom/domhandler");
 var shared_1 = require("../common/shared");
@@ -229,65 +232,85 @@ var Carousel = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "numVisible");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Carousel.prototype, "numVisible", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "firstVisible");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Carousel.prototype, "firstVisible", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "headerText");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Carousel.prototype, "headerText", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "circular");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Carousel.prototype, "circular", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "breakpoint");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Carousel.prototype, "breakpoint", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "responsive");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Carousel.prototype, "responsive", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "autoplayInterval");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Carousel.prototype, "autoplayInterval", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "effectDuration");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Carousel.prototype, "effectDuration", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "easing");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Carousel.prototype, "easing", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "pageLinks");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Carousel.prototype, "pageLinks", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Carousel.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Carousel.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Output()
-    ], Carousel.prototype, "onPage");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Carousel.prototype, "onPage", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], Carousel.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], Carousel.prototype, "templates", void 0);
     __decorate([
-        core_1.ViewChild('container')
-    ], Carousel.prototype, "containerViewChild");
+        core_1.ViewChild('container'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Carousel.prototype, "containerViewChild", void 0);
     __decorate([
-        core_1.ViewChild('viewport')
-    ], Carousel.prototype, "viewportViewChild");
+        core_1.ViewChild('viewport'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Carousel.prototype, "viewportViewChild", void 0);
     __decorate([
-        core_1.ViewChild('items')
-    ], Carousel.prototype, "itemsViewChild");
+        core_1.ViewChild('items'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Carousel.prototype, "itemsViewChild", void 0);
     __decorate([
-        core_1.Input()
-    ], Carousel.prototype, "value");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], Carousel.prototype, "value", null);
     Carousel = __decorate([
         core_1.Component({
             selector: 'p-carousel',
             template: "\n        <div #container [ngClass]=\"{'ui-carousel ui-widget ui-widget-content ui-corner-all':true}\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-carousel-header ui-widget-header ui-corner-all\">\n                <span class=\"ui-carousel-header-title\">{{headerText}}</span>\n                <span class=\"ui-carousel-button ui-carousel-next-button pi pi-arrow-circle-right\" (click)=\"onNextNav()\" \n                        [ngClass]=\"{'ui-state-disabled':(page === (totalPages-1)) && !circular}\" *ngIf=\"value&&value.length\"></span>\n                <span class=\"ui-carousel-button ui-carousel-prev-button pi pi-arrow-circle-left\" (click)=\"onPrevNav()\" \n                        [ngClass]=\"{'ui-state-disabled':(page === 0 && !circular)}\" *ngIf=\"value&&value.length\"></span>\n                <div *ngIf=\"displayPageLinks\" class=\"ui-carousel-page-links\">\n                    <a href=\"#\" (click)=\"setPageWithLink($event,i)\" class=\"ui-carousel-page-link pi\" *ngFor=\"let links of anchorPageLinks;let i=index\" [ngClass]=\"{'pi-circle-on': page===i, 'pi-circle-off': page !== i}\"></a>\n                </div>\n                <select *ngIf=\"displayPageDropdown\" class=\"ui-carousel-dropdown ui-widget ui-state-default ui-corner-left\" [value]=\"page\" (change)=\"onDropdownChange($event.target.value)\">\n                    <option *ngFor=\"let option of selectDropdownOptions\" [value]=\"option\" [selected]=\"value == option\">{{option+1}}</option>\n                </select>\n                <select *ngIf=\"responsive&&value&&value.length\" class=\"ui-carousel-mobiledropdown ui-widget ui-state-default ui-corner-left\" [value]=\"page\" (change)=\"onDropdownChange($event.target.value)\"\n                    [style.display]=\"shrinked ? 'block' : 'none'\">\n                    <option *ngFor=\"let option of mobileDropdownOptions\" [value]=\"option\" [selected]=\"value == option\">{{option+1}}</option>\n                </select>\n            </div>\n            <div #viewport class=\"ui-carousel-viewport\">\n                <ul #items class=\"ui-carousel-items\" [style.left.px]=\"left\" [style.transitionProperty]=\"'left'\" \n                            [style.transitionDuration]=\"effectDuration\" [style.transitionTimingFunction]=\"easing\">\n                    <li *ngFor=\"let item of value\" class=\"ui-carousel-item ui-widget-content ui-corner-all\">\n                        <ng-container *ngTemplateOutlet=\"itemTemplate; context: {$implicit: item}\"></ng-container>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, core_1.ChangeDetectorRef])
     ], Carousel);
     return Carousel;
 }());
@@ -305,3 +328,4 @@ var CarouselModule = /** @class */ (function () {
     return CarouselModule;
 }());
 exports.CarouselModule = CarouselModule;
+//# sourceMappingURL=carousel.js.map

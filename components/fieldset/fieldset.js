@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var animations_1 = require("@angular/animations");
 var common_1 = require("@angular/common");
@@ -48,29 +51,37 @@ var Fieldset = /** @class */ (function () {
         this.animating = false;
     };
     __decorate([
-        core_1.Input()
-    ], Fieldset.prototype, "legend");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Fieldset.prototype, "legend", void 0);
     __decorate([
-        core_1.Input()
-    ], Fieldset.prototype, "toggleable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Fieldset.prototype, "toggleable", void 0);
     __decorate([
-        core_1.Input()
-    ], Fieldset.prototype, "collapsed");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Fieldset.prototype, "collapsed", void 0);
     __decorate([
-        core_1.Output()
-    ], Fieldset.prototype, "collapsedChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Fieldset.prototype, "collapsedChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Fieldset.prototype, "onBeforeToggle");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Fieldset.prototype, "onBeforeToggle", void 0);
     __decorate([
-        core_1.Output()
-    ], Fieldset.prototype, "onAfterToggle");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Fieldset.prototype, "onAfterToggle", void 0);
     __decorate([
-        core_1.Input()
-    ], Fieldset.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Fieldset.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Fieldset.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Fieldset.prototype, "styleClass", void 0);
     Fieldset = __decorate([
         core_1.Component({
             selector: 'p-fieldset',
@@ -87,7 +98,8 @@ var Fieldset = /** @class */ (function () {
                     animations_1.transition('hidden => visible', animations_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
                 ])
             ]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
     ], Fieldset);
     return Fieldset;
 }());
@@ -105,3 +117,4 @@ var FieldsetModule = /** @class */ (function () {
     return FieldsetModule;
 }());
 exports.FieldsetModule = FieldsetModule;
+//# sourceMappingURL=fieldset.js.map

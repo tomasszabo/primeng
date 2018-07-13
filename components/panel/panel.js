@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
@@ -53,41 +56,53 @@ var Panel = /** @class */ (function () {
         this.onAfterToggle.emit({ originalEvent: event, collapsed: this.collapsed });
     };
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "toggleable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Panel.prototype, "toggleable", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "header");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Panel.prototype, "header", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "collapsed");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Panel.prototype, "collapsed", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Panel.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Panel.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "expandIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Panel.prototype, "expandIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "collapseIcon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Panel.prototype, "collapseIcon", void 0);
     __decorate([
-        core_1.Input()
-    ], Panel.prototype, "showHeader");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Panel.prototype, "showHeader", void 0);
     __decorate([
-        core_1.Output()
-    ], Panel.prototype, "collapsedChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Panel.prototype, "collapsedChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Panel.prototype, "onBeforeToggle");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Panel.prototype, "onBeforeToggle", void 0);
     __decorate([
-        core_1.Output()
-    ], Panel.prototype, "onAfterToggle");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Panel.prototype, "onAfterToggle", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Footer)
-    ], Panel.prototype, "footerFacet");
+        core_1.ContentChild(shared_1.Footer),
+        __metadata("design:type", Object)
+    ], Panel.prototype, "footerFacet", void 0);
     Panel = __decorate([
         core_1.Component({
             selector: 'p-panel',
@@ -105,7 +120,8 @@ var Panel = /** @class */ (function () {
                     animations_1.transition('visible <=> hidden', animations_1.animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
                 ])
             ]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
     ], Panel);
     return Panel;
 }());
@@ -123,3 +139,4 @@ var PanelModule = /** @class */ (function () {
     return PanelModule;
 }());
 exports.PanelModule = PanelModule;
+//# sourceMappingURL=panel.js.map

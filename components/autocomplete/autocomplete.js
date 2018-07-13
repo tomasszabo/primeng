@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var inputtext_1 = require("../inputtext/inputtext");
@@ -452,128 +455,170 @@ var AutoComplete = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "minLength");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], AutoComplete.prototype, "minLength", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "delay");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], AutoComplete.prototype, "delay", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], AutoComplete.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "inputStyle");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], AutoComplete.prototype, "inputStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "inputStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "inputStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "readonly", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "maxlength");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], AutoComplete.prototype, "maxlength", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "required");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "required", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "size");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], AutoComplete.prototype, "size", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "appendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], AutoComplete.prototype, "appendTo", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "autoHighlight");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "autoHighlight", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "forceSelection");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "forceSelection", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "type");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "type", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "completeMethod");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "completeMethod", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onSelect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onSelect", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onUnselect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onUnselect", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onDropdownClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onDropdownClick", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onClear");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onClear", void 0);
     __decorate([
-        core_1.Output()
-    ], AutoComplete.prototype, "onKeyUp");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], AutoComplete.prototype, "onKeyUp", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "field");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "field", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "scrollHeight");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "scrollHeight", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "dropdown");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "dropdown", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "dropdownMode");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "dropdownMode", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "multiple");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "multiple", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], AutoComplete.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "dataKey");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "dataKey", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "emptyMessage");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], AutoComplete.prototype, "emptyMessage", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "immutable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], AutoComplete.prototype, "immutable", void 0);
     __decorate([
-        core_1.ViewChild('in')
-    ], AutoComplete.prototype, "inputEL");
+        core_1.ViewChild('in'),
+        __metadata("design:type", core_1.ElementRef)
+    ], AutoComplete.prototype, "inputEL", void 0);
     __decorate([
-        core_1.ViewChild('multiIn')
-    ], AutoComplete.prototype, "multiInputEL");
+        core_1.ViewChild('multiIn'),
+        __metadata("design:type", core_1.ElementRef)
+    ], AutoComplete.prototype, "multiInputEL", void 0);
     __decorate([
-        core_1.ViewChild('panel')
-    ], AutoComplete.prototype, "panelEL");
+        core_1.ViewChild('panel'),
+        __metadata("design:type", core_1.ElementRef)
+    ], AutoComplete.prototype, "panelEL", void 0);
     __decorate([
-        core_1.ViewChild('multiContainer')
-    ], AutoComplete.prototype, "multiContainerEL");
+        core_1.ViewChild('multiContainer'),
+        __metadata("design:type", core_1.ElementRef)
+    ], AutoComplete.prototype, "multiContainerEL", void 0);
     __decorate([
-        core_1.ViewChild('ddBtn')
-    ], AutoComplete.prototype, "dropdownButton");
+        core_1.ViewChild('ddBtn'),
+        __metadata("design:type", core_1.ElementRef)
+    ], AutoComplete.prototype, "dropdownButton", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], AutoComplete.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], AutoComplete.prototype, "templates", void 0);
     __decorate([
-        core_1.Input()
-    ], AutoComplete.prototype, "suggestions");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], AutoComplete.prototype, "suggestions", null);
     AutoComplete = __decorate([
         core_1.Component({
             selector: 'p-autoComplete',
@@ -583,7 +628,8 @@ var AutoComplete = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focus && !disabled'
             },
             providers: [domhandler_1.DomHandler, objectutils_1.ObjectUtils, exports.AUTOCOMPLETE_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, core_1.Renderer2, objectutils_1.ObjectUtils, core_1.ChangeDetectorRef, core_1.IterableDiffers])
     ], AutoComplete);
     return AutoComplete;
 }());
@@ -601,3 +647,4 @@ var AutoCompleteModule = /** @class */ (function () {
     return AutoCompleteModule;
 }());
 exports.AutoCompleteModule = AutoCompleteModule;
+//# sourceMappingURL=autocomplete.js.map

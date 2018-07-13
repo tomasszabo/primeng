@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
@@ -125,70 +128,92 @@ var DataGrid = /** @class */ (function () {
         return this.el.nativeElement.children[0];
     };
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "paginator");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataGrid.prototype, "paginator", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "rows");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], DataGrid.prototype, "rows", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "totalRecords");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], DataGrid.prototype, "totalRecords", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "pageLinks");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], DataGrid.prototype, "pageLinks", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "rowsPerPageOptions");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], DataGrid.prototype, "rowsPerPageOptions", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "lazy");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataGrid.prototype, "lazy", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "emptyMessage");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], DataGrid.prototype, "emptyMessage", void 0);
     __decorate([
-        core_1.Output()
-    ], DataGrid.prototype, "onLazyLoad");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DataGrid.prototype, "onLazyLoad", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DataGrid.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], DataGrid.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "paginatorPosition");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], DataGrid.prototype, "paginatorPosition", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "alwaysShowPaginator");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataGrid.prototype, "alwaysShowPaginator", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "trackBy");
+        core_1.Input(),
+        __metadata("design:type", Function)
+    ], DataGrid.prototype, "trackBy", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "immutable");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataGrid.prototype, "immutable", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "paginatorDropdownAppendTo");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DataGrid.prototype, "paginatorDropdownAppendTo", void 0);
     __decorate([
-        core_1.Output()
-    ], DataGrid.prototype, "onPage");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DataGrid.prototype, "onPage", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Header)
-    ], DataGrid.prototype, "header");
+        core_1.ContentChild(shared_1.Header),
+        __metadata("design:type", Object)
+    ], DataGrid.prototype, "header", void 0);
     __decorate([
-        core_1.ContentChild(shared_1.Footer)
-    ], DataGrid.prototype, "footer");
+        core_1.ContentChild(shared_1.Footer),
+        __metadata("design:type", Object)
+    ], DataGrid.prototype, "footer", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], DataGrid.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], DataGrid.prototype, "templates", void 0);
     __decorate([
-        core_1.Input()
-    ], DataGrid.prototype, "value");
+        core_1.Input(),
+        __metadata("design:type", Array),
+        __metadata("design:paramtypes", [Array])
+    ], DataGrid.prototype, "value", null);
     DataGrid = __decorate([
         core_1.Component({
             selector: 'p-dataGrid',
             template: "\n        <div [ngClass]=\"'ui-datagrid ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\">\n            <div class=\"ui-datagrid-header ui-widget-header ui-corner-top\" *ngIf=\"header\">\n                <ng-content select=\"p-header\"></ng-content>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n                (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-top\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'top' || paginatorPosition =='both')\"\n                [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datagrid-content ui-widget-content\">\n                <div class=\"ui-g\">\n                    <ng-template ngFor [ngForOf]=\"dataToRender\" [ngForTemplate]=\"itemTemplate\" [ngForTrackBy]=\"trackBy\"></ng-template>\n                    <div *ngIf=\"isEmpty()\" class=\"ui-widget-content ui-g-12\">{{emptyMessage}}</div>\n                </div>\n            </div>\n            <p-paginator [rows]=\"rows\" [first]=\"first\" [totalRecords]=\"totalRecords\" [pageLinkSize]=\"pageLinks\" [alwaysShow]=\"alwaysShowPaginator\"\n                (onPageChange)=\"paginate($event)\" styleClass=\"ui-paginator-bottom\" [rowsPerPageOptions]=\"rowsPerPageOptions\" *ngIf=\"paginator && (paginatorPosition === 'bottom' || paginatorPosition =='both')\"\n                [dropdownAppendTo]=\"paginatorDropdownAppendTo\"></p-paginator>\n            <div class=\"ui-datagrid-footer ui-widget-footer ui-corner-bottom\" *ngIf=\"footer\">\n                <ng-content select=\"p-footer\"></ng-content>\n            </div>\n        </div>\n    "
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, core_1.IterableDiffers])
     ], DataGrid);
     return DataGrid;
 }());
@@ -206,3 +231,4 @@ var DataGridModule = /** @class */ (function () {
     return DataGridModule;
 }());
 exports.DataGridModule = DataGridModule;
+//# sourceMappingURL=datagrid.js.map

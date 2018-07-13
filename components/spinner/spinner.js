@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var inputtext_1 = require("../inputtext/inputtext");
@@ -231,71 +234,93 @@ var Spinner = /** @class */ (function () {
         this.filled = (this.value !== undefined && this.value != null);
     };
     __decorate([
-        core_1.Output()
-    ], Spinner.prototype, "onChange");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Spinner.prototype, "onChange", void 0);
     __decorate([
-        core_1.Output()
-    ], Spinner.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Spinner.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], Spinner.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Spinner.prototype, "onBlur", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "step");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "step", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "min");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "min", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "max");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "max", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "maxlength");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "maxlength", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "size");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "size", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "placeholder");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "inputId");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "inputId", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Spinner.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "readonly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Spinner.prototype, "readonly", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "decimalSeparator");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "decimalSeparator", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "thousandSeparator");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "thousandSeparator", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "tabindex");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], Spinner.prototype, "tabindex", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "formatInput");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Spinner.prototype, "formatInput", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "type");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "type", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "required");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Spinner.prototype, "required", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "inputStyle");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "inputStyle", void 0);
     __decorate([
-        core_1.Input()
-    ], Spinner.prototype, "inputStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Spinner.prototype, "inputStyleClass", void 0);
     __decorate([
-        core_1.ViewChild('inputfield')
-    ], Spinner.prototype, "inputfieldViewChild");
+        core_1.ViewChild('inputfield'),
+        __metadata("design:type", core_1.ElementRef)
+    ], Spinner.prototype, "inputfieldViewChild", void 0);
     Spinner = __decorate([
         core_1.Component({
             selector: 'p-spinner',
@@ -305,7 +330,8 @@ var Spinner = /** @class */ (function () {
                 '[class.ui-inputwrapper-focus]': 'focus'
             },
             providers: [domhandler_1.DomHandler, exports.SPINNER_VALUE_ACCESSOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], Spinner);
     return Spinner;
 }());
@@ -323,3 +349,4 @@ var SpinnerModule = /** @class */ (function () {
     return SpinnerModule;
 }());
 exports.SpinnerModule = SpinnerModule;
+//# sourceMappingURL=spinner.js.map

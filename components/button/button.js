@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var domhandler_1 = require("../dom/domhandler");
 var common_1 = require("@angular/common");
@@ -99,22 +102,29 @@ var ButtonDirective = /** @class */ (function () {
         this.initialized = false;
     };
     __decorate([
-        core_1.Input()
-    ], ButtonDirective.prototype, "iconPos");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ButtonDirective.prototype, "iconPos", void 0);
     __decorate([
-        core_1.Input()
-    ], ButtonDirective.prototype, "cornerStyleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ButtonDirective.prototype, "cornerStyleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], ButtonDirective.prototype, "label");
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], ButtonDirective.prototype, "label", null);
     __decorate([
-        core_1.Input()
-    ], ButtonDirective.prototype, "icon");
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], ButtonDirective.prototype, "icon", null);
     ButtonDirective = __decorate([
         core_1.Directive({
             selector: '[pButton]',
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], ButtonDirective);
     return ButtonDirective;
 }());
@@ -128,35 +138,45 @@ var Button = /** @class */ (function () {
         this.onBlur = new core_1.EventEmitter();
     }
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "type");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Button.prototype, "type", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "iconPos");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Button.prototype, "iconPos", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "icon");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Button.prototype, "icon", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "label");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Button.prototype, "label", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], Button.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], Button.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], Button.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], Button.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Output()
-    ], Button.prototype, "onClick");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Button.prototype, "onClick", void 0);
     __decorate([
-        core_1.Output()
-    ], Button.prototype, "onFocus");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Button.prototype, "onFocus", void 0);
     __decorate([
-        core_1.Output()
-    ], Button.prototype, "onBlur");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], Button.prototype, "onBlur", void 0);
     Button = __decorate([
         core_1.Component({
             selector: 'p-button',
@@ -179,3 +199,4 @@ var ButtonModule = /** @class */ (function () {
     return ButtonModule;
 }());
 exports.ButtonModule = ButtonModule;
+//# sourceMappingURL=button.js.map

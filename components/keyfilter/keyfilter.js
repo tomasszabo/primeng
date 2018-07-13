@@ -5,7 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var domhandler_1 = require("../dom/domhandler");
@@ -115,19 +118,26 @@ var KeyFilter = /** @class */ (function () {
         63275: 35 // end
     };
     __decorate([
-        core_1.Input()
-    ], KeyFilter.prototype, "pValidateOnly");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], KeyFilter.prototype, "pValidateOnly", void 0);
     __decorate([
-        core_1.Input('pKeyFilter')
-    ], KeyFilter.prototype, "pattern");
+        core_1.Input('pKeyFilter'),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], KeyFilter.prototype, "pattern", null);
     __decorate([
-        core_1.HostListener('keypress', ['$event'])
-    ], KeyFilter.prototype, "onKeyPress");
+        core_1.HostListener('keypress', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [KeyboardEvent]),
+        __metadata("design:returntype", void 0)
+    ], KeyFilter.prototype, "onKeyPress", null);
     KeyFilter = KeyFilter_1 = __decorate([
         core_1.Directive({
             selector: '[pKeyFilter]',
             providers: [domhandler_1.DomHandler, exports.KEYFILTER_VALIDATOR]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler])
     ], KeyFilter);
     return KeyFilter;
     var KeyFilter_1;
@@ -146,3 +156,4 @@ var KeyFilterModule = /** @class */ (function () {
     return KeyFilterModule;
 }());
 exports.KeyFilterModule = KeyFilterModule;
+//# sourceMappingURL=keyfilter.js.map

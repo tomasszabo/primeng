@@ -5,9 +5,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-exports.__esModule = true;
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var platform_browser_1 = require("@angular/platform-browser");
 var button_1 = require("../button/button");
 var messages_1 = require("../messages/messages");
 var progressbar_1 = require("../progressbar/progressbar");
@@ -289,122 +293,160 @@ var FileUpload = /** @class */ (function () {
         }
     };
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "name");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "name", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "url");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "url", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "method");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "method", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "multiple");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "multiple", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "accept");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "accept", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "disabled");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "disabled", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "auto");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "auto", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "withCredentials");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "withCredentials", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "maxFileSize");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], FileUpload.prototype, "maxFileSize", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "invalidFileSizeMessageSummary");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "invalidFileSizeMessageSummary", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "invalidFileSizeMessageDetail");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "invalidFileSizeMessageDetail", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "invalidFileTypeMessageSummary");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "invalidFileTypeMessageSummary", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "invalidFileTypeMessageDetail");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "invalidFileTypeMessageDetail", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "style");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "style", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "styleClass");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "styleClass", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "previewWidth");
+        core_1.Input(),
+        __metadata("design:type", Number)
+    ], FileUpload.prototype, "previewWidth", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "chooseLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "chooseLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "uploadLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "uploadLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "cancelLabel");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "cancelLabel", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "showUploadButton");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "showUploadButton", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "showCancelButton");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "showCancelButton", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "mode");
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], FileUpload.prototype, "mode", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "customUpload");
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], FileUpload.prototype, "customUpload", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onBeforeUpload");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onBeforeUpload", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onBeforeSend");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onBeforeSend", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onUpload");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onUpload", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onError");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onError", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onClear");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onClear", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onRemove");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onRemove", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onSelect");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onSelect", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "onProgress");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "onProgress", void 0);
     __decorate([
-        core_1.Output()
-    ], FileUpload.prototype, "uploadHandler");
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], FileUpload.prototype, "uploadHandler", void 0);
     __decorate([
-        core_1.ContentChildren(shared_1.PrimeTemplate)
-    ], FileUpload.prototype, "templates");
+        core_1.ContentChildren(shared_1.PrimeTemplate),
+        __metadata("design:type", core_1.QueryList)
+    ], FileUpload.prototype, "templates", void 0);
     __decorate([
-        core_1.ViewChild('advancedfileinput')
-    ], FileUpload.prototype, "advancedFileInput");
+        core_1.ViewChild('advancedfileinput'),
+        __metadata("design:type", core_1.ElementRef)
+    ], FileUpload.prototype, "advancedFileInput", void 0);
     __decorate([
-        core_1.ViewChild('basicfileinput')
-    ], FileUpload.prototype, "basicFileInput");
+        core_1.ViewChild('basicfileinput'),
+        __metadata("design:type", core_1.ElementRef)
+    ], FileUpload.prototype, "basicFileInput", void 0);
     __decorate([
-        core_1.ViewChild('content')
-    ], FileUpload.prototype, "content");
+        core_1.ViewChild('content'),
+        __metadata("design:type", core_1.ElementRef)
+    ], FileUpload.prototype, "content", void 0);
     __decorate([
-        core_1.Input()
-    ], FileUpload.prototype, "files");
+        core_1.Input(),
+        __metadata("design:type", Array)
+    ], FileUpload.prototype, "files", void 0);
     FileUpload = __decorate([
         core_1.Component({
             selector: 'p-fileUpload',
             template: "\n        <div [ngClass]=\"'ui-fileupload ui-widget'\" [ngStyle]=\"style\" [class]=\"styleClass\" *ngIf=\"mode === 'advanced'\">\n            <div class=\"ui-fileupload-buttonbar ui-widget-header ui-corner-top\">\n                <span class=\"ui-fileupload-choose\" [label]=\"chooseLabel\" icon=\"pi pi-plus\" pButton [ngClass]=\"{'ui-state-focus': focus, 'ui-state-disabled':disabled}\"> \n                    <input #advancedfileinput type=\"file\" (change)=\"onFileSelect($event)\" [multiple]=\"multiple\" [accept]=\"accept\" [disabled]=\"disabled\" (focus)=\"onFocus()\" (blur)=\"onBlur()\">\n                </span>\n\n                <button *ngIf=\"!auto&&showUploadButton\" type=\"button\" [label]=\"uploadLabel\" icon=\"pi pi-upload\" pButton (click)=\"upload()\" [disabled]=\"!hasFiles()\"></button>\n                <button *ngIf=\"!auto&&showCancelButton\" type=\"button\" [label]=\"cancelLabel\" icon=\"pi pi-times\" pButton (click)=\"clear()\" [disabled]=\"!hasFiles()\"></button>\n            \n                <ng-container *ngTemplateOutlet=\"toolbarTemplate\"></ng-container>\n            </div>\n            <div #content [ngClass]=\"{'ui-fileupload-content ui-widget-content ui-corner-bottom':true}\" \n                (dragenter)=\"onDragEnter($event)\" (dragleave)=\"onDragLeave($event)\" (drop)=\"onDrop($event)\">\n                <p-progressBar [value]=\"progress\" [showValue]=\"false\" *ngIf=\"hasFiles()\"></p-progressBar>\n                \n                <p-messages [value]=\"msgs\" [enableService]=\"false\"></p-messages>\n                \n                <div class=\"ui-fileupload-files\" *ngIf=\"hasFiles()\">\n                    <div *ngIf=\"!fileTemplate\">\n                        <div class=\"ui-fileupload-row\" *ngFor=\"let file of files; let i = index;\">\n                            <div><img [src]=\"file.objectURL\" *ngIf=\"isImage(file)\" [width]=\"previewWidth\" /></div>\n                            <div>{{file.name}}</div>\n                            <div>{{formatSize(file.size)}}</div>\n                            <div><button type=\"button\" icon=\"pi pi-times\" pButton (click)=\"remove($event,i)\"></button></div>\n                        </div>\n                    </div>\n                    <div *ngIf=\"fileTemplate\">\n                        <ng-template ngFor [ngForOf]=\"files\" [ngForTemplate]=\"fileTemplate\"></ng-template>\n                    </div>\n                </div>\n                <ng-container *ngTemplateOutlet=\"contentTemplate\"></ng-container>\n            </div>\n        </div>\n        <span *ngIf=\"mode === 'basic'\" [ngClass]=\"{'ui-button ui-fileupload-choose ui-widget ui-state-default ui-corner-all ui-button-text-icon-left': true, \n                'ui-fileupload-choose-selected': hasFiles(),'ui-state-focus': focus, 'ui-state-disabled':disabled}\"\n                [ngStyle]=\"style\" [class]=\"styleClass\" (mouseup)=\"onSimpleUploaderClick($event)\">\n            <span class=\"ui-button-icon-left pi\" [ngClass]=\"{'pi-plus': !hasFiles()||auto, 'pi-upload': hasFiles()&&!auto}\"></span>\n            <span class=\"ui-button-text ui-clickable\">{{auto ? chooseLabel : hasFiles() ? files[0].name : chooseLabel}}</span>\n            <input #basicfileinput type=\"file\" [accept]=\"accept\" [multiple]=\"multiple\" [disabled]=\"disabled\"\n                (change)=\"onFileSelect($event)\" *ngIf=\"!hasFiles()\" (focus)=\"onFocus()\" (blur)=\"onBlur()\">\n        </span>\n    ",
             providers: [domhandler_1.DomHandler]
-        })
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef, domhandler_1.DomHandler, platform_browser_1.DomSanitizer, core_1.NgZone])
     ], FileUpload);
     return FileUpload;
 }());
@@ -422,3 +464,4 @@ var FileUploadModule = /** @class */ (function () {
     return FileUploadModule;
 }());
 exports.FileUploadModule = FileUploadModule;
+//# sourceMappingURL=fileupload.js.map
