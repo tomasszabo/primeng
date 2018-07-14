@@ -668,7 +668,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
         if(this.droppableNodes && (!this.value || this.value.length === 0)) {
             event.preventDefault();
             let dragNode = this.dragNode;
-            if(this.allowDrop(dragNode, null, this.dragNodeScope, DropType.Unknown)) {
+            if(this.allowDrop(dragNode, null, this.dragNodeScope, DropType.Both)) {
                 let dragNodeIndex = this.dragNodeIndex;
                 this.dragNodeSubNodes.splice(dragNodeIndex, 1);
                 this.value = this.value||[];
@@ -682,7 +682,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
     }
 
     onDragEnter(event) {
-        if (this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope, DropType.Unknown)) {
+        if (this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope, DropType.Both)) {
             this.dragHover = true;
         }
     }
@@ -718,10 +718,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
                     }
 
                     if (allow) {
-                        if (dropType === DropType.Node && dropNode.dropScope) {
-                            const dropScope = dropNode.dropScope;
-                            const dragScope = dragNode.dragScope;
-
+                        const evaluateDropScope = (dropScope: any, dragScope: any) => {
                             if (typeof dropScope === 'string') {
                                 if (typeof dragScope === 'string')
                                     allow = dropScope === dragScope;
@@ -743,31 +740,15 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
                                     }
                                 }
                             }
-                        } else if (dropType === DropType.DropPoint && dropNode.dropPointScope) {
-                            const dropScope = dropNode.dropPointScope;
-                            const dragScope = dragNode.dragScope;
+                        };
 
-                            if (typeof dropScope === 'string') {
-                                if (typeof dragScope === 'string')
-                                    allow = dropScope === dragScope;
-                                else if (dragScope instanceof Array)
-                                    allow = (<Array<any>>dragScope).indexOf(dropScope) != -1;
-                            }
-                            else if (dropScope instanceof Array) {
-                                if (typeof dragScope === 'string') {
-                                    allow = (<Array<any>>dropScope).indexOf(dragScope) != -1;
-                                }
-                                else if (dragScope instanceof Array) {
-                                    for (let s of dropScope) {
-                                        for (let ds of dragScope) {
-                                            if (s === ds) {
-                                                allow = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        if (dropType === DropType.Node) {
+                            evaluateDropScope(dropNode.dropScope, dragNode.dragScope);
+                        } else if (dropType === DropType.DropPoint) {
+                            evaluateDropScope(dropNode.dropPointScope, dragNode.dragScope);
+                        } else if (dropType === DropType.Both) {
+                            evaluateDropScope(dropNode.dropScope, dragNode.dragScope);
+                            evaluateDropScope(dropNode.dropPointScope, dragNode.dragScope);
                         }
                     }
                 }
@@ -826,7 +807,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
     }
 }
 export enum DropType {
-    Unknown,
+    Both,
     DropPoint,
     Node
 }

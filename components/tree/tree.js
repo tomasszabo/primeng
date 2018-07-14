@@ -444,7 +444,7 @@ var Tree = /** @class */ (function () {
         if (this.droppableNodes && (!this.value || this.value.length === 0)) {
             event.preventDefault();
             var dragNode = this.dragNode;
-            if (this.allowDrop(dragNode, null, this.dragNodeScope, DropType.Unknown)) {
+            if (this.allowDrop(dragNode, null, this.dragNodeScope, DropType.Both)) {
                 var dragNodeIndex = this.dragNodeIndex;
                 this.dragNodeSubNodes.splice(dragNodeIndex, 1);
                 this.value = this.value || [];
@@ -456,7 +456,7 @@ var Tree = /** @class */ (function () {
         }
     };
     Tree.prototype.onDragEnter = function (event) {
-        if (this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope, DropType.Unknown)) {
+        if (this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope, DropType.Both)) {
             this.dragHover = true;
         }
     };
@@ -474,33 +474,31 @@ var Tree = /** @class */ (function () {
             return false;
         }
         else if (this.isValidDragScope(dragNodeScope)) {
-            var allow = true;
+            var allow_1 = true;
             if (dropNode) {
                 if (dragNode === dropNode) {
-                    allow = false;
+                    allow_1 = false;
                 }
                 else {
                     var parent_1 = dropNode.parent;
                     while (parent_1 != null) {
                         if (parent_1 === dragNode) {
-                            allow = false;
+                            allow_1 = false;
                             break;
                         }
                         parent_1 = parent_1.parent;
                     }
-                    if (allow) {
-                        if (dropType === DropType.Node && dropNode.dropScope) {
-                            var dropScope = dropNode.dropScope;
-                            var dragScope = dragNode.dragScope;
+                    if (allow_1) {
+                        var evaluateDropScope = function (dropScope, dragScope) {
                             if (typeof dropScope === 'string') {
                                 if (typeof dragScope === 'string')
-                                    allow = dropScope === dragScope;
+                                    allow_1 = dropScope === dragScope;
                                 else if (dragScope instanceof Array)
-                                    allow = dragScope.indexOf(dropScope) != -1;
+                                    allow_1 = dragScope.indexOf(dropScope) != -1;
                             }
                             else if (dropScope instanceof Array) {
                                 if (typeof dragScope === 'string') {
-                                    allow = dropScope.indexOf(dragScope) != -1;
+                                    allow_1 = dropScope.indexOf(dragScope) != -1;
                                 }
                                 else if (dragScope instanceof Array) {
                                     for (var _i = 0, dropScope_1 = dropScope; _i < dropScope_1.length; _i++) {
@@ -508,45 +506,28 @@ var Tree = /** @class */ (function () {
                                         for (var _a = 0, dragScope_1 = dragScope; _a < dragScope_1.length; _a++) {
                                             var ds = dragScope_1[_a];
                                             if (s === ds) {
-                                                allow = true;
+                                                allow_1 = true;
                                                 break;
                                             }
                                         }
                                     }
                                 }
                             }
+                        };
+                        if (dropType === DropType.Node) {
+                            evaluateDropScope(dropNode.dropScope, dragNode.dragScope);
                         }
-                        else if (dropType === DropType.DropPoint && dropNode.dropPointScope) {
-                            var dropScope = dropNode.dropPointScope;
-                            var dragScope = dragNode.dragScope;
-                            if (typeof dropScope === 'string') {
-                                if (typeof dragScope === 'string')
-                                    allow = dropScope === dragScope;
-                                else if (dragScope instanceof Array)
-                                    allow = dragScope.indexOf(dropScope) != -1;
-                            }
-                            else if (dropScope instanceof Array) {
-                                if (typeof dragScope === 'string') {
-                                    allow = dropScope.indexOf(dragScope) != -1;
-                                }
-                                else if (dragScope instanceof Array) {
-                                    for (var _b = 0, dropScope_2 = dropScope; _b < dropScope_2.length; _b++) {
-                                        var s = dropScope_2[_b];
-                                        for (var _c = 0, dragScope_2 = dragScope; _c < dragScope_2.length; _c++) {
-                                            var ds = dragScope_2[_c];
-                                            if (s === ds) {
-                                                allow = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        else if (dropType === DropType.DropPoint) {
+                            evaluateDropScope(dropNode.dropPointScope, dragNode.dragScope);
+                        }
+                        else if (dropType === DropType.Both) {
+                            evaluateDropScope(dropNode.dropScope, dragNode.dragScope);
+                            evaluateDropScope(dropNode.dropPointScope, dragNode.dragScope);
                         }
                     }
                 }
             }
-            return allow;
+            return allow_1;
         }
         else {
             return false;
@@ -566,10 +547,10 @@ var Tree = /** @class */ (function () {
                     return dropScope.indexOf(dragScope) != -1;
                 }
                 else if (dragScope instanceof Array) {
-                    for (var _i = 0, dropScope_3 = dropScope; _i < dropScope_3.length; _i++) {
-                        var s = dropScope_3[_i];
-                        for (var _a = 0, dragScope_3 = dragScope; _a < dragScope_3.length; _a++) {
-                            var ds = dragScope_3[_a];
+                    for (var _i = 0, dropScope_2 = dropScope; _i < dropScope_2.length; _i++) {
+                        var s = dropScope_2[_i];
+                        for (var _a = 0, dragScope_2 = dragScope; _a < dragScope_2.length; _a++) {
+                            var ds = dragScope_2[_a];
                             if (s === ds) {
                                 return true;
                             }
@@ -637,7 +618,7 @@ var Tree = /** @class */ (function () {
 exports.Tree = Tree;
 var DropType;
 (function (DropType) {
-    DropType[DropType["Unknown"] = 0] = "Unknown";
+    DropType[DropType["Both"] = 0] = "Both";
     DropType[DropType["DropPoint"] = 1] = "DropPoint";
     DropType[DropType["Node"] = 2] = "Node";
 })(DropType = exports.DropType || (exports.DropType = {}));

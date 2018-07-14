@@ -98,7 +98,7 @@ export declare class Tree implements OnInit, AfterContentInit, OnDestroy, Blocka
     ngOnDestroy(): void;
 }
 export declare enum DropType {
-    Unknown = 0,
+    Both = 0,
     DropPoint = 1,
     Node = 2,
 }
