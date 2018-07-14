@@ -15,5 +15,6 @@ export interface TreeNode {
     droppable?: boolean;
     selectable?: boolean;
     dropScope?: string | Array<string>;
+    dropPointScope?: string | Array<string>;
     dragScope?: string | Array<string>;
 }

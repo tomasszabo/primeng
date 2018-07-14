@@ -157,7 +157,7 @@ export class UITreeNode implements OnInit {
         let dragNodeScope = this.tree.dragNodeScope;
         let isValidDropPointIndex = this.tree.dragNodeTree === this.tree ? (position === 1 || dragNodeIndex !== this.index - 1) : true;
 
-        if(this.tree.allowDrop(dragNode, this.node, dragNodeScope) && isValidDropPointIndex) {
+        if(this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             let newNodeList = this.node.parent ? this.node.parent.children : this.tree.value;
             this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             let dropIndex = this.index;
@@ -195,7 +195,7 @@ export class UITreeNode implements OnInit {
     }
 
     onDropPointDragEnter(event: Event, position: number) {
-        if(this.tree.allowDrop(this.tree.dragNode, this.node, this.tree.dragNodeScope)) {
+        if(this.tree.allowDrop(this.tree.dragNode, this.node, this.tree.dragNodeScope, DropType.DropPoint)) {
             if(position < 0)
                 this.draghoverPrev = true;
             else
@@ -246,7 +246,7 @@ export class UITreeNode implements OnInit {
             event.preventDefault();
             event.stopPropagation();
             let dragNode = this.tree.dragNode;
-            if(this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope)) {
+            if(this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 let dragNodeIndex = this.tree.dragNodeIndex;
                 this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
@@ -274,7 +274,7 @@ export class UITreeNode implements OnInit {
     }
 
     onDropNodeDragEnter(event) {
-        if(this.tree.droppableNodes && this.node.droppable !== false && this.tree.allowDrop(this.tree.dragNode, this.node, this.tree.dragNodeScope)) {
+        if(this.tree.droppableNodes && this.node.droppable !== false && this.tree.allowDrop(this.tree.dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
             this.draghoverNode = true;
         }
     }
@@ -668,7 +668,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
         if(this.droppableNodes && (!this.value || this.value.length === 0)) {
             event.preventDefault();
             let dragNode = this.dragNode;
-            if(this.allowDrop(dragNode, null, this.dragNodeScope)) {
+            if(this.allowDrop(dragNode, null, this.dragNodeScope, DropType.Unknown)) {
                 let dragNodeIndex = this.dragNodeIndex;
                 this.dragNodeSubNodes.splice(dragNodeIndex, 1);
                 this.value = this.value||[];
@@ -682,7 +682,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
     }
 
     onDragEnter(event) {
-        if(this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope)) {
+        if (this.droppableNodes && this.allowDrop(this.dragNode, null, this.dragNodeScope, DropType.Unknown)) {
             this.dragHover = true;
         }
     }
@@ -696,7 +696,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
         }
     }
 
-    allowDrop(dragNode: TreeNode, dropNode: TreeNode, dragNodeScope: any): boolean {
+    allowDrop(dragNode: TreeNode, dropNode: TreeNode, dragNodeScope: any, dropType: DropType): boolean {
         if(!dragNode) {
             //prevent random html elements to be dragged
             return false;
@@ -717,26 +717,53 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
                         parent = parent.parent;
                     }
 
-                    if (allow && dropNode.dropScope) {
-                        const dropScope = dropNode.dropScope;
-                        const dragScope = dragNode.dragScope;
+                    if (allow) {
+                        if (dropType === DropType.Node && dropNode.dropScope) {
+                            const dropScope = dropNode.dropScope;
+                            const dragScope = dragNode.dragScope;
 
-                        if (typeof dropScope === 'string') {
-                            if (typeof dragScope === 'string')
-                                allow = dropScope === dragScope;
-                            else if (dragScope instanceof Array)
-                                allow = (<Array<any>>dragScope).indexOf(dropScope) != -1;
-                        }
-                        else if (dropScope instanceof Array) {
-                            if (typeof dragScope === 'string') {
-                                allow = (<Array<any>>dropScope).indexOf(dragScope) != -1;
+                            if (typeof dropScope === 'string') {
+                                if (typeof dragScope === 'string')
+                                    allow = dropScope === dragScope;
+                                else if (dragScope instanceof Array)
+                                    allow = (<Array<any>>dragScope).indexOf(dropScope) != -1;
                             }
-                            else if (dragScope instanceof Array) {
-                                for (let s of dropScope) {
-                                    for (let ds of dragScope) {
-                                        if (s === ds) {
-                                            allow = true;
-                                            break;
+                            else if (dropScope instanceof Array) {
+                                if (typeof dragScope === 'string') {
+                                    allow = (<Array<any>>dropScope).indexOf(dragScope) != -1;
+                                }
+                                else if (dragScope instanceof Array) {
+                                    for (let s of dropScope) {
+                                        for (let ds of dragScope) {
+                                            if (s === ds) {
+                                                allow = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (dropType === DropType.DropPoint && dropNode.dropPointScope) {
+                            const dropScope = dropNode.dropPointScope;
+                            const dragScope = dragNode.dragScope;
+
+                            if (typeof dropScope === 'string') {
+                                if (typeof dragScope === 'string')
+                                    allow = dropScope === dragScope;
+                                else if (dragScope instanceof Array)
+                                    allow = (<Array<any>>dragScope).indexOf(dropScope) != -1;
+                            }
+                            else if (dropScope instanceof Array) {
+                                if (typeof dragScope === 'string') {
+                                    allow = (<Array<any>>dropScope).indexOf(dragScope) != -1;
+                                }
+                                else if (dragScope instanceof Array) {
+                                    for (let s of dropScope) {
+                                        for (let ds of dragScope) {
+                                            if (s === ds) {
+                                                allow = true;
+                                                break;
+                                            }
                                         }
                                     }
                                 }
@@ -797,6 +824,11 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
             this.dragStopSubscription.unsubscribe();
         }
     }
+}
+export enum DropType {
+    Unknown,
+    DropPoint,
+    Node
 }
 @NgModule({
     imports: [CommonModule],

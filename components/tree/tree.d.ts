@@ -92,10 +92,15 @@ export declare class Tree implements OnInit, AfterContentInit, OnDestroy, Blocka
     onDrop(event: any): void;
     onDragEnter(event: any): void;
     onDragLeave(event: any): void;
-    allowDrop(dragNode: TreeNode, dropNode: TreeNode, dragNodeScope: any): boolean;
+    allowDrop(dragNode: TreeNode, dropNode: TreeNode, dragNodeScope: any, dropType: DropType): boolean;
     isValidDragScope(dragScope: any): boolean;
     getBlockableElement(): HTMLElement;
     ngOnDestroy(): void;
+}
+export declare enum DropType {
+    Unknown = 0,
+    DropPoint = 1,
+    Node = 2,
 }
 export declare class TreeModule {
 }
