@@ -55,11 +55,6 @@ var UITreeNode = /** @class */ (function () {
             var newNodeList_1 = this.node.parent ? this.node.parent.children : this.tree.value;
             this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             var dropIndex_1 = this.index;
-            this.tree.dragDropService.stopDrag({
-                node: dragNode,
-                subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
-                index: dragNodeIndex
-            });
             this.tree.onNodeDrop.emit({
                 originalEvent: event,
                 dragNode: dragNode,
@@ -67,7 +62,7 @@ var UITreeNode = /** @class */ (function () {
                 dropIndex: dropIndex_1
             });
             this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
-                if (proceed !== false) {
+                if (proceed == null || proceed === true) {
                     if (position < 0) {
                         dropIndex_1 = (_this.tree.dragNodeSubNodes === newNodeList_1) ? ((_this.tree.dragNodeIndex > _this.index) ? _this.index : _this.index - 1) : _this.index;
                         newNodeList_1.splice(dropIndex_1, 0, dragNode);
@@ -77,6 +72,11 @@ var UITreeNode = /** @class */ (function () {
                         newNodeList_1.push(dragNode);
                     }
                 }
+                _this.tree.dragDropService.stopDrag({
+                    node: dragNode,
+                    subNodes: _this.node.parent ? _this.node.parent.children : _this.tree.value,
+                    index: dragNodeIndex
+                });
             });
         }
         this.draghoverPrev = false;
@@ -136,11 +136,6 @@ var UITreeNode = /** @class */ (function () {
             if (this.tree.allowDrop(dragNode_1, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 var dragNodeIndex = this.tree.dragNodeIndex;
                 this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
-                this.tree.dragDropService.stopDrag({
-                    node: dragNode_1,
-                    subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
-                    index: this.tree.dragNodeIndex
-                });
                 this.tree.onNodeDrop.emit({
                     originalEvent: event,
                     dragNode: dragNode_1,
@@ -148,12 +143,17 @@ var UITreeNode = /** @class */ (function () {
                     index: this.index
                 });
                 this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
-                    if (proceed !== false) {
+                    if (proceed == null || proceed === true) {
                         if (_this.node.children)
                             _this.node.children.push(dragNode_1);
                         else
                             _this.node.children = [dragNode_1];
                     }
+                    _this.tree.dragDropService.stopDrag({
+                        node: dragNode_1,
+                        subNodes: _this.node.parent ? _this.node.parent.children : _this.tree.value,
+                        index: _this.tree.dragNodeIndex
+                    });
                 });
             }
         }

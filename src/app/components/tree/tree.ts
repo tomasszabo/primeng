@@ -163,12 +163,6 @@ export class UITreeNode implements OnInit {
             this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             let dropIndex = this.index;
 
-            this.tree.dragDropService.stopDrag({
-                node: dragNode,
-                subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
-                index: dragNodeIndex
-            });
-
             this.tree.onNodeDrop.emit({
                 originalEvent: event,
                 dragNode: dragNode,
@@ -177,7 +171,7 @@ export class UITreeNode implements OnInit {
             });
 
             this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
-                if (proceed !== false) {
+                if (proceed == null || proceed === true) {
                     if (position < 0) {
                         dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
                         newNodeList.splice(dropIndex, 0, dragNode);
@@ -187,6 +181,12 @@ export class UITreeNode implements OnInit {
                         newNodeList.push(dragNode);
                     }
                 }
+
+                this.tree.dragDropService.stopDrag({
+                    node: dragNode,
+                    subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
+                    index: dragNodeIndex
+                });
             });
         }
 
@@ -255,12 +255,6 @@ export class UITreeNode implements OnInit {
                 let dragNodeIndex = this.tree.dragNodeIndex;
                 this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
-                this.tree.dragDropService.stopDrag({
-                    node: dragNode,
-                    subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
-                    index: this.tree.dragNodeIndex
-                });
-
                 this.tree.onNodeDrop.emit({
                     originalEvent: event,
                     dragNode: dragNode,
@@ -269,12 +263,18 @@ export class UITreeNode implements OnInit {
                 });
 
                 this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
-                    if (proceed !== false) {
+                    if (proceed == null || proceed === true) {
                         if (this.node.children)
                             this.node.children.push(dragNode);
                         else
                             this.node.children = [dragNode];
                     }
+
+                    this.tree.dragDropService.stopDrag({
+                        node: dragNode,
+                        subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
+                        index: this.tree.dragNodeIndex
+                    });
                 });
             }
         }
