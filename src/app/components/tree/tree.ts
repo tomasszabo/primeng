@@ -162,17 +162,10 @@ export class UITreeNode implements OnInit {
             let newNodeList = this.node.parent ? this.node.parent.children : this.tree.value;
             let dropIndex = this.index;
 
-            this.tree.onNodeDrop.emit({
-                originalEvent: event,
-                dragNode: dragNode,
-                dropNode: this.node,
-                dropIndex: dropIndex
-            });
-
             this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
                 if (proceed == null || proceed === true) {
                     this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
-                    
+
                     if (position < 0) {
                         dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
                         newNodeList.splice(dropIndex, 0, dragNode);
@@ -188,6 +181,13 @@ export class UITreeNode implements OnInit {
                     subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
                     index: dragNodeIndex
                 });
+            });
+
+            this.tree.onNodeDrop.emit({
+                originalEvent: event,
+                dragNode: dragNode,
+                dropNode: this.node,
+                dropIndex: dropIndex
             });
         }
 
@@ -256,13 +256,6 @@ export class UITreeNode implements OnInit {
             if(this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 let dragNodeIndex = this.tree.dragNodeIndex;
 
-                this.tree.onNodeDrop.emit({
-                    originalEvent: event,
-                    dragNode: dragNode,
-                    dropNode: this.node,
-                    index: this.index
-                });
-
                 this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
                     if (proceed == null || proceed === true) {
                         this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
@@ -278,6 +271,13 @@ export class UITreeNode implements OnInit {
                         subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
                         index: this.tree.dragNodeIndex
                     });
+                });
+
+                this.tree.onNodeDrop.emit({
+                    originalEvent: event,
+                    dragNode: dragNode,
+                    dropNode: this.node,
+                    index: this.index
                 });
             }
         }

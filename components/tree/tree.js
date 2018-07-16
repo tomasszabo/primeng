@@ -54,12 +54,6 @@ var UITreeNode = /** @class */ (function () {
         if (this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             var newNodeList_1 = this.node.parent ? this.node.parent.children : this.tree.value;
             var dropIndex_1 = this.index;
-            this.tree.onNodeDrop.emit({
-                originalEvent: event,
-                dragNode: dragNode,
-                dropNode: this.node,
-                dropIndex: dropIndex_1
-            });
             this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
                 if (proceed == null || proceed === true) {
                     _this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
@@ -77,6 +71,12 @@ var UITreeNode = /** @class */ (function () {
                     subNodes: _this.node.parent ? _this.node.parent.children : _this.tree.value,
                     index: dragNodeIndex
                 });
+            });
+            this.tree.onNodeDrop.emit({
+                originalEvent: event,
+                dragNode: dragNode,
+                dropNode: this.node,
+                dropIndex: dropIndex_1
             });
         }
         this.draghoverPrev = false;
@@ -135,12 +135,6 @@ var UITreeNode = /** @class */ (function () {
             var dragNode_1 = this.tree.dragNode;
             if (this.tree.allowDrop(dragNode_1, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 var dragNodeIndex_1 = this.tree.dragNodeIndex;
-                this.tree.onNodeDrop.emit({
-                    originalEvent: event,
-                    dragNode: dragNode_1,
-                    dropNode: this.node,
-                    index: this.index
-                });
                 this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
                     if (proceed == null || proceed === true) {
                         _this.tree.dragNodeSubNodes.splice(dragNodeIndex_1, 1);
@@ -154,6 +148,12 @@ var UITreeNode = /** @class */ (function () {
                         subNodes: _this.node.parent ? _this.node.parent.children : _this.tree.value,
                         index: _this.tree.dragNodeIndex
                     });
+                });
+                this.tree.onNodeDrop.emit({
+                    originalEvent: event,
+                    dragNode: dragNode_1,
+                    dropNode: this.node,
+                    index: this.index
                 });
             }
         }
