@@ -8,6 +8,7 @@ import {PrimeTemplate} from '../common/shared';
 import {TreeDragDropService} from '../common/treedragdropservice';
 import {Subscription}   from 'rxjs';
 import {BlockableUI} from '../common/blockableui';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'p-treeNode',
@@ -162,15 +163,6 @@ export class UITreeNode implements OnInit {
             this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             let dropIndex = this.index;
 
-            if(position < 0) {
-                dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
-                newNodeList.splice(dropIndex, 0, dragNode);
-            }
-            else {
-				dropIndex = newNodeList.length;
-                newNodeList.push(dragNode);
-            }
-
             this.tree.dragDropService.stopDrag({
                 node: dragNode,
                 subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
@@ -182,6 +174,19 @@ export class UITreeNode implements OnInit {
                 dragNode: dragNode,
                 dropNode: this.node,
                 dropIndex: dropIndex
+            });
+
+            this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
+                if (proceed !== false) {
+                    if (position < 0) {
+                        dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
+                        newNodeList.splice(dropIndex, 0, dragNode);
+                    }
+                    else {
+                        dropIndex = newNodeList.length;
+                        newNodeList.push(dragNode);
+                    }
+                }
             });
         }
 
@@ -250,11 +255,6 @@ export class UITreeNode implements OnInit {
                 let dragNodeIndex = this.tree.dragNodeIndex;
                 this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
-                if(this.node.children)
-                    this.node.children.push(dragNode);
-                else
-                    this.node.children = [dragNode];
-
                 this.tree.dragDropService.stopDrag({
                     node: dragNode,
                     subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
@@ -266,6 +266,15 @@ export class UITreeNode implements OnInit {
                     dragNode: dragNode,
                     dropNode: this.node,
                     index: this.index
+                });
+
+                this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
+                    if (proceed !== false) {
+                        if (this.node.children)
+                            this.node.children.push(dragNode);
+                        else
+                            this.node.children = [dragNode];
+                    }
                 });
             }
         }
@@ -652,7 +661,7 @@ export class Tree implements OnInit,AfterContentInit,OnDestroy,BlockableUI {
 
     getTemplateForNode(node: TreeNode): TemplateRef<any> {
         if(this.templateMap)
-            return node.type ? this.templateMap[node.type] : this.templateMap['default'];
+            return node.type ? (this.templateMap[node.type] ? this.templateMap[node.type] : this.templateMap['default']) : this.templateMap['default'];
         else
             return null;
     }

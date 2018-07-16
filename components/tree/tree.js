@@ -6,6 +6,7 @@ var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
 var shared_2 = require("../common/shared");
 var treedragdropservice_1 = require("../common/treedragdropservice");
+var operators_1 = require("rxjs/operators");
 var UITreeNode = /** @class */ (function () {
     function UITreeNode(tree) {
         this.tree = tree;
@@ -44,23 +45,16 @@ var UITreeNode = /** @class */ (function () {
         return this.tree.isSelected(this.node);
     };
     UITreeNode.prototype.onDropPoint = function (event, position) {
+        var _this = this;
         event.preventDefault();
         var dragNode = this.tree.dragNode;
         var dragNodeIndex = this.tree.dragNodeIndex;
         var dragNodeScope = this.tree.dragNodeScope;
         var isValidDropPointIndex = this.tree.dragNodeTree === this.tree ? (position === 1 || dragNodeIndex !== this.index - 1) : true;
         if (this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
-            var newNodeList = this.node.parent ? this.node.parent.children : this.tree.value;
+            var newNodeList_1 = this.node.parent ? this.node.parent.children : this.tree.value;
             this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
-            var dropIndex = this.index;
-            if (position < 0) {
-                dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
-                newNodeList.splice(dropIndex, 0, dragNode);
-            }
-            else {
-                dropIndex = newNodeList.length;
-                newNodeList.push(dragNode);
-            }
+            var dropIndex_1 = this.index;
             this.tree.dragDropService.stopDrag({
                 node: dragNode,
                 subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
@@ -70,7 +64,19 @@ var UITreeNode = /** @class */ (function () {
                 originalEvent: event,
                 dragNode: dragNode,
                 dropNode: this.node,
-                dropIndex: dropIndex
+                dropIndex: dropIndex_1
+            });
+            this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
+                if (proceed !== false) {
+                    if (position < 0) {
+                        dropIndex_1 = (_this.tree.dragNodeSubNodes === newNodeList_1) ? ((_this.tree.dragNodeIndex > _this.index) ? _this.index : _this.index - 1) : _this.index;
+                        newNodeList_1.splice(dropIndex_1, 0, dragNode);
+                    }
+                    else {
+                        dropIndex_1 = newNodeList_1.length;
+                        newNodeList_1.push(dragNode);
+                    }
+                }
             });
         }
         this.draghoverPrev = false;
@@ -122,27 +128,32 @@ var UITreeNode = /** @class */ (function () {
         }
     };
     UITreeNode.prototype.onDropNode = function (event) {
+        var _this = this;
         if (this.tree.droppableNodes && this.node.droppable !== false) {
             event.preventDefault();
             event.stopPropagation();
-            var dragNode = this.tree.dragNode;
-            if (this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
+            var dragNode_1 = this.tree.dragNode;
+            if (this.tree.allowDrop(dragNode_1, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 var dragNodeIndex = this.tree.dragNodeIndex;
                 this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
-                if (this.node.children)
-                    this.node.children.push(dragNode);
-                else
-                    this.node.children = [dragNode];
                 this.tree.dragDropService.stopDrag({
-                    node: dragNode,
+                    node: dragNode_1,
                     subNodes: this.node.parent ? this.node.parent.children : this.tree.value,
                     index: this.tree.dragNodeIndex
                 });
                 this.tree.onNodeDrop.emit({
                     originalEvent: event,
-                    dragNode: dragNode,
+                    dragNode: dragNode_1,
                     dropNode: this.node,
                     index: this.index
+                });
+                this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
+                    if (proceed !== false) {
+                        if (_this.node.children)
+                            _this.node.children.push(dragNode_1);
+                        else
+                            _this.node.children = [dragNode_1];
+                    }
                 });
             }
         }
@@ -430,7 +441,7 @@ var Tree = /** @class */ (function () {
     };
     Tree.prototype.getTemplateForNode = function (node) {
         if (this.templateMap)
-            return node.type ? this.templateMap[node.type] : this.templateMap['default'];
+            return node.type ? (this.templateMap[node.type] ? this.templateMap[node.type] : this.templateMap['default']) : this.templateMap['default'];
         else
             return null;
     };
