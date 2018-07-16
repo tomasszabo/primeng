@@ -6,7 +6,7 @@ import {TreeNode} from '../common/treenode';
 import {SharedModule} from '../common/shared';
 import {PrimeTemplate} from '../common/shared';
 import {TreeDragDropService} from '../common/treedragdropservice';
-import {Subscription}   from 'rxjs';
+import {Subscription, Subject}   from 'rxjs';
 import {BlockableUI} from '../common/blockableui';
 import { first } from 'rxjs/operators';
 
@@ -161,8 +161,9 @@ export class UITreeNode implements OnInit {
         if(this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             let newNodeList = this.node.parent ? this.node.parent.children : this.tree.value;
             let dropIndex = this.index;
+            const resolve = new Subject<boolean>();
 
-            this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
+            resolve.pipe(first()).subscribe(proceed => {
                 if (proceed == null || proceed === true) {
                     this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
@@ -187,7 +188,8 @@ export class UITreeNode implements OnInit {
                 originalEvent: event,
                 dragNode: dragNode,
                 dropNode: this.node,
-                dropIndex: dropIndex
+                dropIndex: dropIndex,
+                resolve: resolve
             });
         }
 
@@ -255,8 +257,9 @@ export class UITreeNode implements OnInit {
             
             if(this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 let dragNodeIndex = this.tree.dragNodeIndex;
+                const resolve = new Subject<boolean>();
 
-                this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
+                resolve.pipe(first()).subscribe(proceed => {
                     if (proceed == null || proceed === true) {
                         this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
@@ -277,7 +280,8 @@ export class UITreeNode implements OnInit {
                     originalEvent: event,
                     dragNode: dragNode,
                     dropNode: this.node,
-                    index: this.index
+                    index: this.index,
+                    resolve: resolve
                 });
             }
         }

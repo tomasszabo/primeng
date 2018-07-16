@@ -6,6 +6,7 @@ var common_1 = require("@angular/common");
 var shared_1 = require("../common/shared");
 var shared_2 = require("../common/shared");
 var treedragdropservice_1 = require("../common/treedragdropservice");
+var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var UITreeNode = /** @class */ (function () {
     function UITreeNode(tree) {
@@ -54,7 +55,8 @@ var UITreeNode = /** @class */ (function () {
         if (this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             var newNodeList_1 = this.node.parent ? this.node.parent.children : this.tree.value;
             var dropIndex_1 = this.index;
-            this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
+            var resolve = new rxjs_1.Subject();
+            resolve.pipe(operators_1.first()).subscribe(function (proceed) {
                 if (proceed == null || proceed === true) {
                     _this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
                     if (position < 0) {
@@ -76,7 +78,8 @@ var UITreeNode = /** @class */ (function () {
                 originalEvent: event,
                 dragNode: dragNode,
                 dropNode: this.node,
-                dropIndex: dropIndex_1
+                dropIndex: dropIndex_1,
+                resolve: resolve
             });
         }
         this.draghoverPrev = false;
@@ -135,7 +138,8 @@ var UITreeNode = /** @class */ (function () {
             var dragNode_1 = this.tree.dragNode;
             if (this.tree.allowDrop(dragNode_1, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 var dragNodeIndex_1 = this.tree.dragNodeIndex;
-                this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
+                var resolve = new rxjs_1.Subject();
+                resolve.pipe(operators_1.first()).subscribe(function (proceed) {
                     if (proceed == null || proceed === true) {
                         _this.tree.dragNodeSubNodes.splice(dragNodeIndex_1, 1);
                         if (_this.node.children)
@@ -153,7 +157,8 @@ var UITreeNode = /** @class */ (function () {
                     originalEvent: event,
                     dragNode: dragNode_1,
                     dropNode: this.node,
-                    index: this.index
+                    index: this.index,
+                    resolve: resolve
                 });
             }
         }
