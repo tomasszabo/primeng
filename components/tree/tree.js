@@ -57,7 +57,7 @@ var UITreeNode = /** @class */ (function () {
             var dropIndex_1 = this.index;
             var resolve = new rxjs_1.Subject();
             resolve.pipe(operators_1.first()).subscribe(function (proceed) {
-                if (proceed == null || proceed === true) {
+                if (proceed !== false) {
                     _this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
                     if (position < 0) {
                         dropIndex_1 = (_this.tree.dragNodeSubNodes === newNodeList_1) ? ((_this.tree.dragNodeIndex > _this.index) ? _this.index : _this.index - 1) : _this.index;
@@ -79,7 +79,7 @@ var UITreeNode = /** @class */ (function () {
                 dragNode: dragNode,
                 dropNode: this.node,
                 dropIndex: dropIndex_1,
-                resolve: resolve
+                proceed: resolve
             });
         }
         this.draghoverPrev = false;
@@ -140,7 +140,7 @@ var UITreeNode = /** @class */ (function () {
                 var dragNodeIndex_1 = this.tree.dragNodeIndex;
                 var resolve = new rxjs_1.Subject();
                 resolve.pipe(operators_1.first()).subscribe(function (proceed) {
-                    if (proceed == null || proceed === true) {
+                    if (proceed !== false) {
                         _this.tree.dragNodeSubNodes.splice(dragNodeIndex_1, 1);
                         if (_this.node.children)
                             _this.node.children.push(dragNode_1);
@@ -158,7 +158,7 @@ var UITreeNode = /** @class */ (function () {
                     dragNode: dragNode_1,
                     dropNode: this.node,
                     index: this.index,
-                    resolve: resolve
+                    proceed: resolve
                 });
             }
         }

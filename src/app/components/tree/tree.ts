@@ -164,7 +164,7 @@ export class UITreeNode implements OnInit {
             const resolve = new Subject<boolean>();
 
             resolve.pipe(first()).subscribe(proceed => {
-                if (proceed == null || proceed === true) {
+                if (proceed !== false) {
                     this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
                     if (position < 0) {
@@ -189,7 +189,7 @@ export class UITreeNode implements OnInit {
                 dragNode: dragNode,
                 dropNode: this.node,
                 dropIndex: dropIndex,
-                resolve: resolve
+                proceed: resolve
             });
         }
 
@@ -260,7 +260,7 @@ export class UITreeNode implements OnInit {
                 const resolve = new Subject<boolean>();
 
                 resolve.pipe(first()).subscribe(proceed => {
-                    if (proceed == null || proceed === true) {
+                    if (proceed !== false) {
                         this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
                         if (this.node.children)
@@ -281,7 +281,7 @@ export class UITreeNode implements OnInit {
                     dragNode: dragNode,
                     dropNode: this.node,
                     index: this.index,
-                    resolve: resolve
+                    proceed: resolve
                 });
             }
         }
