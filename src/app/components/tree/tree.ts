@@ -160,7 +160,6 @@ export class UITreeNode implements OnInit {
 
         if(this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             let newNodeList = this.node.parent ? this.node.parent.children : this.tree.value;
-            this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             let dropIndex = this.index;
 
             this.tree.onNodeDrop.emit({
@@ -172,6 +171,8 @@ export class UITreeNode implements OnInit {
 
             this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
                 if (proceed == null || proceed === true) {
+                    this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
+                    
                     if (position < 0) {
                         dropIndex = (this.tree.dragNodeSubNodes === newNodeList) ? ((this.tree.dragNodeIndex > this.index) ? this.index : this.index - 1) : this.index;
                         newNodeList.splice(dropIndex, 0, dragNode);
@@ -251,9 +252,9 @@ export class UITreeNode implements OnInit {
             event.preventDefault();
             event.stopPropagation();
             let dragNode = this.tree.dragNode;
+            
             if(this.tree.allowDrop(dragNode, this.node, this.tree.dragNodeScope, DropType.Node)) {
                 let dragNodeIndex = this.tree.dragNodeIndex;
-                this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
 
                 this.tree.onNodeDrop.emit({
                     originalEvent: event,
@@ -264,6 +265,8 @@ export class UITreeNode implements OnInit {
 
                 this.tree.onNodeDrop.pipe(first()).subscribe(proceed => {
                     if (proceed == null || proceed === true) {
+                        this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
+
                         if (this.node.children)
                             this.node.children.push(dragNode);
                         else

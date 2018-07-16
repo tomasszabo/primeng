@@ -53,7 +53,6 @@ var UITreeNode = /** @class */ (function () {
         var isValidDropPointIndex = this.tree.dragNodeTree === this.tree ? (position === 1 || dragNodeIndex !== this.index - 1) : true;
         if (this.tree.allowDrop(dragNode, this.node, dragNodeScope, DropType.DropPoint) && isValidDropPointIndex) {
             var newNodeList_1 = this.node.parent ? this.node.parent.children : this.tree.value;
-            this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
             var dropIndex_1 = this.index;
             this.tree.onNodeDrop.emit({
                 originalEvent: event,
@@ -63,6 +62,7 @@ var UITreeNode = /** @class */ (function () {
             });
             this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
                 if (proceed == null || proceed === true) {
+                    _this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
                     if (position < 0) {
                         dropIndex_1 = (_this.tree.dragNodeSubNodes === newNodeList_1) ? ((_this.tree.dragNodeIndex > _this.index) ? _this.index : _this.index - 1) : _this.index;
                         newNodeList_1.splice(dropIndex_1, 0, dragNode);
@@ -134,8 +134,7 @@ var UITreeNode = /** @class */ (function () {
             event.stopPropagation();
             var dragNode_1 = this.tree.dragNode;
             if (this.tree.allowDrop(dragNode_1, this.node, this.tree.dragNodeScope, DropType.Node)) {
-                var dragNodeIndex = this.tree.dragNodeIndex;
-                this.tree.dragNodeSubNodes.splice(dragNodeIndex, 1);
+                var dragNodeIndex_1 = this.tree.dragNodeIndex;
                 this.tree.onNodeDrop.emit({
                     originalEvent: event,
                     dragNode: dragNode_1,
@@ -144,6 +143,7 @@ var UITreeNode = /** @class */ (function () {
                 });
                 this.tree.onNodeDrop.pipe(operators_1.first()).subscribe(function (proceed) {
                     if (proceed == null || proceed === true) {
+                        _this.tree.dragNodeSubNodes.splice(dragNodeIndex_1, 1);
                         if (_this.node.children)
                             _this.node.children.push(dragNode_1);
                         else
