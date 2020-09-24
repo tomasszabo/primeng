@@ -1,15 +1,9 @@
-import {Component} from '@angular/core';
-import {Message} from '../../../components/common/api';
+import {Component} from '@angular/core';;
 
 @Component({
-    templateUrl: './tabviewdemo.html'
+    templateUrl: './tabviewdemo.html',
+    styleUrls: ['./tabviewdemo.scss']
 })
 export class TabViewDemo {
-
-    msgs: Message[];
-    
-    onTabChange(event) {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Tab Expanded', detail: 'Index: ' + event.index});
-    }
+    activeIndex: number = 0;
 }

@@ -1,14 +1,23 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule}  from '@angular/forms';
 import {TreeDemo} from './treedemo';
+import {TreeTemplatingDemo} from './treetemplatingdemo';
+import {TreeSelectionDemo} from './treeselectiondemo';
+import {TreeFilterDemo} from './treefilterdemo';
+import {TreeScrollDemo} from './treescrolldemo';
+import {TreeLazyDemo} from './treelazydemo';
+import {TreeContextMenuDemo} from './treecontextmenudemo';
+import {TreeDragDropDemo} from './treedragdropdemo';
+import {TreeHorizontalDemo} from './treehorizontaldemo';
 import {TreeDemoRoutingModule} from './treedemo-routing.module';
-import {TreeModule} from '../../../components/tree/tree';
-import {GrowlModule} from '../../../components/growl/growl';
-import {ButtonModule} from '../../../components/button/button';
-import {ContextMenuModule} from '../../../components/contextmenu/contextmenu';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {TreeModule} from 'primeng/tree';
+import {ToastModule} from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -16,14 +25,23 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		TreeDemoRoutingModule,
         TreeModule,
-        GrowlModule,
+        ToastModule,
         ButtonModule,
+        DialogModule,
         ContextMenuModule,
         TabViewModule,
-        CodeHighlighterModule
+        AppCodeModule
 	],
 	declarations: [
-		TreeDemo
+        TreeDemo,
+        TreeTemplatingDemo,
+        TreeSelectionDemo,
+        TreeFilterDemo,
+        TreeLazyDemo,
+        TreeScrollDemo,
+        TreeContextMenuDemo,
+        TreeDragDropDemo,
+        TreeHorizontalDemo
 	]
 })
 export class TreeDemoModule {}

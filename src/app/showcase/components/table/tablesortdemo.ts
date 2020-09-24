@@ -1,34 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../components/domain/car';
-import { CarService } from '../../service/carservice';
-import { SortEvent } from '../../../components/common/api';
+import { Product } from '../../domain/product';
+import { ProductService } from '../../service/productservice';
+import { SortEvent } from 'primeng/api';
 
 @Component({
     templateUrl: './tablesortdemo.html'
 })
 export class TableSortDemo implements OnInit {
 
-    cars1: Car[];
+    products1: Product[];
 
-    cars2: Car[];
-    
-    cars3: Car[];
+    products2: Product[];
 
-    cols: any[];
+    products3: Product[];
 
-    constructor(private carService: CarService) { }
+    constructor(private productService: ProductService) { }
 
     ngOnInit() {
-        this.carService.getCarsSmall().then(cars => this.cars1 = cars);
-        this.carService.getCarsSmall().then(cars => this.cars2 = cars);
-        this.carService.getCarsSmall().then(cars => this.cars3 = cars);
-
-        this.cols = [
-            { field: 'vin', header: 'Vin' },
-            { field: 'year', header: 'Year' },
-            { field: 'brand', header: 'Brand' },
-            { field: 'color', header: 'Color' }
-        ];
+        this.productService.getProductsSmall().then(data => this.products1 = data);
+        this.productService.getProductsSmall().then(data => this.products2 = data);
+        this.productService.getProductsSmall().then(data => this.products3 = data);
     }
 
     customSort(event: SortEvent) {

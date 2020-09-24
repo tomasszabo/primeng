@@ -1,18 +1,18 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TabViewDemo} from './tabviewdemo';
 import {TabViewDemoRoutingModule} from './tabviewdemo-routing.module';
-import {GrowlModule} from '../../../components/growl/growl';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {TabViewModule} from 'primeng/tabview';
+import {ButtonModule} from 'primeng/button';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		TabViewDemoRoutingModule,
-        GrowlModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule,
+		ButtonModule
 	],
 	declarations: [
 		TabViewDemo

@@ -1,7 +1,6 @@
-import {NgModule,Component,ElementRef,AfterViewInit,OnDestroy,Input,Output,EventEmitter} from '@angular/core';
+import {NgModule,Component,ElementRef,AfterViewInit,OnDestroy,Input,Output,EventEmitter,ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-declare var Chart: any;
+import * as Chart from 'chart.js';
 
 @Component({
     selector: 'p-chart',
@@ -9,13 +8,15 @@ declare var Chart: any;
         <div style="position:relative" [style.width]="responsive && !width ? null : width" [style.height]="responsive && !height ? null : height">
             <canvas [attr.width]="responsive && !width ? null : width" [attr.height]="responsive && !height ? null : height" (click)="onCanvasClick($event)"></canvas>
         </div>
-    `
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class UIChart implements AfterViewInit, OnDestroy {
 
     @Input() type: string;
 
-    @Input() options: any = {};
+    @Input() plugins: any[] = [];
     
     @Input() width: string;
     
@@ -28,6 +29,8 @@ export class UIChart implements AfterViewInit, OnDestroy {
     initialized: boolean;
     
     _data: any;
+
+    _options: any = {};
 
     chart: any;
 
@@ -42,16 +45,25 @@ export class UIChart implements AfterViewInit, OnDestroy {
         this.reinit();
     }
 
+    @Input() get options(): any {
+        return this._options;
+    }
+
+    set options(val:any) {
+        this._options = val;
+        this.reinit();
+    }
+
     ngAfterViewInit() {
         this.initChart();
         this.initialized = true;
     }
 
     onCanvasClick(event) {
-        if(this.chart) {
+        if (this.chart) {
             let element = this.chart.getElementAtEvent(event);
             let dataset = this.chart.getDatasetAtEvent(event);
-            if(element&&element[0]&&dataset) {
+            if (element && element[0] && dataset) {
                 this.onDataSelect.emit({originalEvent: event, element: element[0], dataset: dataset});
             }
         }
@@ -69,7 +81,8 @@ export class UIChart implements AfterViewInit, OnDestroy {
         this.chart = new Chart(this.el.nativeElement.children[0].children[0], {
             type: this.type,
             data: this.data,
-            options: this.options
+            options: this.options,
+            plugins: this.plugins
         });
     }
     
@@ -82,26 +95,26 @@ export class UIChart implements AfterViewInit, OnDestroy {
     }
     
     generateLegend() {
-        if(this.chart) {
+        if (this.chart) {
             return this.chart.generateLegend();
         }
     }
     
     refresh() {
-        if(this.chart) {
+        if (this.chart) {
             this.chart.update();
         }
     }
     
     reinit() {
-        if(this.chart) {
+        if (this.chart) {
             this.chart.destroy();
             this.initChart();
         }
     }
     
     ngOnDestroy() {
-        if(this.chart) {
+        if (this.chart) {
             this.chart.destroy();
             this.initialized = false;
             this.chart = null;

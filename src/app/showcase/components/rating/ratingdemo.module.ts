@@ -1,11 +1,11 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule}  from '@angular/forms';
 import {RatingDemo} from './ratingdemo';
 import {RatingDemoRoutingModule} from './ratingdemo-routing.module';
-import {RatingModule} from '../../../components/rating/rating';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {RatingModule} from 'primeng/rating';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -13,8 +13,8 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		RatingDemoRoutingModule,
         RatingModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule
 	],
 	declarations: [
 		RatingDemo

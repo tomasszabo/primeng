@@ -1,46 +1,46 @@
 import {Component,OnInit} from '@angular/core';
-import {Message} from '../../../components/common/api';
-import {MenuItem} from '../../../components/common/api';
+import {MessageService} from 'primeng/api';
+import {MenuItem} from 'primeng/api';
 
 @Component({
     templateUrl: './splitbuttondemo.html',
+    providers: [MessageService],
     styles: [`
-        :host ::ng-deep .ui-splitbutton {
-            margin-right: .25em;
+        :host ::ng-deep .p-splitbutton {
+            margin-right: .25rem;
         }
     `]
 })
 export class SplitButtonDemo implements OnInit {
-
-    msgs: Message[] = [];
     
     items: MenuItem[];
     
+    constructor(private messageService: MessageService) {}
+    
     ngOnInit() {
         this.items = [
-            {label: 'Update', icon: 'fa fa-refresh', command: () => {
+            {label: 'Update', icon: 'pi pi-refresh', command: () => {
                 this.update();
             }},
-            {label: 'Delete', icon: 'fa fa-close', command: () => {
+            {label: 'Delete', icon: 'pi pi-times', command: () => {
                 this.delete();
             }},
-            {label: 'Angular.io', icon: 'fa fa-link', url: 'http://angular.io'},
-            {label: 'Theming', icon: 'fa fa-paint-brush', routerLink: ['/theming']}
+            {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
+            {separator:true},
+            {label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup']}
         ];
     }
 
-    save() {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Success', detail:'Data Saved'});
+    save(severity: string) {
+        this.messageService.add({severity: severity, summary:'Success', detail:'Data Saved'});
     }
     
     update() {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Success', detail:'Data Updated'});
+        this.messageService.add({severity:'success', summary:'Success', detail:'Data Updated'});
     }
     
     delete() {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Success', detail:'Data Deleted'});
+        this.messageService.add({severity:'success', summary:'Success', detail:'Data Deleted'});
     }
+
 }

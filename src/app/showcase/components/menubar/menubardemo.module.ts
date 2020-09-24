@@ -1,12 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenubarDemo} from './menubardemo';
 import {MenubarDemoRoutingModule} from './menubardemo-routing.module';
-import {MenubarModule} from '../../../components/menubar/menubar';
-import {InputTextModule} from '../../../components/inputtext/inputtext';
-import {ButtonModule} from '../../../components/button/button';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
+import { AppCodeModule } from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -15,8 +15,8 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         MenubarModule,
         InputTextModule,
         ButtonModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule
 	],
 	declarations: [
 		MenubarDemo

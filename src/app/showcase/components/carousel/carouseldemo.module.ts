@@ -1,12 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CarouselDemo} from './carouseldemo';
 import {CarouselDemoRoutingModule} from './carouseldemo-routing.module';
-import {CarouselModule} from '../../../components/carousel/carousel';
-import {ButtonModule} from '../../../components/button/button';
-import {GrowlModule} from '../../../components/growl/growl';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -14,9 +14,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         CarouselDemoRoutingModule,
         CarouselModule,
         ButtonModule,
-        GrowlModule,
+        ToastModule,
         TabViewModule,
-        CodeHighlighterModule
+        AppCodeModule
 	],
 	declarations: [
 		CarouselDemo

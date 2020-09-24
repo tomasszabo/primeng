@@ -1,27 +1,55 @@
 import {Component} from '@angular/core';
-import {MenuItem} from '../../../components/common/api';
+import {MenuItem, MessageService} from 'primeng/api';
 
 @Component({
-    templateUrl: './menudemo.html'
+    templateUrl: './menudemo.html',
+    providers: [MessageService]
 })
 export class MenuDemo {
     
     items: MenuItem[];
 
+    constructor(private messageService: MessageService) {}
+
     ngOnInit() {
         this.items = [{
-            label: 'File',
-            items: [
-                {label: 'New', icon: 'fa fa-fw fa-plus'},
-                {label: 'Open', icon: 'fa fa-fw fa-download'}
-            ]
-        },
-        {
-            label: 'Edit',
-            items: [
-                {label: 'Undo', icon: 'fa fa-fw fa-refresh'},
-                {label: 'Redo', icon: 'fa fa-fw fa-repeat'}
-            ]
-        }];
+            label: 'Options',
+            items: [{
+                label: 'Update',
+                icon: 'pi pi-refresh',
+                command: () => {
+                    this.update();
+                }
+            },
+            {
+                label: 'Delete',
+                icon: 'pi pi-times',
+                command: () => {
+                    this.delete();
+                }
+            }
+            ]},
+            {
+                label: 'Navigate',
+                items: [{
+                    label: 'Angular Website',
+                    icon: 'pi pi-external-link',
+                    url: 'http://angular.io'
+                },
+                {
+                    label: 'Router',
+                    icon: 'pi pi-upload',
+                    routerLink: '/fileupload'
+                }
+            ]}
+        ];
+    }
+
+    update() {
+        this.messageService.add({severity:'success', summary:'Success', detail:'Data Updated'});
+    }
+
+    delete() {
+        this.messageService.add({severity:'warn', summary:'Delete', detail:'Data Deleted'});
     }
 }

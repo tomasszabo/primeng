@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {ConfirmationService} from '../../../components/common/api';
-import {Message} from '../../../components/common/api';
+import {ConfirmationService} from 'primeng/api';
+import {Message} from 'primeng/api';
 
 @Component({
     templateUrl: './confirmdialogdemo.html',
@@ -14,6 +14,8 @@ import {Message} from '../../../components/common/api';
 export class ConfirmDialogDemo {
     
     msgs: Message[] = [];
+
+    position: string;
     
     constructor(private confirmationService: ConfirmationService) {}
 
@@ -42,6 +44,23 @@ export class ConfirmDialogDemo {
             reject: () => {
                 this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
             }
+        });
+    }
+
+    confirmPosition(position: string) {
+        this.position = position;
+
+        this.confirmationService.confirm({
+            message: 'Do you want to delete this record?',
+            header: 'Delete Confirmation',
+            icon: 'pi pi-info-circle',
+            accept: () => {
+                this.msgs = [{severity:'info', summary:'Confirmed', detail:'Record deleted'}];
+            },
+            reject: () => {
+                this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
+            },
+            key: "positionDialog"
         });
     }
 }

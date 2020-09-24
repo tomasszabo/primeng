@@ -1,65 +1,33 @@
 import {Component,OnInit} from '@angular/core';
-import {Car} from '../../components/domain/car';
-import {CarService} from '../../service/carservice';
-import {SelectItem} from '../../../components/common/api';
+import {ProductService} from '../../service/productservice';
+import {SelectItem} from 'primeng/api';
+import {Product} from '../../domain/product';
 
 @Component({
     templateUrl: './dataviewdemo.html',
-    styles: [`      
-        .ui-button { 
-            margin-top: 3em;
-        }  
-
-        .filter-container {
-            text-align: center;
-        }
-
-        @media (max-width: 40em) {
-            .car-details, .search-icon {
-                text-align: center;
-                margin-top: 0;
-            }
-
-            .filter-container {
-                text-align: left;
-            }
-        }
-    `]
+    styleUrls: ['./dataviewdemo.scss']
 })
 export class DataViewDemo implements OnInit {
 
-    cars: Car[];
-    
-    selectedCar: Car;
-    
-    displayDialog: boolean;
+    products: Product[];
 
     sortOptions: SelectItem[];
 
-    sortKey: string;
+    sortOrder: number;
 
     sortField: string;
 
-    sortOrder: number;
-
-    constructor(private carService: CarService) { }
+    constructor(private productService: ProductService) { }
 
     ngOnInit() {
-        this.carService.getCarsLarge().then(cars => this.cars = cars);
+        this.productService.getProducts().then(data => this.products = data);
 
         this.sortOptions = [
-            {label: 'Newest First', value: '!year'},
-            {label: 'Oldest First', value: 'year'},
-            {label: 'Brand', value: 'brand'}
+            {label: 'Price High to Low', value: '!price'},
+            {label: 'Price Low to High', value: 'price'}
         ];
     }
     
-    selectCar(event: Event, car: Car) {
-        this.selectedCar = car;
-        this.displayDialog = true;
-        event.preventDefault();
-    }
-
     onSortChange(event) {
         let value = event.value;
 
@@ -71,9 +39,5 @@ export class DataViewDemo implements OnInit {
             this.sortOrder = 1;
             this.sortField = value;
         }
-    }
-    
-    onDialogHide() {
-        this.selectedCar = null;
     }
 }

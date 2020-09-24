@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { TreeNode } from '../../../components/common/api';
+import { TreeNode } from 'primeng/api';
 import { NodeService } from '../../service/nodeservice';
-import { Message } from '../../../components/common/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
-    templateUrl: './treetableselectiondemo.html'
+    templateUrl: './treetableselectiondemo.html',
+    providers: [MessageService]
 })
 export class TreeTableSelectionDemo {
 
@@ -30,9 +31,7 @@ export class TreeTableSelectionDemo {
 
     cols: any[];
 
-    msgs: Message[];
-
-    constructor(private nodeService: NodeService) { }
+    constructor(private nodeService: NodeService, private messageService: MessageService) { }
 
     ngOnInit() {
         this.nodeService.getFilesystem().then(files => this.files1 = files);
@@ -49,12 +48,11 @@ export class TreeTableSelectionDemo {
     }
 
     nodeSelect(event) {
-        this.msgs = [];
-        this.msgs.push({severity: 'info', summary: 'Node Selected', detail: event.node.data.name});
+        this.messageService.add({severity: 'info', summary: 'Node Selected', detail: event.node.data.name});
     }
     
     nodeUnselect(event) {
-        this.msgs = [];
-        this.msgs.push({severity: 'info', summary: 'Node Unselected', detail: event.node.data.name});
+        this.messageService.add({severity: 'info', summary: 'Node Unselected', detail: event.node.data.name});
     }
+    
 }

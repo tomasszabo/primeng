@@ -1,56 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../components/domain/car';
-import { CarService } from '../../service/carservice';
-import { Message } from '../../../components/common/api';
+import { Product } from '../../domain/product';
+import { ProductService } from '../../service/productservice';
+import { MessageService } from 'primeng/api';
 
 @Component({
-    templateUrl: './tableselectiondemo.html'
+    templateUrl: './tableselectiondemo.html',
+    providers: [MessageService]
 })
 export class TableSelectionDemo implements OnInit {
 
-    msgs: Message[] = [];
+    products: Product[];
 
-    cars: Car[];
+    selectedProduct1: Product;
 
-    cols: any[];
+    selectedProduct2: Product;
 
-    selectedCar1: Car;
+    selectedProduct3: Product;
 
-    selectedCar2: Car;
+    selectedProducts1: Product[];
 
-    selectedCar3: Car;
+    selectedProducts2: Product[];
 
-    selectedCar4: Car;
+    selectedProducts3: Product[];
 
-    selectedCars1: Car[];
-
-    selectedCars2: Car[];
-
-    selectedCars3: Car[];
-
-    constructor(private carService: CarService) { }
+    constructor(private productService: ProductService, private messageService: MessageService) { }
 
     ngOnInit() {
-        this.carService.getCarsSmall().then(cars => this.cars = cars);
-
-        this.cols = [
-            { field: 'vin', header: 'Vin' },
-            { field: 'year', header: 'Year' },
-            { field: 'brand', header: 'Brand' },
-            { field: 'color', header: 'Color' }
-        ];
+        this.productService.getProductsSmall().then(data => this.products = data);
     }
 
-    selectCarWithButton(car: Car) {
-        this.selectedCar2 = car;
-        this.msgs = [{severity:'info', summary:'Car Selected', detail:'Vin: ' + car.vin}];
+    selectProduct(product: Product) {
+        this.messageService.add({severity:'info', summary:'Product Selected', detail: product.name});
     }
 
     onRowSelect(event) {
-        this.msgs = [{severity:'info', summary:'Car Selected', detail:'Vin: ' + event.data.vin}];
+        this.messageService.add({severity:'info', summary:'Product Selected', detail: event.data.name});
     }
 
     onRowUnselect(event) {
-        this.msgs = [{severity:'info', summary:'Car Unselected', detail:'Vin: ' + event.data.vin}];
+        this.messageService.add({severity:'info', summary:'Product Unselected',  detail: event.data.name});
     }
+
 }

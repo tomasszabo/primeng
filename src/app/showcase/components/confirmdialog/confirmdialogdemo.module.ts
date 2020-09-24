@@ -1,12 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ConfirmDialogDemo} from './confirmdialogdemo';
 import {ConfirmDialogDemoRoutingModule} from './confirmdialogdemo-routing.module';
-import {ConfirmDialogModule} from '../../../components/confirmdialog/confirmdialog';
-import {ButtonModule} from '../../../components/button/button';
-import {MessagesModule} from '../../../components/messages/messages';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ButtonModule} from 'primeng/button';
+import {MessagesModule} from 'primeng/messages';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -15,8 +15,8 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         ConfirmDialogModule,
         ButtonModule,
         MessagesModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule
 	],
 	declarations: [
 		ConfirmDialogDemo

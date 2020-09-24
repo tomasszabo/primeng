@@ -1,11 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule}  from '@angular/forms';
 import {MultiSelectDemo} from './multiselectdemo';
 import {MultiSelectDemoRoutingModule} from './multiselectdemo-routing.module';
-import {MultiSelectModule} from '../../../components/multiselect/multiselect';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {TabViewModule} from 'primeng/tabview';
+import { AppInputStyleSwitchModule } from '../../app.inputstyleswitch.component';
+import { AppCodeModule } from '../../app.code.component';
 
 
 @NgModule({
@@ -14,8 +15,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		MultiSelectDemoRoutingModule,
         MultiSelectModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppInputStyleSwitchModule,
+		AppCodeModule
 	],
 	declarations: [
 		MultiSelectDemo

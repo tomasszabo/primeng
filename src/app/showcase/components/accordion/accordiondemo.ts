@@ -1,30 +1,26 @@
 import {Component} from '@angular/core';
-import {Message} from '../../../components/common/api';
+import {MessageService} from 'primeng/api';
 
 @Component({
-    templateUrl: './accordiondemo.html'
+    templateUrl: './accordiondemo.html',
+    providers: [MessageService],
+    styleUrls: ['./accordiondemo.scss']
 })
 export class AccordionDemo {
-
-    msgs: Message[];
     
-    index: number = -1;
+    activeState: boolean[] = [true, false, false];
+
+    constructor(private messageService: MessageService) {}
 
     onTabClose(event) {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Tab Closed', detail: 'Index: ' + event.index});
+        this.messageService.add({severity:'info', summary:'Tab Closed', detail: 'Index: ' + event.index})
     }
     
     onTabOpen(event) {
-        this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Tab Expanded', detail: 'Index: ' + event.index});
+        this.messageService.add({severity:'info', summary:'Tab Expanded', detail: 'Index: ' + event.index});
     }
-    
-    openNext() {
-        this.index = (this.index === 3) ? 0 : this.index + 1;
-    }
-    
-    openPrev() {
-        this.index = (this.index <= 0) ? 3 : this.index - 1;
+
+    toggle(index: number) {
+        this.activeState[index] = !this.activeState[index];
     }
 }

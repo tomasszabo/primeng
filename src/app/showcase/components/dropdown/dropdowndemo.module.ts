@@ -1,11 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule}    from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {DropdownDemo} from './dropdowndemo';
 import {DropdownDemoRoutingModule} from './dropdowndemo-routing.module';
-import {DropdownModule} from '../../../components/dropdown/dropdown';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {DropdownModule} from 'primeng/dropdown';
+import {TabViewModule} from 'primeng/tabview';
+import { AppInputStyleSwitchModule } from '../../app.inputstyleswitch.component';
+import { AppCodeModule } from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -13,8 +14,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		DropdownDemoRoutingModule,
         DropdownModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppInputStyleSwitchModule,
+		AppCodeModule
 	],
 	declarations: [
 		DropdownDemo

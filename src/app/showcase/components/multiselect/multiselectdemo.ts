@@ -1,29 +1,54 @@
 import {Component} from '@angular/core';
-import {SelectItem} from '../../../components/common/api';
+import {SelectItem} from 'primeng/api';
+import { CountryService } from '../../service/countryservice';
 
 @Component({
-    templateUrl: './multiselectdemo.html'
+    templateUrl: './multiselectdemo.html',
+    styleUrls: ['./multiselectdemo.scss']
 })
 export class MultiSelectDemo {
 
-    cars: SelectItem[];
-
-    selectedCars1: string[] = [];
+    selectedCities: string[] = [];
     
-    selectedCars2: string[] = [];
+    selectedCountries1: string[] = [];
 
-    constructor() {
-        this.cars = [
-            {label: 'Audi', value: 'Audi'},
-            {label: 'BMW', value: 'BMW'},
-            {label: 'Fiat', value: 'Fiat'},
-            {label: 'Ford', value: 'Ford'},
-            {label: 'Honda', value: 'Honda'},
-            {label: 'Jaguar', value: 'Jaguar'},
-            {label: 'Mercedes', value: 'Mercedes'},
-            {label: 'Renault', value: 'Renault'},
-            {label: 'VW', value: 'VW'},
-            {label: 'Volvo', value: 'Volvo'},
+    selectedCountries2: string[] = [];
+
+    items: SelectItem[];
+
+    item: string;
+
+    cities: any[];
+
+    countries: any[];
+
+    constructor(private countryService: CountryService) {
+        
+        this.items = [];
+
+        this.countryService.getCountries().then(countries => {
+            this.items = countries;
+        });
+
+        this.countries = [
+            {name: 'Australia', code: 'AU'},
+            {name: 'Brazil', code: 'BR'},
+            {name: 'China', code: 'CN'},
+            {name: 'Egypt', code: 'EG'},
+            {name: 'France', code: 'FR'},
+            {name: 'Germany', code: 'DE'},
+            {name: 'India', code: 'IN'},
+            {name: 'Japan', code: 'JP'},
+            {name: 'Spain', code: 'ES'},
+            {name: 'United States', code: 'US'}
+        ];
+
+        this.cities = [
+            {name: 'New York', code: 'NY'},
+            {name: 'Rome', code: 'RM'},
+            {name: 'London', code: 'LDN'},
+            {name: 'Istanbul', code: 'IST'},
+            {name: 'Paris', code: 'PRS'}
         ];
     }
 }

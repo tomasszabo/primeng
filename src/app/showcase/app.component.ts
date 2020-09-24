@@ -1,61 +1,85 @@
-import { Component, OnInit } from '@angular/core';
-import {trigger,state,style,transition,animate} from '@angular/animations';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { AppConfigService } from './service/appconfigservice';
+import { AppConfig } from './domain/appconfig';
+import { Subscription } from 'rxjs';
+import { PrimeNGConfig } from 'primeng/api';
+
+declare let gtag: Function;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  animations: [
-      trigger('overlayState', [
-          state('hidden', style({
-              opacity: 0
-          })),
-          state('visible', style({
-              opacity: 1
-          })),
-          transition('visible => hidden', animate('400ms ease-in')),
-          transition('hidden => visible', animate('400ms ease-out'))
-      ]),
-  
-      trigger('notificationTopbar', [
-        state('hidden', style({
-          height: '0',
-          opacity: 0
-        })),
-        state('visible', style({
-          height: '*',
-          opacity: 1
-        })),
-        transition('visible => hidden', animate('400ms ease-in')),
-        transition('hidden => visible', animate('400ms ease-out'))
-      ])
-  ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-    
+export class AppComponent implements OnInit, OnDestroy {
+
     menuActive: boolean;
-    
-    activeMenuId: string;
-    
-    notification: boolean = false;
-    
+
+    newsActive: boolean = true;
+
+    config: AppConfig;
+
+    public subscription: Subscription;
+
+    constructor(private router: Router, private configService: AppConfigService, private primengConfig: PrimeNGConfig) {}
+
     ngOnInit() {
-      setTimeout(()=>this.notification = true , 1000)
+        this.primengConfig.ripple = true;
+        this.config = this.configService.config;
+        this.subscription = this.configService.configUpdate$.subscribe(config => this.config = config);
+
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                gtag('config', 'UA-93461466-1',
+                      {
+                        'page_path': '/primeng' + event.urlAfterRedirects
+                      }
+                );
+
+                this.hideMenu();
+             }
+        });
+
+        this.newsActive = this.newsActive && sessionStorage.getItem('primenews-hidden') == null;
     }
-    
-    changeTheme(event: Event, theme: string) {
-        let themeLink: HTMLLinkElement = <HTMLLinkElement> document.getElementById('theme-css');
-        themeLink.href = 'assets/components/themes/' + theme + '/theme.css';
-        event.preventDefault();
+
+    onMenuButtonClick() {
+        this.menuActive = true;
+        this.addClass(document.body, 'blocked-scroll');
     }
-    
-    onMenuButtonClick(event: Event) {
-        this.menuActive = !this.menuActive;
-        event.preventDefault();
+
+    onMaskClick() {
+        this.hideMenu();
     }
-    
-    closeNotification(event) {
-      this.notification = false;
-      event.preventDefault();
+
+    hideMenu() {
+        this.menuActive = false;
+        this.removeClass(document.body, 'blocked-scroll');
+    }
+
+    addClass(element: any, className: string) {
+        if (element.classList)
+            element.classList.add(className);
+        else
+            element.className += ' ' + className;
+    }
+
+    removeClass(element: any, className: string) {
+        if (element.classList)
+            element.classList.remove(className);
+        else
+            element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+
+    hideNews() {
+        this.newsActive = false;
+        sessionStorage.setItem('primenews-hidden', 'true');
+    }
+
+    ngOnDestroy() {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }

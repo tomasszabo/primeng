@@ -1,11 +1,11 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule}    from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {InputSwitchDemo} from './inputswitchdemo';
 import {InputSwitchDemoRoutingModule} from './inputswitchdemo-routing.module';
-import {InputSwitchModule} from '../../../components/inputswitch/inputswitch';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -13,8 +13,8 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		InputSwitchDemoRoutingModule,
         InputSwitchModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule
 	],
 	declarations: [
 		InputSwitchDemo

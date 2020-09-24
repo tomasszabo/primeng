@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SelectItem} from '../../../components/common/api';
-import {SelectItemGroup} from '../../../components/common/api';
+import {SelectItem} from 'primeng/api';
+import {SelectItemGroup} from 'primeng/api';
 
 interface City {
     name: string,
@@ -9,24 +9,34 @@ interface City {
 
 @Component({
     templateUrl: './dropdowndemo.html',
+    styleUrls: ['./dropdowndemo.scss']
 })
 export class DropdownDemo {
 
     cities: City[];
 
-    selectedCity: City;
+    selectedCity1: City;
 
-    cars: SelectItem[];
+    selectedCity2: City;
 
-    selectedCar1: string;
+    selectedCity3: string;
 
-    selectedCar2: string = 'BMW';
-    
-    selectedCar3: string;
+    selectedCountry: string;
 
-    groupedCars: SelectItemGroup[];
+    countries: any[];
+
+    groupedCities: SelectItemGroup[];
+
+    items: SelectItem[];
+
+    item: string;
 
     constructor() {
+        this.items = [];
+        for (let i = 0; i < 10000; i++) {
+            this.items.push({label: 'Item ' + i, value: 'Item ' + i});
+        }
+
         this.cities = [
             {name: 'New York', code: 'NY'},
             {name: 'Rome', code: 'RM'},
@@ -35,43 +45,47 @@ export class DropdownDemo {
             {name: 'Paris', code: 'PRS'}
         ];
 
-        this.cars = [
-            {label: 'Audi', value: 'Audi'},
-            {label: 'BMW', value: 'BMW'},
-            {label: 'Fiat', value: 'Fiat'},
-            {label: 'Ford', value: 'Ford'},
-            {label: 'Honda', value: 'Honda'},
-            {label: 'Jaguar', value: 'Jaguar'},
-            {label: 'Mercedes', value: 'Mercedes'},
-            {label: 'Renault', value: 'Renault'},
-            {label: 'VW', value: 'VW'},
-            {label: 'Volvo', value: 'Volvo'}
-        ];
-
-        this.groupedCars = [
+        this.groupedCities = [
             {
-                label: 'Germany', value: 'germany.png', 
+                label: 'Germany', value: 'de', 
                 items: [
-                    {label: 'Audi', value: 'Audi'},
-                    {label: 'BMW', value: 'BMW'},
-                    {label: 'Mercedes', value: 'Mercedes'}
+                    {label: 'Berlin', value: 'Berlin'},
+                    {label: 'Frankfurt', value: 'Frankfurt'},
+                    {label: 'Hamburg', value: 'Hamburg'},
+                    {label: 'Munich', value: 'Munich'}
                 ]
             },
             {
-                label: 'USA', value: 'usa.png', 
+                label: 'USA', value: 'us', 
                 items: [
-                    {label: 'Cadillac', value: 'Cadillac'},
-                    {label: 'Ford', value: 'Ford'},
-                    {label: 'GMC', value: 'GMC'}
+                    {label: 'Chicago', value: 'Chicago'},
+                    {label: 'Los Angeles', value: 'Los Angeles'},
+                    {label: 'New York', value: 'New York'},
+                    {label: 'San Francisco', value: 'San Francisco'}
                 ]
             },
             {
-                label: 'Japan', value: 'japan.png', 
+                label: 'Japan', value: 'jp', 
                 items: [
-                    {label: 'Honda', value: 'Honda'},
-                    {label: 'Toyota', value: 'Toyota'}
+                    {label: 'Kyoto', value: 'Kyoto'},
+                    {label: 'Osaka', value: 'Osaka'},
+                    {label: 'Tokyo', value: 'Tokyo'},
+                    {label: 'Yokohama', value: 'Yokohama'}
                 ]
             }
+        ];
+
+        this.countries = [
+            {name: 'Australia', code: 'AU'},
+            {name: 'Brazil', code: 'BR'},
+            {name: 'China', code: 'CN'},
+            {name: 'Egypt', code: 'EG'},
+            {name: 'France', code: 'FR'},
+            {name: 'Germany', code: 'DE'},
+            {name: 'India', code: 'IN'},
+            {name: 'Japan', code: 'JP'},
+            {name: 'Spain', code: 'ES'},
+            {name: 'United States', code: 'US'}
         ];
     }
 }

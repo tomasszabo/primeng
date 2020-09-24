@@ -1,10 +1,9 @@
-import { NgModule, Directive, ElementRef, AfterViewInit, OnDestroy, HostBinding, HostListener, Input, NgZone } from '@angular/core';
+import { NgModule, Directive, ElementRef, AfterViewInit, OnDestroy, Input, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomHandler } from '../dom/domhandler';
+import { DomHandler } from 'primeng/dom';
 
 @Directive({
-    selector: '[pTooltip]',
-    providers: [DomHandler]
+    selector: '[pTooltip]'
 })
 export class Tooltip implements AfterViewInit, OnDestroy {
 
@@ -20,8 +19,6 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
     @Input() tooltipZIndex: string = 'auto';
 
-    @Input("tooltipDisabled") disabled: boolean;
-
     @Input() escape: boolean = true;
 
     @Input() showDelay: number;
@@ -29,6 +26,16 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     @Input() hideDelay: number;
 
     @Input() life: number;
+
+    @Input("tooltipDisabled") get disabled(): boolean {
+        return this._disabled;
+    }
+    set disabled(val:boolean) {
+        this._disabled = val;
+        this.deactivate();
+    }
+
+    _disabled: boolean;
 
     container: any;
 
@@ -56,7 +63,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
     resizeListener: any;
 
-    constructor(public el: ElementRef, public domHandler: DomHandler, public zone: NgZone) { }
+    constructor(public el: ElementRef, public zone: NgZone) { }
 
     ngAfterViewInit() {
         this.zone.runOutsideAngular(() => {
@@ -135,10 +142,13 @@ export class Tooltip implements AfterViewInit, OnDestroy {
         this._text = text;
         if (this.active) {
             if (this._text) {
-                if (this.container && this.container.offsetParent)
+                if (this.container && this.container.offsetParent) {
                     this.updateText();
-                else
+					this.align();
+				}
+                else {
                     this.show();
+                }
             }
             else {
                 this.hide();
@@ -147,14 +157,19 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     }
 
     create() {
+        if (this.container) {
+            this.clearHideTimeout();
+            this.remove();
+        }
+
         this.container = document.createElement('div');
 
         let tooltipArrow = document.createElement('div');
-        tooltipArrow.className = 'ui-tooltip-arrow';
+        tooltipArrow.className = 'p-tooltip-arrow';
         this.container.appendChild(tooltipArrow);
 
         this.tooltipText = document.createElement('div');
-        this.tooltipText.className = 'ui-tooltip-text ui-shadow ui-corner-all';
+        this.tooltipText.className = 'p-tooltip-text';
 
         this.updateText();
 
@@ -167,9 +182,9 @@ export class Tooltip implements AfterViewInit, OnDestroy {
         if (this.appendTo === 'body')
             document.body.appendChild(this.container);
         else if (this.appendTo === 'target')
-            this.domHandler.appendChild(this.container, this.el.nativeElement);
+            DomHandler.appendChild(this.container, this.el.nativeElement);
         else
-            this.domHandler.appendChild(this.container, this.appendTo);
+            DomHandler.appendChild(this.container, this.appendTo);
 
         this.container.style.display = 'inline-block';
     }
@@ -181,7 +196,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
 
         this.create();
         this.align();
-        this.domHandler.fadeIn(this.container, 250);
+        DomHandler.fadeIn(this.container, 250);
 
         if (this.tooltipZIndex === 'auto')
             this.container.style.zIndex = ++DomHandler.zindex;
@@ -213,6 +228,13 @@ export class Tooltip implements AfterViewInit, OnDestroy {
                 this.alignTop();
                 if (this.isOutOfBounds()) {
                     this.alignBottom();
+                    if (this.isOutOfBounds()) {
+                        this.alignRight();
+
+                        if (this.isOutOfBounds()) {
+                            this.alignLeft();
+                        }
+                    }
                 }
                 break;
 
@@ -220,6 +242,13 @@ export class Tooltip implements AfterViewInit, OnDestroy {
                 this.alignBottom();
                 if (this.isOutOfBounds()) {
                     this.alignTop();
+                    if (this.isOutOfBounds()) {
+                        this.alignRight();
+
+                        if (this.isOutOfBounds()) {
+                            this.alignLeft();
+                        }
+                    }
                 }
                 break;
 
@@ -256,10 +285,10 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     }
 
     getHostOffset() {
-        if(this.appendTo === 'body' || this.appendTo === 'target') {
+        if (this.appendTo === 'body' || this.appendTo === 'target') {
             let offset = this.el.nativeElement.getBoundingClientRect();
-            let targetLeft = offset.left + this.domHandler.getWindowScrollLeft();
-            let targetTop = offset.top + this.domHandler.getWindowScrollTop();
+            let targetLeft = offset.left + DomHandler.getWindowScrollLeft();
+            let targetTop = offset.top + DomHandler.getWindowScrollTop();
     
             return { left: targetLeft, top: targetTop };
         }
@@ -271,8 +300,8 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     alignRight() {
         this.preAlign('right');
         let hostOffset = this.getHostOffset();
-        let left = hostOffset.left + this.domHandler.getOuterWidth(this.el.nativeElement);
-        let top = hostOffset.top + (this.domHandler.getOuterHeight(this.el.nativeElement) - this.domHandler.getOuterHeight(this.container)) / 2;
+        let left = hostOffset.left + DomHandler.getOuterWidth(this.el.nativeElement);
+        let top = hostOffset.top + (DomHandler.getOuterHeight(this.el.nativeElement) - DomHandler.getOuterHeight(this.container)) / 2;
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
     }
@@ -280,8 +309,8 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     alignLeft() {
         this.preAlign('left');
         let hostOffset = this.getHostOffset();
-        let left = hostOffset.left - this.domHandler.getOuterWidth(this.container);
-        let top = hostOffset.top + (this.domHandler.getOuterHeight(this.el.nativeElement) - this.domHandler.getOuterHeight(this.container)) / 2;
+        let left = hostOffset.left - DomHandler.getOuterWidth(this.container);
+        let top = hostOffset.top + (DomHandler.getOuterHeight(this.el.nativeElement) - DomHandler.getOuterHeight(this.container)) / 2;
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
     }
@@ -289,8 +318,8 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     alignTop() {
         this.preAlign('top');
         let hostOffset = this.getHostOffset();
-        let left = hostOffset.left + (this.domHandler.getOuterWidth(this.el.nativeElement) - this.domHandler.getOuterWidth(this.container)) / 2;
-        let top = hostOffset.top - this.domHandler.getOuterHeight(this.container);
+        let left = hostOffset.left + (DomHandler.getOuterWidth(this.el.nativeElement) - DomHandler.getOuterWidth(this.container)) / 2;
+        let top = hostOffset.top - DomHandler.getOuterHeight(this.container);
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
     }
@@ -298,8 +327,8 @@ export class Tooltip implements AfterViewInit, OnDestroy {
     alignBottom() {
         this.preAlign('bottom');
         let hostOffset = this.getHostOffset();
-        let left = hostOffset.left + (this.domHandler.getOuterWidth(this.el.nativeElement) - this.domHandler.getOuterWidth(this.container)) / 2;
-        let top = hostOffset.top + this.domHandler.getOuterHeight(this.el.nativeElement);
+        let left = hostOffset.left + (DomHandler.getOuterWidth(this.el.nativeElement) - DomHandler.getOuterWidth(this.container)) / 2;
+        let top = hostOffset.top + DomHandler.getOuterHeight(this.el.nativeElement);
         this.container.style.left = left + 'px';
         this.container.style.top = top + 'px';
     }
@@ -308,7 +337,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
         this.container.style.left = -999 + 'px';
         this.container.style.top = -999 + 'px';
 
-        let defaultClassName = 'ui-tooltip ui-widget ui-tooltip-' + position;
+        let defaultClassName = 'p-tooltip p-component p-tooltip-' + position;
         this.container.className = this.tooltipStyleClass ? defaultClassName + ' ' + this.tooltipStyleClass : defaultClassName;
     }
 
@@ -316,9 +345,9 @@ export class Tooltip implements AfterViewInit, OnDestroy {
         let offset = this.container.getBoundingClientRect();
         let targetTop = offset.top;
         let targetLeft = offset.left;
-        let width = this.domHandler.getOuterWidth(this.container);
-        let height = this.domHandler.getOuterHeight(this.container);
-        let viewport = this.domHandler.getViewport();
+        let width = DomHandler.getOuterWidth(this.container);
+        let height = DomHandler.getOuterHeight(this.container);
+        let viewport = DomHandler.getViewport();
 
         return (targetLeft + width > viewport.width) || (targetLeft < 0) || (targetTop < 0) || (targetTop + height > viewport.height);
     }
@@ -362,7 +391,7 @@ export class Tooltip implements AfterViewInit, OnDestroy {
             else if (this.appendTo === 'target')
                 this.el.nativeElement.removeChild(this.container);
             else
-                this.domHandler.removeChild(this.container, this.appendTo);
+                DomHandler.removeChild(this.container, this.appendTo);
         }
 
         this.unbindDocumentResizeListener();

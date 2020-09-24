@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class TerminalService {
@@ -11,13 +11,13 @@ export class TerminalService {
     responseHandler = this.responseSource.asObservable();
     
     sendCommand(command: string) {
-        if(command) {
+        if (command) {
             this.commandSource.next(command);
         }
     }
     
     sendResponse(response: string) {
-        if(response) {
+        if (response) {
             this.responseSource.next(response);
         }
     }

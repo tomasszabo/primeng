@@ -1,22 +1,22 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DeferDemo} from './deferdemo';
 import {DeferDemoRoutingModule} from './deferdemo-routing.module';
-import {DeferModule} from '../../../components/defer/defer';
-import {DataTableModule} from '../../../components/datatable/datatable';
-import {GrowlModule} from '../../../components/growl/growl';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {DeferModule} from 'primeng/defer';
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		DeferDemoRoutingModule,
         DeferModule,
-        GrowlModule,
+        ToastModule,
         TabViewModule,
-        DataTableModule,
-        CodeHighlighterModule
+        TableModule,
+        AppCodeModule
 	],
 	declarations: [
 		DeferDemo

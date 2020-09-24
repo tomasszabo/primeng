@@ -1,55 +1,57 @@
-import {NgModule,Component,ElementRef,AfterViewInit,Input,Output,Renderer2} from '@angular/core';
+import {NgModule,Component,ElementRef,Input,Renderer2,ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, AfterContentInit, ContentChildren, QueryList, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DomHandler} from '../dom/domhandler';
-import {MenuItem} from '../common/menuitem';
-import {Location} from '@angular/common';
+import {MegaMenuItem,MenuItem, PrimeTemplate} from 'primeng/api';
 import {RouterModule} from '@angular/router';
+import {RippleModule} from 'primeng/ripple';  
 
 @Component({
     selector: 'p-megaMenu',
     template: `
         <div [class]="styleClass" [ngStyle]="style"
-            [ngClass]="{'ui-megamenu ui-widget ui-widget-content ui-corner-all':true,'ui-megamenu-horizontal': orientation == 'horizontal','ui-megamenu-vertical': orientation == 'vertical'}">
-            <ul class="ui-megamenu-root-list">
+            [ngClass]="{'p-megamenu p-component':true,'p-megamenu-horizontal': orientation == 'horizontal','p-megamenu-vertical': orientation == 'vertical'}">
+            <div class="p-megamenu-start" *ngIf="startTemplate">
+                <ng-container *ngTemplateOutlet="startTemplate"></ng-container>
+            </div>
+            <ul class="p-megamenu-root-list" role="menubar">
                 <ng-template ngFor let-category [ngForOf]="model">
-                    <li *ngIf="category.separator" class="ui-menu-separator ui-widget-content" [ngClass]="{'ui-helper-hidden': category.visible === false}">
-                    <li *ngIf="!category.separator" #item [ngClass]="{'ui-menuitem ui-corner-all':true,'ui-menuitem-active':item==activeItem, 'ui-helper-hidden': category.visible === false}"
-                        (mouseenter)="onItemMouseEnter($event, item, category)" (mouseleave)="onItemMouseLeave($event, item)">
-   
-                        <a *ngIf="!category.routerLink" [href]="category.url||'#'" [attr.target]="category.target" [attr.title]="category.title" [attr.id]="category.id" (click)="itemClick($event, category)"
-                            [ngClass]="{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':category.disabled}" [ngStyle]="category.style" [class]="category.styleClass">
-                            <span class="ui-menuitem-icon" *ngIf="category.icon" [ngClass]="category.icon"></span>
-                            <span class="ui-menuitem-text">{{category.label}}</span>
-                            <span *ngIf="category.items" class="ui-submenu-icon pi pi-fw" [ngClass]="{'pi-caret-down':orientation=='horizontal','pi-caret-right':orientation=='vertical'}"></span>
+                    <li *ngIf="category.separator" class="p-menu-separator" [ngClass]="{'p-hidden': category.visible === false}">
+                    <li *ngIf="!category.separator" [ngClass]="{'p-menuitem':true,'p-menuitem-active':category==activeItem, 'p-hidden': category.visible === false}"
+                        (mouseenter)="onCategoryMouseEnter($event, category)">
+                        <a *ngIf="!category.routerLink" [href]="category.url||'#'" [attr.target]="category.target" [attr.title]="category.title" [attr.id]="category.id" (click)="onCategoryClick($event, category)" [attr.tabindex]="category.tabindex ? category.tabindex : '0'"
+                            [ngClass]="{'p-menuitem-link':true,'p-disabled':category.disabled}" [ngStyle]="category.style" [class]="category.styleClass" pRipple>
+                            <span class="p-menuitem-icon" *ngIf="category.icon" [ngClass]="category.icon"></span>
+                            <span class="p-menuitem-text">{{category.label}}</span>
+                            <span *ngIf="category.items" class="p-submenu-icon pi" [ngClass]="{'pi-angle-down':orientation=='horizontal','pi-angle-right':orientation=='vertical'}"></span>
                         </a>
-                        <a *ngIf="category.routerLink" [routerLink]="category.routerLink" [queryParams]="category.queryParams" [routerLinkActive]="'ui-state-active'" [routerLinkActiveOptions]="category.routerLinkActiveOptions||{exact:false}" 
+                        <a *ngIf="category.routerLink" [routerLink]="category.routerLink" [queryParams]="category.queryParams" [routerLinkActive]="'p-menuitem-link-active'" [routerLinkActiveOptions]="category.routerLinkActiveOptions||{exact:false}" [attr.tabindex]="category.tabindex ? category.tabindex : '0'" 
                             [attr.target]="category.target" [attr.title]="category.title" [attr.id]="category.id"
-                            (click)="itemClick($event, category)" [ngClass]="{'ui-menuitem-link ui-corner-all':true,'ui-state-disabled':category.disabled}" [ngStyle]="category.style" [class]="category.styleClass">
-                            <span class="ui-menuitem-icon" *ngIf="category.icon" [ngClass]="category.icon"></span>
-                            <span class="ui-menuitem-text">{{category.label}}</span>
+                            (click)="onCategoryClick($event, category)" [ngClass]="{'p-menuitem-link':true,'p-disabled':category.disabled}" [ngStyle]="category.style" [class]="category.styleClass"
+                            [fragment]="category.fragment" [queryParamsHandling]="category.queryParamsHandling" [preserveFragment]="category.preserveFragment" [skipLocationChange]="category.skipLocationChange" [replaceUrl]="category.replaceUrl" [state]="category.state" pRipple>
+                            <span class="p-menuitem-icon" *ngIf="category.icon" [ngClass]="category.icon"></span>
+                            <span class="p-menuitem-text">{{category.label}}</span>
                         </a>
-
-                        <div class="ui-megamenu-panel ui-widget-content ui-corner-all ui-shadow" *ngIf="category.items">
-                            <div class="ui-g">
+                        <div class="p-megamenu-panel" *ngIf="category.items">
+                            <div class="p-megamenu-grid">
                                 <ng-template ngFor let-column [ngForOf]="category.items">
                                     <div [class]="getColumnClass(category)">
                                         <ng-template ngFor let-submenu [ngForOf]="column">
-                                            <ul class="ui-megamenu-submenu">
-                                                <li class="ui-widget-header ui-megamenu-submenu-header ui-corner-all">{{submenu.label}}</li>
+                                            <ul class="p-megamenu-submenu" role="menu">
+                                                <li class="p-megamenu-submenu-header">{{submenu.label}}</li>
                                                 <ng-template ngFor let-item [ngForOf]="submenu.items">
-                                                    <li *ngIf="item.separator" class="ui-menu-separator ui-widget-content" [ngClass]="{'ui-helper-hidden': item.visible === false}">
-                                                    <li *ngIf="!item.separator" class="ui-menuitem ui-corner-all" [ngClass]="{'ui-helper-hidden': item.visible === false}">
-                                                        <a *ngIf="!item.routerLink" [href]="item.url||'#'" class="ui-menuitem-link ui-corner-all" [attr.target]="item.target" [attr.title]="item.title" [attr.id]="item.id"
-                                                            [ngClass]="{'ui-state-disabled':item.disabled}" (click)="itemClick($event, item)">
-                                                            <span class="ui-menuitem-icon" *ngIf="item.icon" [ngClass]="item.icon"></span>
-                                                            <span class="ui-menuitem-text">{{item.label}}</span>
+                                                    <li *ngIf="item.separator" class="p-menu-separator" [ngClass]="{'p-hidden': item.visible === false}" role="separator">
+                                                    <li *ngIf="!item.separator" class="p-menuitem" [ngClass]="{'p-hidden': item.visible === false}" role="none">
+                                                        <a *ngIf="!item.routerLink" role="menuitem" [href]="item.url||'#'" class="p-menuitem-link" [attr.target]="item.target" [attr.title]="item.title" [attr.id]="item.id" [attr.tabindex]="item.tabindex ? item.tabindex : '0'"
+                                                            [ngClass]="{'p-disabled':item.disabled}" (click)="itemClick($event, item)" pRipple>
+                                                            <span class="p-menuitem-icon" *ngIf="item.icon" [ngClass]="item.icon"></span>
+                                                            <span class="p-menuitem-text">{{item.label}}</span>
                                                         </a>
-                                                        <a *ngIf="item.routerLink" [routerLink]="item.routerLink" [queryParams]="item.queryParams" [routerLinkActive]="'ui-state-active'" 
-                                                            [routerLinkActiveOptions]="item.routerLinkActiveOptions||{exact:false}" class="ui-menuitem-link ui-corner-all" 
+                                                        <a *ngIf="item.routerLink" role="menuitem" [routerLink]="item.routerLink" [queryParams]="item.queryParams" [routerLinkActive]="'p-menuitem-link-active'" [attr.tabindex]="item.tabindex ? item.tabindex : '0'"
+                                                            [routerLinkActiveOptions]="item.routerLinkActiveOptions||{exact:false}" class="p-menuitem-link" 
                                                              [attr.target]="item.target" [attr.title]="item.title" [attr.id]="item.id"
-                                                            [ngClass]="{'ui-state-disabled':item.disabled}" (click)="itemClick($event, item)">
-                                                            <span class="ui-menuitem-icon" *ngIf="item.icon" [ngClass]="item.icon"></span>
-                                                            <span class="ui-menuitem-text">{{item.label}}</span>
+                                                            [ngClass]="{'p-disabled':item.disabled}" (click)="itemClick($event, item)"
+                                                            [fragment]="item.fragment" [queryParamsHandling]="item.queryParamsHandling" [preserveFragment]="item.preserveFragment" [skipLocationChange]="item.skipLocationChange" [replaceUrl]="item.replaceUrl" [state]="item.state" pRipple>
+                                                            <span class="p-menuitem-icon" *ngIf="item.icon" [ngClass]="item.icon"></span>
+                                                            <span class="p-menuitem-text">{{item.label}}</span>
                                                         </a>
                                                     </li>
                                                 </ng-template>
@@ -61,17 +63,24 @@ import {RouterModule} from '@angular/router';
                         </div>
                     </li>
                 </ng-template>
-                <li class="ui-menuitem ui-menuitem-custom ui-corner-all" *ngIf="orientation === 'horizontal'">
-                    <ng-content></ng-content>
-                </li>
+                <div class="p-megamenu-end" *ngIf="endTemplate; else legacy">
+                    <ng-container *ngTemplateOutlet="endTemplate"></ng-container>
+                </div>
+                <ng-template #legacy>
+                    <div class="p-megamenu-end">
+                        <ng-content></ng-content>
+                    </div>
+                </ng-template>
             </ul>
         </div>
     `,
-    providers: [DomHandler]
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./megamenu.css']
 })
-export class MegaMenu {
+export class MegaMenu implements AfterContentInit {
 
-    @Input() model: MenuItem[];
+    @Input() model: MegaMenuItem[];
 
     @Input() style: any;
 
@@ -82,61 +91,84 @@ export class MegaMenu {
     @Input() autoZIndex: boolean = true;
 
     @Input() baseZIndex: number = 0;
+
+    @ContentChildren(PrimeTemplate) templates: QueryList<any>;
     
     activeItem: any;
 
-    hideTimeout: any;
+    documentClickListener: any;
+
+    startTemplate: TemplateRef<any>;
+
+    endTemplate: TemplateRef<any>;
                 
-    constructor(public el: ElementRef, public domHandler: DomHandler, public renderer: Renderer2) {}
+    constructor(public el: ElementRef, public renderer: Renderer2, public cd: ChangeDetectorRef) {}
     
-    onItemMouseEnter(event, item, menuitem: MenuItem) {
-        if(menuitem.disabled) {
+    ngAfterContentInit() {
+        this.templates.forEach((item) => {
+            switch(item.getType()) {
+                case 'start':
+                    this.startTemplate = item.template;
+                break;
+
+                case 'end':
+                    this.endTemplate = item.template;
+                break;
+            }
+        });
+    }
+
+    onCategoryMouseEnter(event, menuitem: MegaMenuItem) {
+        if (menuitem.disabled) {
+            event.preventDefault();
             return;
         }
 
-        if(this.hideTimeout) {
-            clearTimeout(this.hideTimeout);
-            this.hideTimeout = null;
+        if (this.activeItem) {
+            this.activeItem = menuitem;
         }
-        
-        this.activeItem = item;
+    }
 
-        if(menuitem.items) {
-            let submenu = item.children[0].nextElementSibling;
-            if (submenu) {
-                if (this.autoZIndex) {
-                    submenu.style.zIndex = String(this.baseZIndex + (++DomHandler.zindex));
-                }
+    onCategoryClick(event, item: MenuItem | MegaMenuItem) {
+        if (item.disabled) {
+            event.preventDefault();
+            return;
+        }
 
-                if (this.orientation === 'horizontal') {
-                    submenu.style.top = this.domHandler.getOuterHeight(item.children[0]) + 'px';
-                    submenu.style.left = '0px';
-                }
-                else if (this.orientation === 'vertical') {
-                    submenu.style.top = '0px';
-                    submenu.style.left = this.domHandler.getOuterWidth(item.children[0]) + 'px';
-                }
+        if (!item.url) {
+            event.preventDefault();
+        }
+
+        if (item.command) {
+            item.command({
+                originalEvent: event,
+                item: item
+            });
+        }
+
+        if (item.items) {
+            if (this.activeItem && this.activeItem === item) {
+                this.activeItem = null;
+                this.unbindDocumentClickListener();
+            }
+            else {
+                this.activeItem = item;
+                this.bindDocumentClickListener();
             }
         }
     }
     
-    onItemMouseLeave(event, link) {
-        this.hideTimeout = setTimeout(() => {
-            this.activeItem = null;
-        }, 1000);
-    }
-    
-    itemClick(event, item: MenuItem) {
-        if(item.disabled) {
+    itemClick(event, item: MenuItem | MegaMenuItem) {
+        if (item.disabled) {
             event.preventDefault();
             return;
         }
         
-        if(!item.url) {
+        if (!item.url) {
             event.preventDefault();
         }
         
-        if(item.command) {
+        if (item.command) {
             item.command({
                 originalEvent: event,
                 item: item
@@ -146,37 +178,58 @@ export class MegaMenu {
         this.activeItem = null;
     }
     
-    getColumnClass(menuitem: MenuItem) {
+    getColumnClass(menuitem: MegaMenuItem) {
         let length = menuitem.items ? menuitem.items.length: 0;
         let columnClass;
         switch(length) {
             case 2:
-                columnClass= 'ui-g-6';
+                columnClass= 'p-megamenu-col-6';
             break;
             
             case 3:
-                columnClass= 'ui-g-4';
+                columnClass= 'p-megamenu-col-4';
             break;
             
             case 4:
-                columnClass= 'ui-g-3';
+                columnClass= 'p-megamenu-col-3';
             break;
             
             case 6:
-                columnClass= 'ui-g-2';
+                columnClass= 'p-megamenu-col-2';
             break;
                         
             default:
-                columnClass= 'ui-g-12';
+                columnClass= 'p-megamenu-col-12';
             break;
         }
         
         return columnClass;
     }
+
+    bindDocumentClickListener() {
+        if (!this.documentClickListener) {
+            this.documentClickListener = (event) => {
+                if (this.el && !this.el.nativeElement.contains(event.target)) {
+                    this.activeItem = null;
+                    this.unbindDocumentClickListener();
+                    this.cd.markForCheck();
+                }
+            };
+
+            document.addEventListener('click', this.documentClickListener);
+        }
+    }
+
+    unbindDocumentClickListener() {
+        if (this.documentClickListener) {
+            document.removeEventListener('click', this.documentClickListener);
+            this.documentClickListener = null;
+        }
+    }
 }
 
 @NgModule({
-    imports: [CommonModule,RouterModule],
+    imports: [CommonModule,RouterModule,RippleModule],
     exports: [MegaMenu,RouterModule],
     declarations: [MegaMenu]
 })

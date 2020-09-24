@@ -1,16 +1,26 @@
-import {Component} from '@angular/core';
-import {Message} from '../../../../components/common/api';
+import {Component, OnInit} from '@angular/core';
+import {MessageService} from 'primeng/api';
+import {Subscription} from 'rxjs';
+import {AppConfigService} from '../../../service/appconfigservice';
+import {AppConfig} from '../../../domain/appconfig';
 
 @Component({
-    templateUrl: './linechartdemo.html'
+    templateUrl: './linechartdemo.html',
+    providers: [MessageService]
 })
 export class LineChartDemo {
 
     data: any;
-    
-    msgs: Message[];
 
-    constructor() {
+    chartOptions: any;
+    
+    subscription: Subscription;
+
+    config: AppConfig;
+
+    constructor(private messageService: MessageService, private configService: AppConfigService) {}
+
+    ngOnInit() {
         this.data = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
@@ -28,10 +38,70 @@ export class LineChartDemo {
                 }
             ]
         }
+        
+        this.config = this.configService.config;
+        this.updateChartOptions();
+        this.subscription = this.configService.configUpdate$.subscribe(config => {
+            this.config = config;
+            this.updateChartOptions();
+        });
+    }
+
+    updateChartOptions() {
+        this.chartOptions = this.config && this.config.dark ? this.getDarkTheme() : this.getLightTheme();
+    }
+
+    getLightTheme() {
+        return {
+            legend: {
+                    labels: {
+                        fontColor: '#495057'
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontColor: '#495057'
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontColor: '#495057'
+                        }
+                    }]
+                }
+        }
+    }
+
+    getDarkTheme() {
+        return {
+            legend: {
+                labels: {
+                    fontColor: '#ebedef'
+                }
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#ebedef'
+                    },
+                    gridLines: {
+                        color: 'rgba(255,255,255,0.2)'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontColor: '#ebedef'
+                    },
+                    gridLines: {
+                        color: 'rgba(255,255,255,0.2)'
+                    }
+                }]
+            }
+        }
     }
 
     selectData(event) {
-        this.msgs = [];
-        this.msgs.push({severity: 'info', summary: 'Data Selected', 'detail': this.data.datasets[event.element._datasetIndex].data[event.element._index]});
+        this.messageService.add({severity: 'info', summary: 'Data Selected', 'detail': this.data.datasets[event.element._datasetIndex].data[event.element._index]});
     }
 }

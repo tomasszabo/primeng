@@ -1,11 +1,13 @@
-import {NgModule,AfterViewInit,Component,EventEmitter,Input,NgZone,OnDestroy,Output,ElementRef} from '@angular/core';
+import {NgModule,AfterViewInit,Component,EventEmitter,Input,NgZone,OnDestroy,Output,ElementRef,ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'p-captcha',
-    template: `<div></div>`
+    template: `<div></div>`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
-export class Captcha implements AfterViewInit {
+export class Captcha implements AfterViewInit,OnDestroy {
 
     @Input() siteKey: string = null;
         
@@ -27,11 +29,18 @@ export class Captcha implements AfterViewInit {
     
     private _instance: any = null;
 
-    constructor(public el: ElementRef, public _zone: NgZone) {}
+    constructor(public el: ElementRef, public _zone: NgZone, public cd: ChangeDetectorRef) {}
     
     ngAfterViewInit() {
-        if((<any>window).grecaptcha) {
-            this.init();
+        if ((<any>window).grecaptcha) {
+            if (!(<any>window).grecaptcha.render){
+                setTimeout(() =>{
+                    this.init();
+                },100)
+            }
+            else {
+                this.init();
+            }
         }
         else {
             (<any>window)[this.initCallback] = () => {
@@ -54,10 +63,11 @@ export class Captcha implements AfterViewInit {
     }
     
     reset() {
-        if(this._instance === null)
+        if (this._instance === null)
             return;
         
         (<any>window).grecaptcha.reset(this._instance);
+        this.cd.markForCheck();
     }
     
     getResponse(): String {

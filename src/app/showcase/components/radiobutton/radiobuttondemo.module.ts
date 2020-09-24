@@ -1,11 +1,12 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule}    from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {RadioButtonDemo} from './radiobuttondemo';
 import {RadioButtonDemoRoutingModule} from './radiobuttondemo-routing.module';
-import {RadioButtonModule} from '../../../components/radiobutton/radiobutton';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {TabViewModule} from 'primeng/tabview';
+import {AppInputStyleSwitchModule} from '../../app.inputstyleswitch.component';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -13,8 +14,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
         FormsModule,
 		RadioButtonDemoRoutingModule,
         RadioButtonModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppCodeModule,
+		AppInputStyleSwitchModule
 	],
 	declarations: [
 		RadioButtonDemo

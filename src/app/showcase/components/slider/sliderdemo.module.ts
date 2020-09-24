@@ -1,12 +1,13 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule}    from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {SliderDemo} from './sliderdemo';
 import {SliderDemoRoutingModule} from './sliderdemo-routing.module';
-import {SliderModule} from '../../../components/slider/slider';
-import {InputTextModule} from '../../../components/inputtext/inputtext';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {SliderModule} from 'primeng/slider';
+import {InputTextModule} from 'primeng/inputtext';
+import {TabViewModule} from 'primeng/tabview';
+import {AppInputStyleSwitchModule} from '../../app.inputstyleswitch.component';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -15,8 +16,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
 		SliderDemoRoutingModule,
         SliderModule,
         InputTextModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppInputStyleSwitchModule,
+		AppCodeModule
 	],
 	declarations: [
 		SliderDemo

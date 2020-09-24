@@ -1,56 +1,11 @@
 import {Component,OnInit,ViewEncapsulation} from '@angular/core';
-import {Message,TreeNode} from '../../../components/common/api';
+import {TreeNode} from 'primeng/api';
+import {MessageService} from 'primeng/api';
 
 @Component({
     templateUrl: './organizationchartdemo.html',
-    styles: [`
-        .company.ui-organizationchart .ui-organizationchart-node-content.ui-person {
-            padding: 0;
-            border: 0 none;
-        }
-        
-        .node-header,.node-content {
-            padding: .5em .7em;
-        }
-        
-        .node-header {
-            background-color: #495ebb;
-            color: #ffffff;
-        }
-        
-        .node-content {
-            text-align: center;
-            border: 1px solid #495ebb;
-        }
-        
-        .node-content img {
-            border-radius: 50%;
-        }
-        
-        .ui-organizationchart-node-content.department-cfo {
-            background-color: #7247bc;
-            color: #ffffff;
-        }
-        
-        .ui-organizationchart-node-content.department-coo {
-            background-color: #a534b6;
-            color: #ffffff;
-        }
-        
-        .ui-organizationchart-node-content.department-cto {
-            background-color: #e9286f;
-            color: #ffffff;
-        }
-        
-        .ui-person .ui-node-toggler {
-            color: #495ebb !important;
-        }
-        
-        .department-cto .ui-node-toggler {
-            color: #8a0a39 !important;
-        }
-    `],
-    encapsulation: ViewEncapsulation.None
+    providers: [MessageService],
+    styleUrls: ['./organizationchartdemo.scss']
 })
 export class OrganizationChartDemo implements OnInit {
 
@@ -60,7 +15,7 @@ export class OrganizationChartDemo implements OnInit {
     
     selectedNode: TreeNode;
     
-    messages: Message[];
+    constructor(private messageService: MessageService) {}
     
     ngOnInit() {
         this.data1 = [{
@@ -164,6 +119,7 @@ export class OrganizationChartDemo implements OnInit {
     }
     
     onNodeSelect(event) {
-        this.messages = [{severity: 'success', summary: 'Node Selected', detail: event.node.label}];
+        this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
     }
+
 }

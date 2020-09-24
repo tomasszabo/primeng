@@ -1,10 +1,10 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProgressSpinnerDemo} from './progressspinnerdemo';
 import {ProgressSpinnerDemoRoutingModule} from './progressspinnerdemo-routing.module';
-import {ProgressSpinnerModule} from '../../../components/progressspinner/progressspinner';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {TabViewModule} from 'primeng/tabview';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -12,7 +12,7 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
 		ProgressSpinnerDemoRoutingModule,
         ProgressSpinnerModule,
         TabViewModule,
-        CodeHighlighterModule
+        AppCodeModule
 	],
 	declarations: [
 		ProgressSpinnerDemo

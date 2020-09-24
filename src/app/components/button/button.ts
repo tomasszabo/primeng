@@ -1,65 +1,64 @@
-import {NgModule,Directive,Component,ElementRef,EventEmitter,AfterViewInit,Output,OnDestroy,HostBinding,HostListener,Input} from '@angular/core';
-import {DomHandler} from '../dom/domhandler';
+import {NgModule,Directive,Component,ElementRef,EventEmitter,AfterViewInit,Output,OnDestroy,Input,ChangeDetectionStrategy, ViewEncapsulation, ContentChildren, AfterContentInit, TemplateRef, QueryList} from '@angular/core';
+import {DomHandler} from 'primeng/dom';
 import {CommonModule} from '@angular/common';
+import {RippleModule} from 'primeng/ripple'; 
+import {PrimeTemplate} from 'primeng/api'; 
 
 @Directive({
-    selector: '[pButton]',
-    providers: [DomHandler]
+    selector: '[pButton]'
 })
 export class ButtonDirective implements AfterViewInit, OnDestroy {
 
-    @Input() iconPos: string = 'left';
-    
-    @Input() cornerStyleClass: string = 'ui-corner-all';
-        
+    @Input() iconPos: 'left' | 'right' | 'top' | 'bottom' = 'left';
+            
     public _label: string;
     
     public _icon: string;
             
     public initialized: boolean;
+    
+    public _initialStyleClass: string;
 
-    constructor(public el: ElementRef, public domHandler: DomHandler) {}
+    constructor(public el: ElementRef) {}
     
     ngAfterViewInit() {
-        this.domHandler.addMultipleClasses(this.el.nativeElement, this.getStyleClass());
-        if(this.icon) {
+        this._initialStyleClass = this.el.nativeElement.className;
+        DomHandler.addMultipleClasses(this.el.nativeElement, this.getStyleClass());
+
+        if (this.icon) {
             let iconElement = document.createElement("span");
+            iconElement.className = 'p-button-icon';
             iconElement.setAttribute("aria-hidden", "true");
-            let iconPosClass = (this.iconPos == 'right') ? 'ui-button-icon-right': 'ui-button-icon-left';
-            iconElement.className = iconPosClass  + ' ui-clickable ' + this.icon;
+            let iconPosClass = this.label ? 'p-button-icon-' + this.iconPos : null;
+            if (iconPosClass) {
+                DomHandler.addClass(iconElement, iconPosClass);
+            }
+            DomHandler.addMultipleClasses(iconElement, this.icon);
             this.el.nativeElement.appendChild(iconElement);
         }
         
         let labelElement = document.createElement("span");
-        labelElement.className = 'ui-button-text ui-clickable';
-        labelElement.appendChild(document.createTextNode(this.label||'ui-btn'));
+        if (this.icon && !this.label) {
+            labelElement.setAttribute('aria-hidden', 'true');
+        }
+        labelElement.className = 'p-button-label';
+        labelElement.appendChild(document.createTextNode(this.label||'&nbsp;'));
         this.el.nativeElement.appendChild(labelElement);
         this.initialized = true;
     }
         
     getStyleClass(): string {
-        let styleClass = 'ui-button ui-widget ui-state-default ' + this.cornerStyleClass;
-        if(this.icon) {
-            if(this.label != null && this.label != undefined) {
-                if(this.iconPos == 'left')
-                    styleClass = styleClass + ' ui-button-text-icon-left';
-                else
-                    styleClass = styleClass + ' ui-button-text-icon-right';
-            }
-            else {
-                styleClass = styleClass + ' ui-button-icon-only';
-            }
-        }
-        else {
-            if(this.label) {
-                styleClass = styleClass + ' ui-button-text-only';
-            }
-            else {
-                styleClass = styleClass + ' ui-button-text-empty';
-            }
+        let styleClass = 'p-button p-component';
+        if (this.icon && !this.label) {
+            styleClass = styleClass + ' p-button-icon-only';
         }
         
         return styleClass;
+    }
+
+    setStyleClass() {
+        let styleClass = this.getStyleClass();
+        this.el.nativeElement.className = styleClass + ' ' + this._initialStyleClass;
     }
     
     @Input() get label(): string {
@@ -69,19 +68,9 @@ export class ButtonDirective implements AfterViewInit, OnDestroy {
     set label(val: string) {
         this._label = val;
         
-        if(this.initialized) {
-            this.domHandler.findSingle(this.el.nativeElement, '.ui-button-text').textContent = this._label;
-
-            if(!this.icon) {
-                if (this._label) {
-                    this.domHandler.removeClass(this.el.nativeElement, 'ui-button-text-empty');
-                    this.domHandler.addClass(this.el.nativeElement, 'ui-button-text-only');
-                }
-                else {
-                    this.domHandler.addClass(this.el.nativeElement, 'ui-button-text-empty');
-                    this.domHandler.removeClass(this.el.nativeElement, 'ui-button-text-only');
-                }
-            }
+        if (this.initialized) {
+            DomHandler.findSingle(this.el.nativeElement, '.p-button-label').textContent = this._label || '&nbsp;';
+            this.setStyleClass();
         }
     }
     
@@ -92,10 +81,13 @@ export class ButtonDirective implements AfterViewInit, OnDestroy {
     set icon(val: string) {
         this._icon = val;
         
-        if(this.initialized) {
-            let iconPosClass = (this.iconPos == 'right') ? 'ui-button-icon-right': 'ui-button-icon-left';
-            this.domHandler.findSingle(this.el.nativeElement, '.ui-clickable').className =
-                iconPosClass + ' ui-clickable ' + this.icon;
+        if (this.initialized) {
+            if (this.iconPos)
+                DomHandler.findSingle(this.el.nativeElement, '.p-button-icon').className = 'p-button-icon p-button-icon-' + this.iconPos + ' ' + this._icon;
+            else
+                DomHandler.findSingle(this.el.nativeElement, '.p-button-icon').className = 'p-button-icon ' + this._icon;
+
+            this.setStyleClass();
         }
     }
         
@@ -111,31 +103,35 @@ export class ButtonDirective implements AfterViewInit, OnDestroy {
 @Component({
     selector: 'p-button',
     template: `
-        <button [attr.type]="type" [class]="styleClass" [style]="style" [disabled]="disabled"
-            [ngClass]="{'ui-button ui-widget ui-state-default ui-corner-all':true,
-                        'ui-button-icon-only': (icon && !label),
-                        'ui-button-text-icon-left': (icon && label && iconPos === 'left'),
-                        'ui-button-text-icon-right': (icon && label && iconPos === 'right'),
-                        'ui-button-text-only': (!icon && label),
-                        'ui-button-text-empty': (!icon && !label),
-                        'ui-state-disabled': disabled}"
-                        (click)="onClick.emit($event)" (focus)="onFocus.emit($event)" (blur)="onBlur.emit($event)">
+        <button [attr.type]="type" [class]="styleClass" [ngStyle]="style" [disabled]="disabled"
+            [ngClass]="{'p-button p-component':true,
+                        'p-button-icon-only': (icon && !label),
+                        'p-button-vertical': (iconPos === 'top' || iconPos === 'bottom') && label}"
+                        (click)="onClick.emit($event)" (focus)="onFocus.emit($event)" (blur)="onBlur.emit($event)" pRipple>
             <ng-content></ng-content>
-            <span [ngClass]="{'ui-clickable': true,
-                        'ui-button-icon-left': (iconPos === 'left'), 
-                        'ui-button-icon-right': (iconPos === 'right')}"
-                        [class]="icon" *ngIf="icon"></span>
-            <span class="ui-button-text ui-clickable">{{label||'ui-btn'}}</span>
+            <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+            <span [ngClass]="{'p-button-icon': true,
+                        'p-button-icon-left': iconPos === 'left' && label,
+                        'p-button-icon-right': iconPos === 'right' && label,
+                        'p-button-icon-top': iconPos === 'top' && label,
+                        'p-button-icon-bottom': iconPos === 'bottom' && label}"
+                        [class]="icon" *ngIf="icon" [attr.aria-hidden]="true"></span>
+            <span class="p-button-label" [attr.aria-hidden]="icon && !label">{{label||'&nbsp;'}}</span>
+            <span [ngClass]="'p-badge'" *ngIf="badge" [class]="badgeClass">{{badge}}</span>
         </button>
-    `
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
-export class Button {
+export class Button implements AfterContentInit {
 
-    @Input() type: string = 'button';
+    @Input() type: string = "button";
 
     @Input() iconPos: string = 'left';
 
     @Input() icon: string;
+
+    @Input() badge: string;
 
     @Input() label: string;
 
@@ -145,15 +141,35 @@ export class Button {
 
     @Input() styleClass: string;
 
+    @Input() badgeClass: string;
+
+    contentTemplate: TemplateRef<any>;
+
+    @ContentChildren(PrimeTemplate) templates: QueryList<any>;
+
     @Output() onClick: EventEmitter<any> = new EventEmitter();
 
     @Output() onFocus: EventEmitter<any> = new EventEmitter();
 
     @Output() onBlur: EventEmitter<any> = new EventEmitter();
+
+    ngAfterContentInit() {
+        this.templates.forEach((item) => {
+            switch(item.getType()) {
+                case 'content':
+                    this.contentTemplate = item.template;
+                break;
+                
+                default:
+                    this.contentTemplate = item.template;
+                break;
+            }
+        });
+    }
 }
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule,RippleModule],
     exports: [ButtonDirective,Button],
     declarations: [ButtonDirective,Button]
 })

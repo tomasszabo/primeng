@@ -1,13 +1,14 @@
-import {NgModule}     from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {KeyFilterDemo} from './keyfilterdemo';
 import {FormsModule} from '@angular/forms';
-import {MessageModule} from '../../../components/message/message';
+import {MessageModule} from 'primeng/message';
 import {KeyFilterDemoRoutingModule} from './keyfilterdemo-routing.module';
-import {KeyFilterModule} from '../../../components/keyfilter/keyfilter';
-import {InputTextModule} from '../../../components/inputtext/inputtext';
-import {TabViewModule} from '../../../components/tabview/tabview';
-import {CodeHighlighterModule} from '../../../components/codehighlighter/codehighlighter';
+import {KeyFilterModule} from 'primeng/keyfilter';
+import {InputTextModule} from 'primeng/inputtext';
+import {TabViewModule} from 'primeng/tabview';
+import {AppInputStyleSwitchModule} from '../../app.inputstyleswitch.component';
+import {AppCodeModule} from '../../app.code.component';
 
 @NgModule({
 	imports: [
@@ -17,8 +18,9 @@ import {CodeHighlighterModule} from '../../../components/codehighlighter/codehig
 		KeyFilterModule,
 		InputTextModule,
 		MessageModule,
-        TabViewModule,
-        CodeHighlighterModule
+		TabViewModule,
+		AppInputStyleSwitchModule,
+		AppCodeModule
 	],
 	declarations: [
 		KeyFilterDemo
