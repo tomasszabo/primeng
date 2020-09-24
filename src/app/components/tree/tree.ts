@@ -26,9 +26,9 @@ import {RippleModule} from 'primeng/ripple';
                     [draggable]="tree.draggableNodes" (dragstart)="onDragStart($event)" (dragend)="onDragStop($event)" [attr.tabindex]="0"
                     [ngClass]="{'p-treenode-selectable':tree.selectionMode && node.selectable !== false,'p-treenode-dragover':draghoverNode, 'p-highlight':isSelected()}"
                     (keydown)="onKeyDown($event)" [attr.aria-posinset]="this.index + 1" [attr.aria-expanded]="this.node.expanded" [attr.aria-selected]="isSelected()" [attr.aria-label]="node.label">
-                    <button type="button" class="p-tree-toggler p-link" (click)="toggle($event)" pRipple>
+                    <span class="p-tree-toggler p-link" (click)="toggle($event)" pRipple>
                         <span class="p-tree-toggler-icon pi pi-fw" [ngClass]="{'pi-chevron-right':!node.expanded,'pi-chevron-down':node.expanded}"></span>
-                    </button>
+                    </span>
                     <div class="p-checkbox p-component" *ngIf="tree.selectionMode == 'checkbox'" [attr.aria-checked]="isSelected()">
                         <div class="p-checkbox-box" [ngClass]="{'p-highlight': isSelected(), 'p-indeterminate': node.partialSelected}">
                             <span class="p-checkbox-icon pi" [ngClass]="{'pi-check':isSelected(),'pi-minus':node.partialSelected}"></span>
@@ -1083,7 +1083,7 @@ export class Tree implements OnInit,AfterContentInit,OnChanges,OnDestroy,Blockab
 
     getTemplateForNode(node: TreeNode): TemplateRef<any> {
         if (this.templateMap)
-            return node.type ? this.templateMap[node.type] : this.templateMap['default'];
+            return node.type ? (this.templateMap[node.type] ? this.templateMap[node.type] : this.templateMap['default']) : this.templateMap['default'];
         else
             return null;
     }
